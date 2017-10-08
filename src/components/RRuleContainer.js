@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Repeat from './Repeat';
 import End from './End';
 import RRule from './RRule';
+import computeRRule from '../utils/computeRRule';
 
 class RRuleContainer extends Component {
   constructor(props) {
@@ -18,24 +19,28 @@ class RRuleContainer extends Component {
       onTheMonth: '',
       end: '',
       endDate: '',
-      rrule: '',
+      isCopied: false,
     };
 
-    this.handleRepeatChange = this.handleRepeatChange.bind(this);
-    this.handleEndChange = this.handleEndChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleCopy = this.handleCopy.bind(this);
   }
 
-  handleRepeatChange(what, newValue) {
-    this.setState({ [what]: newValue });
+  handleChange(what, newValue) {
+    if (this.state[what] !== newValue) {
+      this.setState({ [what]: newValue, isCopied: false });
+    }
   }
 
-  handleEndChange(what, newValue) {
-    this.setState({ [what]: newValue });
+  handleCopy() {
+    if (!this.state.isCopied) {
+      this.setState({ isCopied: true });
+    }
   }
 
   render() {
     return (
-      <div>
+      <div className="container m-5">
         
         <Repeat
           repeatFrequency={this.state.repeatFrequency}
@@ -45,16 +50,20 @@ class RRuleContainer extends Component {
           onThe={this.state.onThe}
           onTheDay={this.state.onTheDay}
           onTheMonth={this.state.onTheMonth}
-          handleChange={this.handleRepeatChange}
+          handleChange={this.handleChange}
         />
         
         <End
           end={this.state.end}
           endDate={this.state.endDate}
-          handleChange={this.handleEndChange}
+          handleChange={this.handleChange}
         />
         
-        <RRule rrule={this.state.rrule} />
+        <RRule
+          rrule={computeRRule(this.state)}
+          isCopied={this.state.isCopied}
+          handleCopy={this.handleCopy}
+        />
         
       </div>
     );
