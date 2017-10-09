@@ -29,8 +29,11 @@ const End = ({
             className="form-control"
             value={endAfter}
             onChange={(event) => {
+              // Convert input from string to number
               const inputNumber = +event.target.value;
-              if (isNaN(inputNumber) || inputNumber >= 999) return;
+              // Check if is a number and is less than 1000
+              if (isNaN(inputNumber) || inputNumber >= 1000) return;
+
               handleChange('endAfter', inputNumber);
             }}
           />
