@@ -9,21 +9,19 @@ const End = ({
 }) => (
   <div>
     <h2>End</h2>
-    <form>
-      <select
-        className="form-control"
-        value={end}
-        onChange={event => handleChange('end', event.target.value)}
-      >
-        <option value="Never">Never</option>
-        <option value="After">After</option>
-        <option value="On date">On date</option>
-      </select>
-    </form>
+    <select
+      className="form-control"
+      value={end}
+      onChange={event => handleChange('end', event.target.value)}
+    >
+      <option value="Never">Never</option>
+      <option value="After">After</option>
+      <option value="On date">On date</option>
+    </select>
 
     {
       end === 'After' &&
-        <form>
+        <div>
           <input
             name="endAfter"
             className="form-control"
@@ -38,18 +36,16 @@ const End = ({
             }}
           />
           executions.
-        </form>
+        </div>
     }
 
     {
       end === 'On date' &&
-      <form>
-        <input
-          className="form-control"
-          value={endOnDate}
-          onChange={event => handleChange('endOnDate', event.target.value)}
-        />
-      </form>
+      <input
+        className="form-control"
+        value={endOnDate}
+        onChange={event => handleChange('endOnDate', event.target.value)}
+      />
     }
 
   </div>
