@@ -18,7 +18,8 @@ class RRuleContainer extends Component {
       onTheDay: '',
       onTheMonth: '',
       end: '',
-      endDate: '',
+      endAfter: 0,
+      endOnDate: '',
       isCopied: false,
     };
 
@@ -55,7 +56,8 @@ class RRuleContainer extends Component {
         
         <End
           end={this.state.end}
-          endDate={this.state.endDate}
+          endAfter={this.state.endAfter}
+          endOnDate={this.state.endOnDate}
           handleChange={this.handleChange}
         />
         
