@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const End = ({
-  end,
+  endMode,
   endAfter,
   endOnDate,
   handleChange,
@@ -11,8 +11,8 @@ const End = ({
     <h2>End</h2>
     <select
       className="form-control"
-      value={end}
-      onChange={event => handleChange('end', event.target.value)}
+      value={endMode}
+      onChange={event => handleChange('endMode', event.target.value)}
     >
       <option value="Never">Never</option>
       <option value="After">After</option>
@@ -20,7 +20,7 @@ const End = ({
     </select>
 
     {
-      end === 'After' &&
+      endMode === 'After' &&
         <div>
           <input
             name="endAfter"
@@ -40,7 +40,7 @@ const End = ({
     }
 
     {
-      end === 'On date' &&
+      endMode === 'On date' &&
       <input
         className="form-control"
         value={endOnDate}
@@ -52,7 +52,7 @@ const End = ({
 );
 
 End.propTypes = {
-  end: PropTypes.string.isRequired,
+  endMode: PropTypes.string.isRequired,
   endAfter: PropTypes.number.isRequired,
   endOnDate: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,

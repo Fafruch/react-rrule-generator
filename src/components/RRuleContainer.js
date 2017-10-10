@@ -13,11 +13,11 @@ class RRuleContainer extends Component {
       repeatFrequency: '',
       repeatMode: 'on',
       onMonth: '',
-      onDay: '',
-      onThe: '',
+      onDay: 0,
+      onTheWhich: '',
       onTheDay: '',
       onTheMonth: '',
-      end: '',
+      endMode: '',
       endAfter: 0,
       endOnDate: '',
       isCopied: false,
@@ -48,14 +48,14 @@ class RRuleContainer extends Component {
           repeatMode={this.state.repeatMode}
           onMonth={this.state.onMonth}
           onDay={this.state.onDay}
-          onThe={this.state.onThe}
+          onTheWhich={this.state.onTheWhich}
           onTheDay={this.state.onTheDay}
           onTheMonth={this.state.onTheMonth}
           handleChange={this.handleChange}
         />
         
         <End
-          end={this.state.end}
+          endMode={this.state.endMode}
           endAfter={this.state.endAfter}
           endOnDate={this.state.endOnDate}
           handleChange={this.handleChange}

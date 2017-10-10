@@ -6,20 +6,20 @@ const computeRRule = ({
   repeatMode,
   onMonth,
   onDay,
-  onThe,
+  onTheWhich,
   onTheDay,
   onTheMonth,
-  end,
+  endMode,
   endAfter,
   endOnDate,
 }) => {
   const rruleObject = {};
 
-  if (end === 'After') {
+  if (endMode === 'After') {
     rruleObject.count = endAfter;
   }
 
-  if (end === 'On date') {
+  if (endMode === 'On date') {
     rruleObject.until = moment(endOnDate).format();
   }
 
