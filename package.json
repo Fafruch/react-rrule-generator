@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.0.0-beta",
+    "moment": "^2.18.1",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-scripts": "1.0.14"
+    "react-scripts": "1.0.14",
+    "rrule": "^2.2.0"
   },
   "devDependencies": {
     "eslint": "^4.8.0",
