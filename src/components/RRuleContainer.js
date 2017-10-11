@@ -10,13 +10,30 @@ class RRuleContainer extends Component {
     super(props);
 
     this.state = {
-      repeatFrequency: '',
-      repeatMode: 'on',
-      onMonth: '',
-      onDay: 0,
-      onTheWhich: '',
-      onTheDay: '',
-      onTheMonth: '',
+      repeatFrequency: 'Yearly',
+      repeatYearlyMode: 'on',
+      repeatYearlyOnMonth: '',
+      repeatYearlyOnDay: 0,
+      repeatYearlyOnTheMonth: '',
+      repeatYearlyOnTheDay: 0,
+      repeatYearlyOnTheWhich: '',
+      repeatMonthlyMode: 'on day',
+      repeatMonthlyFrequency: 0,
+      repeatMonthlyOnDay: '',
+      repeatMonthlyOnTheDay: '',
+      repeatMonthlyOnTheWhich: '',
+      repeatWeeklyFrequency: 0,
+      repeatWeeklyDays: {
+        mon: false,
+        tue: false,
+        wed: false,
+        thu: false,
+        fri: false,
+        sat: false,
+        sun: false,
+      },
+      repeatDailyFrequency: 0,
+      repeatHourlyFrequency: 0,
       endMode: '',
       endAfter: 0,
       endOnDate: '',
@@ -45,12 +62,21 @@ class RRuleContainer extends Component {
         
         <Repeat
           repeatFrequency={this.state.repeatFrequency}
-          repeatMode={this.state.repeatMode}
-          onMonth={this.state.onMonth}
-          onDay={this.state.onDay}
-          onTheWhich={this.state.onTheWhich}
-          onTheDay={this.state.onTheDay}
-          onTheMonth={this.state.onTheMonth}
+          repeatYearlyMode={this.state.repeatYearlyMode}
+          repeatYearlyOnMonth={this.state.repeatYearlyOnMonth}
+          repeatYearlyOnDay={this.state.repeatYearlyOnDay}
+          repeatYearlyOnTheMonth={this.state.repeatYearlyOnTheMonth}
+          repeatYearlyOnTheDay={this.state.repeatYearlyOnTheDay}
+          repeatYearlyOnTheWhich={this.state.repeatYearlyOnTheWhich}
+          repeatMonthlyMode={this.state.repeatMonthlyMode}
+          repeatMonthlyFrequency={this.state.repeatMonthlyFrequency}
+          repeatMonthlyOnDay={this.state.repeatMonthlyOnDay}
+          repeatMonthlyOnTheDay={this.state.repeatMonthlyOnTheDay}
+          repeatMonthlyOnTheWhich={this.state.repeatMonthlyOnTheWhich}
+          repeatWeeklyFrequency={this.state.repeatWeeklyFrequency}
+          repeatWeeklyDays={this.state.repeatWeeklyDays}
+          repeatDailyFrequency={this.state.repeatDailyFrequency}
+          repeatHourlyFrequency={this.state.repeatHourlyFrequency}
           handleChange={this.handleChange}
         />
         

@@ -1,5 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import RepeatYearly from './RepeatYearly';
+import RepeatMonthly from './RepeatMonthly';
+import RepeatWeekly from './RepeatWeekly';
+import RepeatDaily from './RepeatDaily';
+import RepeatHourly from './RepeatHourly';
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday',
@@ -7,12 +12,21 @@ const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
 
 const Repeat = ({
   repeatFrequency,
-  repeatMode,
-  onMonth,
-  onDay,
-  onTheWhich,
-  onTheDay,
-  onTheMonth,
+  repeatYearlyMode,
+  repeatYearlyOnMonth,
+  repeatYearlyOnDay,
+  repeatYearlyOnTheMonth,
+  repeatYearlyOnTheDay,
+  repeatYearlyOnTheWhich,
+  repeatMonthlyMode,
+  repeatMonthlyFrequency,
+  repeatMonthlyOnDay,
+  repeatMonthlyOnTheDay,
+  repeatMonthlyOnTheWhich,
+  repeatWeeklyFrequency,
+  repeatWeeklyDays,
+  repeatDailyFrequency,
+  repeatHourlyFrequency,
   handleChange,
 }) => (
   <div>
@@ -31,95 +45,84 @@ const Repeat = ({
       <option value="Hourly">Hourly</option>
     </select>
 
-    {/* ON */}
-
-    <div>
-      <input
-        type="radio"
-        name="on"
-        className="form-control"
-        checked={repeatMode === 'on'}
-        onChange={() => handleChange('repeatMode', 'on')}
+    {
+      repeatFrequency === 'Yearly' &&
+      <RepeatYearly
+        repeatYearlyMode={repeatYearlyMode}
+        repeatYearlyOnMonth={repeatYearlyOnMonth}
+        repeatYearlyOnDay={repeatYearlyOnDay}
+        repeatYearlyOnTheMonth={repeatYearlyOnTheMonth}
+        repeatYearlyOnTheDay={repeatYearlyOnTheDay}
+        repeatYearlyOnTheWhich={repeatYearlyOnTheWhich}
+        handleChange={handleChange}
       />
-      on
+    }
 
-      <select
-        name="onMonth"
-        className="form-control"
-        value={onMonth}
-        onChange={event => handleChange('onMonth', event.target.value)}
-      >
-        {months.map(month => <option key={month} value={month}>{month}</option>)}
-      </select>
-
-      <select
-        name="onDay"
-        className="form-control"
-        value={onDay}
-        onChange={event => handleChange('onDay', +event.target.value)}
-      >
-        {[...new Array(31)].map((day, i) => <option key={i} value={i + 1}>{i + 1}</option>)}
-      </select>
-    </div>
-
-    {/* ON THE */}
-
-    <div>
-      <input
-        type="radio"
-        name="onThe"
-        className="form-control"
-        checked={repeatMode === 'on the'}
-        onChange={() => handleChange('repeatMode', 'on the')}
+    {
+      repeatFrequency === 'Monthly' &&
+      <RepeatMonthly
+        repeatMonthlyMode={repeatMonthlyMode}
+        repeatMonthlyFrequency={repeatMonthlyFrequency}
+        repeatMonthlyOnDay={repeatMonthlyOnDay}
+        repeatMonthlyOnTheDay={repeatMonthlyOnTheDay}
+        repeatMonthlyOnTheWhich={repeatMonthlyOnTheWhich}
+        handleChange={handleChange}
       />
-      on the
+    }
 
-      <select
-        name="onTheWhich"
-        className="form-control"
-        value={onTheWhich}
-        onChange={event => handleChange('onTheWhich', event.target.value)}
-      >
-        <option value="First">First</option>
-        <option value="Second">Second</option>
-        <option value="Third">Third</option>
-        <option value="Fourth">Fourth</option>
-        <option value="Last">Last</option>
-      </select>
+    {
+      repeatFrequency === 'Weekly' &&
+      <RepeatWeekly
+        repeatWeeklyFrequency={repeatWeeklyFrequency}
+        repeatWeeklyDays={repeatWeeklyDays}
+        handleChange={handleChange}
+      />
+    }
 
-      <select
-        name="onTheDay"
-        className="form-control"
-        value={onTheDay}
-        onChange={event => handleChange('onTheDay', event.target.value)}
-      >
-        {days.map(day => <option key={day} value={day}>{day}</option>)}
-      </select>
+    {
+      repeatFrequency === 'Daily' &&
+      <RepeatDaily
+        repeatDailyFrequency={repeatDailyFrequency}
+        handleChange={handleChange}
+      />
+    }
 
-      of
-
-      <select
-        name="onTheMonth"
-        className="form-control"
-        value={onTheMonth}
-        onChange={event => handleChange('onTheMonth', event.target.value)}
-      >
-        {months.map(month => <option key={month} value={month}>{month}</option>)}
-      </select>
-
-    </div>
+    {
+      repeatFrequency === 'Hourly' &&
+      <RepeatHourly
+        repeatHourlyFrequency={repeatHourlyFrequency}
+        handleChange={handleChange}
+      />
+    }
 
   </div>
 );
 
 Repeat.propTypes = {
-  repeatFrequency: PropTypes.string.isRequired,
-  repeatMode: PropTypes.string.isRequired,
-  onMonth: PropTypes.string.isRequired,
-  onDay: PropTypes.number.isRequired,
-  onTheWhich: PropTypes.string.isRequired,
-  onTheDay: PropTypes.string.isRequired,
-  onTheMonth: PropTypes.string.isRequired,
+  repeatFrequency: PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly']).isRequired,
+  repeatYearlyMode: PropTypes.oneOf(['on', 'on the']).isRequired,
+  repeatYearlyOnMonth: PropTypes.oneOf(months).isRequired,
+  repeatYearlyOnDay: PropTypes.number.isRequired,
+  repeatYearlyOnTheMonth: PropTypes.oneOf(months).isRequired,
+  repeatYearlyOnTheDay: PropTypes.oneOf(days).isRequired,
+  repeatYearlyOnTheWhich: PropTypes.oneOf(['First', 'Second', 'Third', 'Fourth', 'Last']).isRequired,
+  repeatMonthlyMode: PropTypes.oneOf(['on day, on the']).isRequired,
+  repeatMonthlyFrequency: PropTypes.number.isRequired,
+  repeatMonthlyOnDay: PropTypes.number.isRequired,
+  repeatMonthlyOnTheDay: PropTypes.oneOf(days).isRequired,
+  repeatMonthlyOnTheWhich: PropTypes.oneOf(['First', 'Second', 'Third', 'Fourth', 'Last']).isRequired,
+  repeatWeeklyFrequency: PropTypes.number.isRequired,
+  repeatWeeklyDays: PropTypes.shape({
+    mon: PropTypes.bool.isRequired,
+    tue: PropTypes.bool.isRequired,
+    wed: PropTypes.bool.isRequired,
+    thu: PropTypes.bool.isRequired,
+    fri: PropTypes.bool.isRequired,
+    sat: PropTypes.bool.isRequired,
+    sun: PropTypes.bool.isRequired,
+  }).isRequired,
+  repeatDailyFrequency: PropTypes.number.isRequired,
+  repeatHourlyFrequency: PropTypes.number.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 

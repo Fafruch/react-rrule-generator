@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 
 const End = ({
   endMode,
@@ -30,7 +31,7 @@ const End = ({
               // Convert input from string to number
               const inputNumber = +event.target.value;
               // Check if is a number and is less than 1000
-              if (isNaN(inputNumber) || inputNumber >= 1000) return;
+              if (_.isNaN(inputNumber) || inputNumber >= 1000) return;
 
               handleChange('endAfter', inputNumber);
             }}
