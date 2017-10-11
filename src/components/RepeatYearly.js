@@ -55,7 +55,7 @@ const RepeatYearly = ({
         name="repeatYearlyModeOnThe"
         className="form-control"
         checked={repeatYearlyMode === 'on the'}
-        onChange={() => handleChange('repeatMode', 'on the')}
+        onChange={() => handleChange('repeatYearlyMode', 'on the')}
       />
       on the
 

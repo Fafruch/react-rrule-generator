@@ -106,7 +106,7 @@ Repeat.propTypes = {
   repeatYearlyOnTheMonth: PropTypes.oneOf(months).isRequired,
   repeatYearlyOnTheDay: PropTypes.oneOf(days).isRequired,
   repeatYearlyOnTheWhich: PropTypes.oneOf(['First', 'Second', 'Third', 'Fourth', 'Last']).isRequired,
-  repeatMonthlyMode: PropTypes.oneOf(['on day, on the']).isRequired,
+  repeatMonthlyMode: PropTypes.oneOf(['on day', 'on the']).isRequired,
   repeatMonthlyFrequency: PropTypes.number.isRequired,
   repeatMonthlyOnDay: PropTypes.number.isRequired,
   repeatMonthlyOnTheDay: PropTypes.oneOf(days).isRequired,
