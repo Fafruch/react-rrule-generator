@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
+import EndAfter from './EndAfter';
+import EndOnDate from './EndOnDate';
 
 const End = ({
   endMode,
@@ -22,31 +23,18 @@ const End = ({
 
     {
       endMode === 'After' &&
-        <div>
-          <input
-            name="endAfter"
-            className="form-control"
-            value={endAfter}
-            onChange={(event) => {
-              // Convert input from string to number
-              const inputNumber = +event.target.value;
-              // Check if is a number and is less than 1000
-              if (_.isNaN(inputNumber) || inputNumber >= 1000) return;
-
-              handleChange('endAfter', inputNumber);
-            }}
-          />
-          executions.
-        </div>
+        <EndAfter
+          endAfter={endAfter}
+          handleChange={handleChange}
+        />
     }
 
     {
       endMode === 'On date' &&
-      <input
-        className="form-control"
-        value={endOnDate}
-        onChange={event => handleChange('endOnDate', event.target.value)}
-      />
+        <EndOnDate
+          endOnDate={endOnDate}
+          handleChange={handleChange}
+        />
     }
 
   </div>
