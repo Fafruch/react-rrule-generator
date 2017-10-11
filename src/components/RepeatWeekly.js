@@ -27,11 +27,11 @@ const RepeatWeekly = ({
     <br />
 
     <div className="btn-group" data-toggle="buttons">
-      {_.toPairs(repeatWeeklyDays).map((day) => {
+      {_.toPairs(repeatWeeklyDays).map((day, dayIndex) => {
         const dayName = day[0];
         const isDayActive = day[1];
         return (
-          <label className={`btn btn-primary ${isDayActive && 'active'}`}>
+          <label key={dayIndex} className={`btn btn-primary ${isDayActive && 'active'}`}>
             <input
               type="checkbox"
               name={`repeatWeeklyDays_${dayName}`}
