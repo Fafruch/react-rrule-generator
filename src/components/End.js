@@ -4,46 +4,38 @@ import EndAfter from './EndAfter';
 import EndOnDate from './EndOnDate';
 
 const End = ({
-  endMode,
-  endAfter,
-  endOnDate,
+  end: {
+    mode,
+    after,
+    onDate,
+  },
   handleChange,
 }) => (
   <div>
     <h2>End</h2>
     <select
+      name="end.mode"
       className="form-control"
-      value={endMode}
-      onChange={event => handleChange('endMode', event.target.value)}
+      value={mode}
+      onChange={event => handleChange(event)}
     >
       <option value="Never">Never</option>
       <option value="After">After</option>
       <option value="On date">On date</option>
     </select>
 
-    {
-      endMode === 'After' &&
-        <EndAfter
-          endAfter={endAfter}
-          handleChange={handleChange}
-        />
-    }
-
-    {
-      endMode === 'On date' &&
-        <EndOnDate
-          endOnDate={endOnDate}
-          handleChange={handleChange}
-        />
-    }
+    {mode === 'After' && <EndAfter after={after} handleChange={handleChange} />}
+    {mode === 'On date' && <EndOnDate onDate={onDate} handleChange={handleChange} />}
 
   </div>
 );
 
 End.propTypes = {
-  endMode: PropTypes.string.isRequired,
-  endAfter: PropTypes.number.isRequired,
-  endOnDate: PropTypes.string.isRequired,
+  end: PropTypes.shape({
+    mode: PropTypes.string.isRequired,
+    after: PropTypes.number.isRequired,
+    onDate: PropTypes.string.isRequired,
+  }).isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 

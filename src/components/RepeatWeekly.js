@@ -3,23 +3,26 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 const RepeatWeekly = ({
-  repeatWeeklyFrequency,
-  repeatWeeklyDays,
+  weekly: {
+    frequency,
+    days,
+  },
   handleChange,
 }) => (
   <div>
     every
     <input
-      name="repeatWeeklyFrequency"
+      name="repeat.weekly.frequency"
       className="form-control"
-      value={repeatWeeklyFrequency}
+      value={frequency}
       onChange={(event) => {
         // Convert input from string to number
         const inputNumber = +event.target.value;
         // Check if is a number and is less than 1000
         if (_.isNaN(inputNumber) || inputNumber >= 1000) return;
 
-        handleChange('repeatWeeklyFrequency', inputNumber);
+        const editedEvent = { ...event, target: { ...event.target, value: inputNumber, name: event.target.name } };
+        handleChange(editedEvent);
       }}
     />
     week(s)
@@ -27,17 +30,28 @@ const RepeatWeekly = ({
     <br />
 
     <div className="btn-group" data-toggle="buttons">
-      {_.toPairs(repeatWeeklyDays).map((day, dayIndex) => {
+      {_.toPairs(days).map((day) => {
         const dayName = day[0];
         const isDayActive = day[1];
         return (
-          <label key={dayIndex} className={`btn btn-primary ${isDayActive && 'active'}`}>
+          <label key={dayName} className={`btn btn-primary ${isDayActive && 'active'}`}>
             <input
               type="checkbox"
-              name={`repeatWeeklyDays_${dayName}`}
+              name={`repeat.weekly.days[${dayName}]`}
               className="form-control"
               checked={isDayActive}
-              onChange={() => handleChange('repeatWeeklyDays', { ...repeatWeeklyDays, [dayName]: !isDayActive })}
+              onChange={(event) => {
+                const editedEvent = {
+                  ...event,
+                  target: {
+                    ...event.target,
+                    value: !isDayActive,
+                    name: event.target.name,
+                  },
+                };
+
+                handleChange(editedEvent);
+              }}
             />
             {dayName}
           </label>
@@ -47,15 +61,17 @@ const RepeatWeekly = ({
   </div>
 );
 RepeatWeekly.propTypes = {
-  repeatWeeklyFrequency: PropTypes.number.isRequired,
-  repeatWeeklyDays: PropTypes.shape({
-    mon: PropTypes.bool.isRequired,
-    tue: PropTypes.bool.isRequired,
-    wed: PropTypes.bool.isRequired,
-    thu: PropTypes.bool.isRequired,
-    fri: PropTypes.bool.isRequired,
-    sat: PropTypes.bool.isRequired,
-    sun: PropTypes.bool.isRequired,
+  weekly: PropTypes.shape({
+    frequency: PropTypes.number.isRequired,
+    days: PropTypes.shape({
+      mon: PropTypes.bool.isRequired,
+      tue: PropTypes.bool.isRequired,
+      wed: PropTypes.bool.isRequired,
+      thu: PropTypes.bool.isRequired,
+      fri: PropTypes.bool.isRequired,
+      sat: PropTypes.bool.isRequired,
+      sun: PropTypes.bool.isRequired,
+    }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
 };

@@ -6,37 +6,24 @@ import RepeatWeekly from './RepeatWeekly';
 import RepeatDaily from './RepeatDaily';
 import RepeatHourly from './RepeatHourly';
 
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday',
-  'Day', 'Weekday', 'Weekend day'];
-
 const Repeat = ({
-  repeatFrequency,
-  repeatYearlyMode,
-  repeatYearlyOnMonth,
-  repeatYearlyOnDay,
-  repeatYearlyOnTheMonth,
-  repeatYearlyOnTheDay,
-  repeatYearlyOnTheWhich,
-  repeatMonthlyMode,
-  repeatMonthlyFrequency,
-  repeatMonthlyOnDay,
-  repeatMonthlyOnTheDay,
-  repeatMonthlyOnTheWhich,
-  repeatWeeklyFrequency,
-  repeatWeeklyDays,
-  repeatDailyFrequency,
-  repeatHourlyFrequency,
+  repeat: {
+    frequency,
+    yearly,
+    monthly,
+    weekly,
+    daily,
+    hourly,
+  },
   handleChange,
 }) => (
   <div>
     <h2>Repeat</h2>
-
     <select
-      name="repeatFrequency"
+      name="repeat.frequency"
       className="form-control"
-      value={repeatFrequency}
-      onChange={event => handleChange('repeatFrequency', event.target.value)}
+      value={frequency}
+      onChange={event => handleChange(event)}
     >
       <option value="Yearly">Yearly</option>
       <option value="Monthly">Monthly</option>
@@ -45,84 +32,23 @@ const Repeat = ({
       <option value="Hourly">Hourly</option>
     </select>
 
-    {
-      repeatFrequency === 'Yearly' &&
-      <RepeatYearly
-        repeatYearlyMode={repeatYearlyMode}
-        repeatYearlyOnMonth={repeatYearlyOnMonth}
-        repeatYearlyOnDay={repeatYearlyOnDay}
-        repeatYearlyOnTheMonth={repeatYearlyOnTheMonth}
-        repeatYearlyOnTheDay={repeatYearlyOnTheDay}
-        repeatYearlyOnTheWhich={repeatYearlyOnTheWhich}
-        handleChange={handleChange}
-      />
-    }
-
-    {
-      repeatFrequency === 'Monthly' &&
-      <RepeatMonthly
-        repeatMonthlyMode={repeatMonthlyMode}
-        repeatMonthlyFrequency={repeatMonthlyFrequency}
-        repeatMonthlyOnDay={repeatMonthlyOnDay}
-        repeatMonthlyOnTheDay={repeatMonthlyOnTheDay}
-        repeatMonthlyOnTheWhich={repeatMonthlyOnTheWhich}
-        handleChange={handleChange}
-      />
-    }
-
-    {
-      repeatFrequency === 'Weekly' &&
-      <RepeatWeekly
-        repeatWeeklyFrequency={repeatWeeklyFrequency}
-        repeatWeeklyDays={repeatWeeklyDays}
-        handleChange={handleChange}
-      />
-    }
-
-    {
-      repeatFrequency === 'Daily' &&
-      <RepeatDaily
-        repeatDailyFrequency={repeatDailyFrequency}
-        handleChange={handleChange}
-      />
-    }
-
-    {
-      repeatFrequency === 'Hourly' &&
-      <RepeatHourly
-        repeatHourlyFrequency={repeatHourlyFrequency}
-        handleChange={handleChange}
-      />
-    }
+    {frequency === 'Yearly' && <RepeatYearly yearly={yearly} handleChange={handleChange} />}
+    {frequency === 'Monthly' && <RepeatMonthly monthly={monthly} handleChange={handleChange} />}
+    {frequency === 'Weekly' && <RepeatWeekly weekly={weekly} handleChange={handleChange} />}
+    {frequency === 'Daily' && <RepeatDaily daily={daily} handleChange={handleChange} />}
+    {frequency === 'Hourly' && <RepeatHourly hourly={hourly} handleChange={handleChange} />}
 
   </div>
 );
 
 Repeat.propTypes = {
-  repeatFrequency: PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly']).isRequired,
-  repeatYearlyMode: PropTypes.oneOf(['on', 'on the']).isRequired,
-  repeatYearlyOnMonth: PropTypes.oneOf(months).isRequired,
-  repeatYearlyOnDay: PropTypes.number.isRequired,
-  repeatYearlyOnTheMonth: PropTypes.oneOf(months).isRequired,
-  repeatYearlyOnTheDay: PropTypes.oneOf(days).isRequired,
-  repeatYearlyOnTheWhich: PropTypes.oneOf(['First', 'Second', 'Third', 'Fourth', 'Last']).isRequired,
-  repeatMonthlyMode: PropTypes.oneOf(['on day', 'on the']).isRequired,
-  repeatMonthlyFrequency: PropTypes.number.isRequired,
-  repeatMonthlyOnDay: PropTypes.number.isRequired,
-  repeatMonthlyOnTheDay: PropTypes.oneOf(days).isRequired,
-  repeatMonthlyOnTheWhich: PropTypes.oneOf(['First', 'Second', 'Third', 'Fourth', 'Last']).isRequired,
-  repeatWeeklyFrequency: PropTypes.number.isRequired,
-  repeatWeeklyDays: PropTypes.shape({
-    mon: PropTypes.bool.isRequired,
-    tue: PropTypes.bool.isRequired,
-    wed: PropTypes.bool.isRequired,
-    thu: PropTypes.bool.isRequired,
-    fri: PropTypes.bool.isRequired,
-    sat: PropTypes.bool.isRequired,
-    sun: PropTypes.bool.isRequired,
+  repeat: PropTypes.shape({
+    yearly: PropTypes.object.isRequired,
+    monthly: PropTypes.object.isRequired,
+    weekly: PropTypes.object.isRequired,
+    daily: PropTypes.object.isRequired,
+    hourly: PropTypes.object.isRequired,
   }).isRequired,
-  repeatDailyFrequency: PropTypes.number.isRequired,
-  repeatHourlyFrequency: PropTypes.number.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 

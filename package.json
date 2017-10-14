@@ -8,6 +8,7 @@
     "moment": "^2.18.1",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
+    "react-datetime": "^2.10.3",
     "react-dom": "^16.0.0",
     "react-scripts": "1.0.14",
     "rrule": "^2.2.0"

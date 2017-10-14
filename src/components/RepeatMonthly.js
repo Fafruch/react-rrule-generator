@@ -6,11 +6,13 @@ const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
   'Day', 'Weekday', 'Weekend day'];
 
 const RepeatMonthly = ({
-  repeatMonthlyMode,
-  repeatMonthlyFrequency,
-  repeatMonthlyOnDay,
-  repeatMonthlyOnTheDay,
-  repeatMonthlyOnTheWhich,
+  monthly: {
+    mode,
+    frequency,
+    onDay,
+    onTheDay,
+    onTheWhich,
+  },
   handleChange,
 }) => (
   <div>
@@ -18,16 +20,17 @@ const RepeatMonthly = ({
 
       every
       <input
-        name="repeatMonthlyFrequency"
+        name="repeat.monthly.frequency"
         className="form-control"
-        value={repeatMonthlyFrequency}
+        value={frequency}
         onChange={(event) => {
           // Convert input from string to number
           const inputNumber = +event.target.value;
           // Check if is a number and is less than 1000
           if (_.isNaN(inputNumber) || inputNumber >= 1000) return;
 
-          handleChange('repeatMonthlyFrequency', inputNumber);
+          const editedEvent = { ...event, target: { ...event.target, value: inputNumber, name: event.target.name } };
+          handleChange(editedEvent);
         }}
       />
       month(s)
@@ -36,18 +39,21 @@ const RepeatMonthly = ({
 
       <input
         type="radio"
-        name="repeatMonthlyModeOnDay"
+        name="repeat.monthly.mode"
         className="form-control"
-        checked={repeatMonthlyMode === 'on day'}
-        onChange={() => handleChange('repeatMode', 'on')}
+        checked={mode === 'on day'}
+        onChange={(event) => {
+          const editedEvent = { ...event, target: { ...event.target, value: 'on day', name: event.target.name } };
+          handleChange(editedEvent);
+        }}
       />
       on day
 
       <select
-        name="repeatMonthlyOnDay"
+        name="repeat.monthly.onDay"
         className="form-control"
-        value={repeatMonthlyOnDay}
-        onChange={event => handleChange('repeatMonthlyOnDay', +event.target.value)}
+        value={onDay}
+        onChange={event => handleChange(event)}
       >
         {[...new Array(31)].map((day, i) => <option key={i} value={i + 1}>{i + 1}</option>)}
       </select>
@@ -59,18 +65,21 @@ const RepeatMonthly = ({
     <div>
       <input
         type="radio"
-        name="repeatMonthlyOnTheWhich"
+        name="repeat.monthly.mode"
         className="form-control"
-        checked={repeatMonthlyMode === 'on the'}
-        onChange={() => handleChange('repeatMonthlyMode', 'on the')}
+        checked={mode === 'on the'}
+        onChange={(event) => {
+          const editedEvent = { ...event, target: { ...event.target, value: 'on the', name: event.target.name } };
+          handleChange(editedEvent);
+        }}
       />
       on the
 
       <select
-        name="repeatMonthlyOnTheWhich"
+        name="repeat.monthly.onTheWhich"
         className="form-control"
-        value={repeatMonthlyOnTheWhich}
-        onChange={event => handleChange('repeatMonthlyOnTheWhich', event.target.value)}
+        value={onTheWhich}
+        onChange={event => handleChange(event)}
       >
         <option value="First">First</option>
         <option value="Second">Second</option>
@@ -80,10 +89,10 @@ const RepeatMonthly = ({
       </select>
 
       <select
-        name="repeatMonthlyOnTheDay"
+        name="repeat.monthly.onTheDay"
         className="form-control"
-        value={repeatMonthlyOnTheDay}
-        onChange={event => handleChange('repeatMonthlyOnTheDay', event.target.value)}
+        value={onTheDay}
+        onChange={event => handleChange(event)}
       >
         {days.map(day => <option key={day} value={day}>{day}</option>)}
       </select>
@@ -92,11 +101,13 @@ const RepeatMonthly = ({
   </div>
 );
 RepeatMonthly.propTypes = {
-  repeatMonthlyMode: PropTypes.oneOf(['on day', 'on the']).isRequired,
-  repeatMonthlyFrequency: PropTypes.number.isRequired,
-  repeatMonthlyOnDay: PropTypes.number.isRequired,
-  repeatMonthlyOnTheDay: PropTypes.oneOf(days).isRequired,
-  repeatMonthlyOnTheWhich: PropTypes.oneOf(['First', 'Second', 'Third', 'Fourth', 'Last']).isRequired,
+  monthly: PropTypes.shape({
+    mode: PropTypes.oneOf(['on day', 'on the']).isRequired,
+    frequency: PropTypes.number.isRequired,
+    onDay: PropTypes.number.isRequired,
+    onTheDay: PropTypes.oneOf(days).isRequired,
+    onTheWhich: PropTypes.oneOf(['First', 'Second', 'Third', 'Fourth', 'Last']).isRequired,
+  }).isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 
