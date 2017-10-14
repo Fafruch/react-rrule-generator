@@ -53,7 +53,17 @@ const RepeatMonthly = ({
         name="repeat.monthly.onDay"
         className="form-control"
         value={onDay}
-        onChange={event => handleChange(event)}
+        onChange={(event) => {
+          const editedEvent = {
+            ...event,
+            target: {
+              ...event.target,
+              value: +event.target.value,
+              name: event.target.name,
+            },
+          };
+          handleChange(editedEvent);
+        }}
       >
         {[...new Array(31)].map((day, i) => <option key={i} value={i + 1}>{i + 1}</option>)}
       </select>

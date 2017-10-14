@@ -4,40 +4,20 @@ import _ from 'lodash';
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-const computeRRule = ({
-  repeatFrequency,
-  repeatYearlyMode,
-  repeatYearlyOnMonth,
-  repeatYearlyOnDay,
-  repeatYearlyOnTheMonth,
-  repeatYearlyOnTheDay,
-  repeatYearlyOnTheWhich,
-  repeatMonthlyMode,
-  repeatMonthlyFrequency,
-  repeatMonthlyOnDay,
-  repeatMonthlyOnTheDay,
-  repeatMonthlyOnTheWhich,
-  repeatWeeklyFrequency,
-  repeatWeeklyDays,
-  repeatDailyFrequency,
-  repeatHourlyFrequency,
-  endMode,
-  endAfter,
-  endOnDate,
-}) => {
+const computeRRule = ({ repeat, end }) => {
   const rruleObject = {};
 
-  switch (repeatFrequency) {
+  switch (repeat.frequency) {
     case 'Yearly': {
       rruleObject.freq = RRule.YEARLY;
 
-      if (repeatYearlyMode === 'on') {
+      if (repeat.yearly.mode === 'on') {
         months.forEach((month, monthIndex) => {
-          if (month === repeatYearlyOnMonth) rruleObject.bymonth = monthIndex + 1;
+          if (month === repeat.yearly.onMonth) rruleObject.bymonth = monthIndex + 1;
         });
-        rruleObject.bymonthday = repeatYearlyOnDay;
+        rruleObject.bymonthday = repeat.yearly.onDay;
       } else {
-        switch (repeatYearlyOnTheWhich) {
+        switch (repeat.yearly.onTheWhich) {
           case 'First':
             rruleObject.bysetpos = 1;
             break;
@@ -57,7 +37,7 @@ const computeRRule = ({
             break;
         }
 
-        switch (repeatYearlyOnTheDay) {
+        switch (repeat.yearly.onTheDay) {
           case 'Monday':
             rruleObject.byweekday = [0];
             break;
@@ -93,7 +73,7 @@ const computeRRule = ({
         }
 
         months.forEach((month, monthIndex) => {
-          if (month === repeatYearlyOnTheMonth) rruleObject.bymonth = monthIndex + 1;
+          if (month === repeat.yearly.onTheMonth) rruleObject.bymonth = monthIndex + 1;
         });
       }
 
@@ -101,12 +81,12 @@ const computeRRule = ({
     }
     case 'Monthly': {
       rruleObject.freq = RRule.MONTHLY;
-      rruleObject.interval = repeatMonthlyFrequency;
+      rruleObject.interval = repeat.monthly.frequency;
 
-      if (repeatMonthlyMode === 'on day') {
-        rruleObject.bymonthday = repeatMonthlyOnDay;
+      if (repeat.monthly.mode === 'on day') {
+        rruleObject.bymonthday = repeat.monthly.onDay;
       } else {
-        switch (repeatMonthlyOnTheWhich) {
+        switch (repeat.monthly.onTheWhich) {
           case 'First':
             rruleObject.bysetpos = 1;
             break;
@@ -126,7 +106,7 @@ const computeRRule = ({
             break;
         }
 
-        switch (repeatMonthlyOnTheDay) {
+        switch (repeat.monthly.onTheDay) {
           case 'Monday':
             rruleObject.byweekday = [0];
             break;
@@ -166,10 +146,11 @@ const computeRRule = ({
     }
     case 'Weekly': {
       rruleObject.freq = RRule.WEEKLY;
-      rruleObject.interval = repeatWeeklyFrequency;
+      rruleObject.interval = repeat.weekly.frequency;
 
       const activeDays = [];
-      _.values(repeatWeeklyDays).forEach((isDayActive, dayIndex) => {
+      _.values(repeat.weekly.days).forEach((isDayActive, dayIndex) => {
+        // returns array of active days' indices
         if (isDayActive) activeDays.push(dayIndex);
       });
       rruleObject.byweekday = activeDays;
@@ -178,25 +159,24 @@ const computeRRule = ({
     }
     case 'Daily': {
       rruleObject.freq = RRule.DAILY;
-      rruleObject.interval = repeatDailyFrequency;
+      rruleObject.interval = repeat.daily.frequency;
       break;
     }
     case 'Hourly': {
       rruleObject.freq = RRule.HOURLY;
-      rruleObject.interval = repeatHourlyFrequency;
+      rruleObject.interval = repeat.daily.frequency;
       break;
     }
     default:
       break;
   }
 
-
-  if (endMode === 'After') {
-    rruleObject.count = endAfter;
+  if (end.mode === 'After') {
+    rruleObject.count = end.after;
   }
 
-  if (endMode === 'On date') {
-    rruleObject.until = moment(endOnDate).format();
+  if (end.mode === 'On date') {
+    rruleObject.until = moment(end.onDate).format();
   }
 
   const rrule = new RRule(rruleObject);
