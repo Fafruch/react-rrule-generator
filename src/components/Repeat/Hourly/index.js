@@ -4,16 +4,16 @@ import _ from 'lodash';
 
 const RepeatHourly = ({
   hourly: {
-    frequency,
+    interval,
   },
   handleChange,
 }) => (
   <div>
     every
     <input
-      name="repeat.hourly.frequency"
+      name="repeat.hourly.interval"
       className="form-control"
-      value={frequency}
+      value={interval}
       onChange={(event) => {
         // Convert input from string to number
         const inputNumber = +event.target.value;
@@ -30,7 +30,7 @@ const RepeatHourly = ({
 );
 RepeatHourly.propTypes = {
   hourly: PropTypes.shape({
-    frequency: PropTypes.number.isRequired,
+    interval: PropTypes.number.isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
 };

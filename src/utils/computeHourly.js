@@ -1,8 +1,8 @@
 import RRule from 'rrule';
 
-const computeHourly = ({ frequency }) => ({
+const computeHourly = ({ interval }) => ({
   freq: RRule.HOURLY,
-  interval: frequency,
+  interval,
 });
 
 export default computeHourly;

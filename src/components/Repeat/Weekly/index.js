@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 const RepeatWeekly = ({
   weekly: {
-    frequency,
+    interval,
     days,
   },
   handleChange,
@@ -12,9 +12,9 @@ const RepeatWeekly = ({
   <div>
     every
     <input
-      name="repeat.weekly.frequency"
+      name="repeat.weekly.interval"
       className="form-control"
-      value={frequency}
+      value={interval}
       onChange={(event) => {
         // Convert input from string to number
         const inputNumber = +event.target.value;
@@ -62,7 +62,7 @@ const RepeatWeekly = ({
 );
 RepeatWeekly.propTypes = {
   weekly: PropTypes.shape({
-    frequency: PropTypes.number.isRequired,
+    interval: PropTypes.number.isRequired,
     days: PropTypes.shape({
       mon: PropTypes.bool.isRequired,
       tue: PropTypes.bool.isRequired,

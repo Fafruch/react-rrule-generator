@@ -1,10 +1,10 @@
 import RRule from 'rrule';
 import _ from 'lodash';
 
-const computeWeekly = ({ frequency, days }) => {
+const computeWeekly = ({ interval, days }) => {
   const repeat = {
     freq: RRule.WEEKLY,
-    interval: frequency,
+    interval,
   };
 
   const activeDays = [];

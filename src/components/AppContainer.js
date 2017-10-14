@@ -30,7 +30,7 @@ class AppContainer extends Component {
           },
           monthly: {
             mode: 'on',
-            frequency: 1,
+            interval: 1,
             on: {
               day: 1,
             },
@@ -40,7 +40,7 @@ class AppContainer extends Component {
             },
           },
           weekly: {
-            frequency: 1,
+            interval: 1,
             days: {
               mon: false,
               tue: false,
@@ -52,10 +52,10 @@ class AppContainer extends Component {
             },
           },
           daily: {
-            frequency: 1,
+            interval: 1,
           },
           hourly: {
-            frequency: 1,
+            interval: 1,
           },
         },
         end: {

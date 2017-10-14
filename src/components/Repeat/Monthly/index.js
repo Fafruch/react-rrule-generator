@@ -7,7 +7,7 @@ import RepeatMonthlyOnThe from './OnThe';
 const RepeatMonthly = ({
   monthly: {
     mode,
-    frequency,
+    interval,
     on,
     onThe,
   },
@@ -16,9 +16,9 @@ const RepeatMonthly = ({
   <div>
     every
     <input
-      name="repeat.monthly.frequency"
+      name="repeat.monthly.interval"
       className="form-control"
-      value={frequency}
+      value={interval}
       onChange={(event) => {
         // Convert input from string to number
         const inputNumber = +event.target.value;
@@ -39,7 +39,7 @@ const RepeatMonthly = ({
 RepeatMonthly.propTypes = {
   monthly: PropTypes.shape({
     mode: PropTypes.oneOf(['on', 'on the']).isRequired,
-    frequency: PropTypes.number.isRequired,
+    interval: PropTypes.number.isRequired,
     on: PropTypes.object.isRequired,
     onThe: PropTypes.object.isRequired,
   }).isRequired,

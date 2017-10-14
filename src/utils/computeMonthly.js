@@ -6,14 +6,14 @@ import computeMonthlyOnThe from './computeMonthlyOnThe';
 
 const computeMonthly = ({
   mode,
-  frequency,
+  interval,
   on,
   onThe,
 }) =>
   _.assign(
     {},
     { freq: RRule.MONTHLY },
-    { interval: frequency },
+    { interval },
     mode === 'on' ? computeMonthlyOn(on) : computeMonthlyOnThe(onThe),
   );
 
