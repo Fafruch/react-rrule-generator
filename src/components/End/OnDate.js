@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import DateTime from 'react-datetime';
 
-import { DATE_TIME_FORMAT } from '../constants/index';
+import { DATE_TIME_FORMAT } from '../../constants/index';
 
 const EndOnDate = ({
   onDate,

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EndAfter from './EndAfter';
-import EndOnDate from './EndOnDate';
+import EndAfter from './After';
+import EndOnDate from './OnDate';
 
 const End = ({
   end: {

@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import moment from 'moment';
 
-import Repeat from './Repeat';
-import End from './End';
-import RRule from './RRule';
+import Repeat from './Repeat/index';
+import End from './End/index';
+import RRule from './RRule/index';
 import computeRRule from '../utils/computeRRule';
 import { DATE_TIME_FORMAT } from '../constants/index';
 
-class RRuleContainer extends Component {
+class AppContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -18,18 +18,26 @@ class RRuleContainer extends Component {
           frequency: 'Yearly',
           yearly: {
             mode: 'on',
-            onMonth: 'Jan',
-            onDay: 1,
-            onTheMonth: 'Jan',
-            onTheDay: 'Monday',
-            onTheWhich: 'First',
+            on: {
+              month: 'Jan',
+              day: 1,
+            },
+            onThe: {
+              month: 'Jan',
+              day: 'Monday',
+              which: 'First',
+            },
           },
           monthly: {
-            mode: 'on day',
+            mode: 'on',
             frequency: 1,
-            onDay: 1,
-            onTheDay: 'Monday',
-            onTheWhich: 'First',
+            on: {
+              day: 1,
+            },
+            onThe: {
+              day: 'Monday',
+              which: 'First',
+            },
           },
           weekly: {
             frequency: 1,
@@ -100,4 +108,4 @@ class RRuleContainer extends Component {
   }
 }
 
-export default RRuleContainer;
+export default AppContainer;

@@ -13,11 +13,11 @@ const computeRRule = ({ repeat, end }) => {
 
       if (repeat.yearly.mode === 'on') {
         months.forEach((month, monthIndex) => {
-          if (month === repeat.yearly.onMonth) rruleObject.bymonth = monthIndex + 1;
+          if (month === repeat.yearly.on.month) rruleObject.bymonth = monthIndex + 1;
         });
-        rruleObject.bymonthday = repeat.yearly.onDay;
+        rruleObject.bymonthday = repeat.yearly.on.day;
       } else {
-        switch (repeat.yearly.onTheWhich) {
+        switch (repeat.yearly.onThe.which) {
           case 'First':
             rruleObject.bysetpos = 1;
             break;
@@ -37,7 +37,7 @@ const computeRRule = ({ repeat, end }) => {
             break;
         }
 
-        switch (repeat.yearly.onTheDay) {
+        switch (repeat.yearly.onThe.day) {
           case 'Monday':
             rruleObject.byweekday = [0];
             break;
@@ -73,7 +73,7 @@ const computeRRule = ({ repeat, end }) => {
         }
 
         months.forEach((month, monthIndex) => {
-          if (month === repeat.yearly.onTheMonth) rruleObject.bymonth = monthIndex + 1;
+          if (month === repeat.yearly.onThe.month) rruleObject.bymonth = monthIndex + 1;
         });
       }
 
@@ -83,10 +83,10 @@ const computeRRule = ({ repeat, end }) => {
       rruleObject.freq = RRule.MONTHLY;
       rruleObject.interval = repeat.monthly.frequency;
 
-      if (repeat.monthly.mode === 'on day') {
-        rruleObject.bymonthday = repeat.monthly.onDay;
+      if (repeat.monthly.mode === 'on') {
+        rruleObject.bymonthday = repeat.monthly.on.day;
       } else {
-        switch (repeat.monthly.onTheWhich) {
+        switch (repeat.monthly.onThe.which) {
           case 'First':
             rruleObject.bysetpos = 1;
             break;
@@ -106,7 +106,7 @@ const computeRRule = ({ repeat, end }) => {
             break;
         }
 
-        switch (repeat.monthly.onTheDay) {
+        switch (repeat.monthly.onThe.day) {
           case 'Monday':
             rruleObject.byweekday = [0];
             break;

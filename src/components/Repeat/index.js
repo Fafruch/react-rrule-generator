@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RepeatYearly from './RepeatYearly';
-import RepeatMonthly from './RepeatMonthly';
-import RepeatWeekly from './RepeatWeekly';
-import RepeatDaily from './RepeatDaily';
-import RepeatHourly from './RepeatHourly';
+import RepeatYearly from './Yearly/index';
+import RepeatMonthly from './Monthly/index';
+import RepeatWeekly from './Weekly/index';
+import RepeatDaily from './Daily/index';
+import RepeatHourly from './Hourly/index';
 
 const Repeat = ({
   repeat: {

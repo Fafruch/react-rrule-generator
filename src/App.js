@@ -1,11 +1,11 @@
 import React from 'react';
 
 import './styles/App.css';
-import RRule from './components/RRuleContainer';
+import AppContainer from './components/AppContainer';
 
 const App = () => (
   <div>
-    <RRule />
+    <AppContainer />
   </div>
 );
 
