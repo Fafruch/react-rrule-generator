@@ -13,7 +13,7 @@ const RepeatMonthlyOn = ({
       className="form-control"
       checked={mode === 'on'}
       onChange={(event) => {
-        const editedEvent = { ...event, target: { ...event.target, value: 'on', name: event.target.name } };
+        const editedEvent = { target: { value: 'on', name: event.target.name } };
         handleChange(editedEvent);
       }}
     />
@@ -24,14 +24,7 @@ const RepeatMonthlyOn = ({
       className="form-control"
       value={on.day}
       onChange={(event) => {
-        const editedEvent = {
-          ...event,
-          target: {
-            ...event.target,
-            value: +event.target.value,
-            name: event.target.name,
-          },
-        };
+        const editedEvent = { target: { value: +event.target.value, name: event.target.name } };
         handleChange(editedEvent);
       }}
     >

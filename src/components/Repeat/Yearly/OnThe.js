@@ -17,7 +17,7 @@ const RepeatYearlyOnThe = ({
       className="form-control"
       checked={mode === 'on the'}
       onChange={(event) => {
-        const editedEvent = { ...event, target: { ...event.target, value: 'on the', name: event.target.name } };
+        const editedEvent = { target: { value: 'on the', name: event.target.name } };
         handleChange(editedEvent);
       }}
     />

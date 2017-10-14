@@ -20,7 +20,7 @@ const RepeatHourly = ({
         // Check if is a number and is less than 1000
         if (_.isNaN(inputNumber) || inputNumber >= 1000) return;
 
-        const editedEvent = { ...event, target: { ...event.target, value: inputNumber, name: event.target.name } };
+        const editedEvent = { target: { value: inputNumber, name: event.target.name } };
         handleChange(editedEvent);
       }}
     />
