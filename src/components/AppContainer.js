@@ -66,18 +66,15 @@ class AppContainer extends Component {
       },
       isCopied: false,
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleCopy = this.handleCopy.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     const newData = _.cloneDeep(this.state.data);
     _.set(newData, event.target.name, event.target.value);
     this.setState({ data: newData, isCopied: false });
   }
 
-  handleCopy() {
+  handleCopy = () => {
     if (!this.state.isCopied) {
       this.setState({ isCopied: true });
     }

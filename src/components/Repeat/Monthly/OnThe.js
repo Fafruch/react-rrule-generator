@@ -14,11 +14,9 @@ const RepeatMonthlyOnThe = ({
       type="radio"
       name="repeat.monthly.mode"
       className="form-control"
+      value="on the"
       checked={mode === 'on the'}
-      onChange={(event) => {
-        const editedEvent = { target: { value: 'on the', name: event.target.name } };
-        handleChange(editedEvent);
-      }}
+      onChange={handleChange}
     />
     on the
 
@@ -26,7 +24,7 @@ const RepeatMonthlyOnThe = ({
       name="repeat.monthly.onThe.which"
       className="form-control"
       value={onThe.which}
-      onChange={event => handleChange(event)}
+      onChange={handleChange}
     >
       <option value="First">First</option>
       <option value="Second">Second</option>
@@ -39,7 +37,7 @@ const RepeatMonthlyOnThe = ({
       name="repeat.monthly.onThe.day"
       className="form-control"
       value={onThe.day}
-      onChange={event => handleChange(event)}
+      onChange={handleChange}
     >
       {days.map(day => <option key={day} value={day}>{day}</option>)}
     </select>

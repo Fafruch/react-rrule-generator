@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import numericalFieldHandler from '../../../utils/numericalFieldHandler';
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -13,11 +14,9 @@ const RepeatYearlyOn = ({
       type="radio"
       name="repeat.yearly.mode"
       className="form-control"
+      value="on"
       checked={mode === 'on'}
-      onChange={(event) => {
-        const editedEvent = { ...event, target: { ...event.target, value: 'on', name: event.target.name } };
-        handleChange(editedEvent);
-      }}
+      onChange={handleChange}
     />
     on
 
@@ -25,7 +24,7 @@ const RepeatYearlyOn = ({
       name="repeat.yearly.on.month"
       className="form-control"
       value={on.month}
-      onChange={event => handleChange(event)}
+      onChange={handleChange}
     >
       {months.map(month => <option key={month} value={month}>{month}</option>)}
     </select>
@@ -34,11 +33,7 @@ const RepeatYearlyOn = ({
       name="repeat.yearly.on.day"
       className="form-control"
       value={on.day}
-      onChange={(event) => {
-        const editedEvent = { target: { value: +event.target.value, name: event.target.name } };
-        handleChange(editedEvent);
-      }}
-
+      onChange={numericalFieldHandler(handleChange)}
     >
       {[...new Array(31)].map((day, i) => <option key={i} value={i + 1}>{i + 1}</option>)}
     </select>

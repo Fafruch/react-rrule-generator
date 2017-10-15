@@ -16,10 +16,8 @@ const RepeatYearlyOnThe = ({
       name="repeat.yearly.mode"
       className="form-control"
       checked={mode === 'on the'}
-      onChange={(event) => {
-        const editedEvent = { target: { value: 'on the', name: event.target.name } };
-        handleChange(editedEvent);
-      }}
+      value="on the"
+      onChange={handleChange}
     />
     on the
 
@@ -27,7 +25,7 @@ const RepeatYearlyOnThe = ({
       name="repeat.yearly.onThe.which"
       className="form-control"
       value={onThe.which}
-      onChange={event => handleChange(event)}
+      onChange={handleChange}
     >
       <option value="First">First</option>
       <option value="Second">Second</option>
@@ -40,7 +38,7 @@ const RepeatYearlyOnThe = ({
       name="repeat.yearly.onThe.day"
       className="form-control"
       value={onThe.day}
-      onChange={event => handleChange(event)}
+      onChange={handleChange}
     >
       {days.map(day => <option key={day} value={day}>{day}</option>)}
     </select>
@@ -51,7 +49,7 @@ const RepeatYearlyOnThe = ({
       name="repeat.yearly.onThe.month"
       className="form-control"
       value={onThe.month}
-      onChange={event => handleChange(event)}
+      onChange={handleChange}
     >
       {months.map(month => <option key={month} value={month}>{month}</option>)}
     </select>

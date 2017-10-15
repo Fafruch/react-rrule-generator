@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import numericalFieldHandler from '../../../utils/numericalFieldHandler';
 
 const RepeatMonthlyOn = ({
   mode,
@@ -11,11 +12,9 @@ const RepeatMonthlyOn = ({
       type="radio"
       name="repeat.monthly.mode"
       className="form-control"
+      value="on"
       checked={mode === 'on'}
-      onChange={(event) => {
-        const editedEvent = { target: { value: 'on', name: event.target.name } };
-        handleChange(editedEvent);
-      }}
+      onChange={handleChange}
     />
     on day
 
@@ -23,10 +22,7 @@ const RepeatMonthlyOn = ({
       name="repeat.monthly.on.day"
       className="form-control"
       value={on.day}
-      onChange={(event) => {
-        const editedEvent = { target: { value: +event.target.value, name: event.target.name } };
-        handleChange(editedEvent);
-      }}
+      onChange={numericalFieldHandler(handleChange)}
     >
       {[...new Array(31)].map((day, i) => <option key={i} value={i + 1}>{i + 1}</option>)}
     </select>

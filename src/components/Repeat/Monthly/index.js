@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 import RepeatMonthlyOn from './On';
 import RepeatMonthlyOnThe from './OnThe';
+import numericalFieldHandler from '../../../utils/numericalFieldHandler';
 
 const RepeatMonthly = ({
   monthly: {
@@ -19,15 +19,7 @@ const RepeatMonthly = ({
       name="repeat.monthly.interval"
       className="form-control"
       value={interval}
-      onChange={(event) => {
-        // Convert input from string to number
-        const inputNumber = +event.target.value;
-        // Check if is a number and is less than 1000
-        if (_.isNaN(inputNumber) || inputNumber >= 1000) return;
-
-        const editedEvent = { target: { value: inputNumber, name: event.target.name } };
-        handleChange(editedEvent);
-      }}
+      onChange={numericalFieldHandler(handleChange)}
     />
     month(s)
 

@@ -23,7 +23,7 @@ const Repeat = ({
       name="repeat.frequency"
       className="form-control"
       value={frequency}
-      onChange={event => handleChange(event)}
+      onChange={handleChange}
     >
       <option value="Yearly">Yearly</option>
       <option value="Monthly">Monthly</option>

@@ -1,20 +1,14 @@
 import RRule from 'rrule';
 import _ from 'lodash';
 
-const computeWeekly = ({ interval, days }) => {
-  const repeat = {
-    freq: RRule.WEEKLY,
-    interval,
-  };
-
-  const activeDays = [];
-  _.values(days).forEach((isDayActive, dayIndex) => {
-    // returns array of active days' indices
-    if (isDayActive) activeDays.push(dayIndex);
-  });
-  repeat.byweekday = activeDays;
-
-  return repeat;
-};
+const computeWeekly = ({ interval, days }) => ({
+  freq: RRule.WEEKLY,
+  interval,
+  byweekday: _.values(days).reduce(
+    (activeDays, isDayActive, dayIndex) =>
+      (isDayActive ? [...activeDays, dayIndex] : activeDays),
+    [],
+  ),
+});
 
 export default computeWeekly;
