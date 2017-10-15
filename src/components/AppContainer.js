@@ -64,11 +64,10 @@ class AppContainer extends Component {
     isCopied: false,
   };
 
-  handleChange = (event) => {
-    event.persist();
+  handleChange = ({ target }) => {
     this.setState((currentState) => {
       const newData = cloneDeep(currentState.data);
-      set(newData, event.target.name, event.target.value);
+      set(newData, target.name, target.value);
       return { data: newData, isCopied: false };
     });
   }
