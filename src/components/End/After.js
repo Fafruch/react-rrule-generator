@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
+import numericalFieldHandler from '../../utils/numericalFieldHandler';
 
 const EndAfter = ({
   after,
@@ -11,15 +11,7 @@ const EndAfter = ({
       name="end.after"
       className="form-control"
       value={after}
-      onChange={(event) => {
-        // Convert input from string to number
-        const inputNumber = +event.target.value;
-        // Check if is a number and is less than 1000
-        if (_.isNaN(inputNumber) || inputNumber >= 1000) return;
-
-        const editedEvent = { ...event, target: { ...event.target, value: inputNumber, name: event.target.name } };
-        handleChange(editedEvent);
-      }}
+      onChange={numericalFieldHandler(handleChange)}
     />
     executions.
   </div>

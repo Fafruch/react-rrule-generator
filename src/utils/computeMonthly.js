@@ -1,5 +1,5 @@
 import RRule from 'rrule';
-import _ from 'lodash';
+import { assign } from 'lodash';
 
 import computeMonthlyOn from './computeMonthlyOn';
 import computeMonthlyOnThe from './computeMonthlyOnThe';
@@ -10,7 +10,7 @@ const computeMonthly = ({
   on,
   onThe,
 }) =>
-  _.assign(
+  assign(
     {},
     { freq: RRule.MONTHLY },
     { interval },

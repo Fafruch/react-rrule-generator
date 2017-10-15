@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+import { cloneDeep, set } from 'lodash';
 import moment from 'moment';
 
 import Repeat from './Repeat/index';
@@ -9,76 +9,71 @@ import computeRRule from '../utils/computeRRule';
 import { DATE_TIME_FORMAT } from '../constants/index';
 
 class AppContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      data: {
-        repeat: {
-          frequency: 'Yearly',
-          yearly: {
-            mode: 'on',
-            on: {
-              month: 'Jan',
-              day: 1,
-            },
-            onThe: {
-              month: 'Jan',
-              day: 'Monday',
-              which: 'First',
-            },
+  state = {
+    data: {
+      repeat: {
+        frequency: 'Yearly',
+        yearly: {
+          mode: 'on',
+          on: {
+            month: 'Jan',
+            day: 1,
           },
-          monthly: {
-            mode: 'on',
-            interval: 1,
-            on: {
-              day: 1,
-            },
-            onThe: {
-              day: 'Monday',
-              which: 'First',
-            },
-          },
-          weekly: {
-            interval: 1,
-            days: {
-              mon: false,
-              tue: false,
-              wed: false,
-              thu: false,
-              fri: false,
-              sat: false,
-              sun: false,
-            },
-          },
-          daily: {
-            interval: 1,
-          },
-          hourly: {
-            interval: 1,
+          onThe: {
+            month: 'Jan',
+            day: 'Monday',
+            which: 'First',
           },
         },
-        end: {
-          mode: 'Never',
-          after: 1,
-          onDate: moment().format(DATE_TIME_FORMAT),
+        monthly: {
+          mode: 'on',
+          interval: 1,
+          on: {
+            day: 1,
+          },
+          onThe: {
+            day: 'Monday',
+            which: 'First',
+          },
+        },
+        weekly: {
+          interval: 1,
+          days: {
+            mon: false,
+            tue: false,
+            wed: false,
+            thu: false,
+            fri: false,
+            sat: false,
+            sun: false,
+          },
+        },
+        daily: {
+          interval: 1,
+        },
+        hourly: {
+          interval: 1,
         },
       },
-      isCopied: false,
-    };
-  }
+      end: {
+        mode: 'Never',
+        after: 1,
+        onDate: moment().format(DATE_TIME_FORMAT),
+      },
+    },
+    isCopied: false,
+  };
 
   handleChange = (event) => {
-    const newData = _.cloneDeep(this.state.data);
-    _.set(newData, event.target.name, event.target.value);
-    this.setState({ data: newData, isCopied: false });
+    event.persist();
+    this.setState((currentState) => {
+      const newData = cloneDeep(currentState.data);
+      set(newData, event.target.name, event.target.value);
+      return { data: newData, isCopied: false };
+    });
   }
 
-  handleCopy = () => {
-    if (!this.state.isCopied) {
-      this.setState({ isCopied: true });
-    }
-  }
+  handleCopy = () => this.setState({ isCopied: true });
 
   render() {
     return (

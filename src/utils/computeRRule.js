@@ -1,5 +1,5 @@
 import RRule from 'rrule';
-import _ from 'lodash';
+import { assign } from 'lodash';
 
 import computeYearly from './computeYearly';
 import computeMonthly from './computeMonthly';
@@ -37,7 +37,7 @@ const computeRRule = ({ repeat, end }) => {
 
   const endObject = computeEnd(end);
 
-  const rruleObject = _.assign({}, repeatObject, endObject);
+  const rruleObject = assign({}, repeatObject, endObject);
   const rrule = new RRule(rruleObject);
   return rrule.toString();
 };

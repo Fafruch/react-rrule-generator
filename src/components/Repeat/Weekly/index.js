@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
+import { toPairs } from 'lodash';
 import numericalFieldHandler from '../../../utils/numericalFieldHandler';
 
 const RepeatWeekly = ({
@@ -23,7 +23,7 @@ const RepeatWeekly = ({
     <br />
 
     <div className="btn-group" data-toggle="buttons">
-      {_.toPairs(days).map(([dayName, isDayActive]) => (
+      {toPairs(days).map(([dayName, isDayActive]) => (
         <label key={dayName} className={`btn btn-primary ${isDayActive && 'active'}`}>
           <input
             type="checkbox"
