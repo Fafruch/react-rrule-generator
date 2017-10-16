@@ -1,7 +1,12 @@
 {
   "name": "react-rrule-generator",
   "version": "0.1.0",
-  "private": true,
+  "author": "Filip Duczyminski <fduczyminski@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fafruch/react-rrule-generator.git"
+  },
+  "license": "MIT",
   "dependencies": {
     "bootstrap": "^4.0.0-beta",
     "lodash": "^4.17.4",
