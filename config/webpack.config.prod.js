@@ -5,7 +5,6 @@ process.env.NODE_ENV = 'production';
 
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
-const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const paths = require('./paths');
 
 const shouldUseSourceMap = false;
@@ -27,20 +26,6 @@ module.exports = {
   module: {
     strictExportPresence: true,
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        enforce: 'pre',
-        use: [
-          {
-            options: {
-              formatter: eslintFormatter,
-              eslintPath: require.resolve('eslint'),
-            },
-            loader: require.resolve('eslint-loader'),
-          },
-        ],
-        include: paths.appLibSrc,
-      },
       {
         // "oneOf" will traverse all following loaders until one will
         // match the requirements. When no loader matches it will fall
@@ -149,8 +134,8 @@ module.exports = {
     }),
   ],
   externals: {
-   'react': 'react',
-   'react-dom': 'reactDOM'
+    'react': 'react',
+    'react-dom': 'react-dom',
   },
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

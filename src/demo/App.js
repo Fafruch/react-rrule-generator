@@ -1,10 +1,6 @@
 import React from 'react';
-import Example from '../lib';
+import AppContainer from '../lib';
 
-const App = () => (
-  <div>
-    <Example />
-  </div>
-);
+const App = () => <AppContainer />;
 
 export default App;
