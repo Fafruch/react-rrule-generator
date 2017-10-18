@@ -14,14 +14,23 @@ const RepeatMonthly = ({
   handleChange,
 }) => (
   <div>
-    every
-    <input
-      name="repeat.monthly.interval"
-      className="form-control"
-      value={interval}
-      onChange={numericalFieldHandler(handleChange)}
-    />
-    month(s)
+    <div className="form-group row d-flex align-items-sm-center">
+      <div className="col-sm-2" />
+      <div className="col-sm-1">
+        every
+      </div>
+      <div className="col-sm-3">
+        <input
+          name="repeat.monthly.interval"
+          className="form-control"
+          value={interval}
+          onChange={numericalFieldHandler(handleChange)}
+        />
+      </div>
+      <div className="col-sm-1">
+        month(s)
+      </div>
+    </div>
 
     <RepeatMonthlyOn mode={mode} on={on} handleChange={handleChange} />
     <RepeatMonthlyOnThe mode={mode} onThe={onThe} handleChange={handleChange} />

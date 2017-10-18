@@ -8,16 +8,22 @@ const RepeatHourly = ({
   },
   handleChange,
 }) => (
-  <div>
-    every
-    <input
-      name="repeat.hourly.interval"
-      className="form-control"
-      value={interval}
-      onChange={numericalFieldHandler(handleChange)}
-    />
-    day(s)
-
+  <div className="form-group row d-flex align-items-sm-center">
+    <div className="col-sm-2" />
+    <div className="col-sm-1">
+      every
+    </div>
+    <div className="col-sm-2">
+      <input
+        name="repeat.hourly.interval"
+        className="form-control"
+        value={interval}
+        onChange={numericalFieldHandler(handleChange)}
+      />
+    </div>
+    <div className="col-sm-1">
+      day(s)
+    </div>
   </div>
 );
 RepeatHourly.propTypes = {

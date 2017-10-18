@@ -9,38 +9,47 @@ const RepeatMonthlyOnThe = ({
   onThe,
   handleChange,
 }) => (
-  <div>
-    <input
-      type="radio"
-      name="repeat.monthly.mode"
-      className="form-control"
-      value="on the"
-      checked={mode === 'on the'}
-      onChange={handleChange}
-    />
-    on the
+  <div className="form-group row d-flex align-items-sm-center">
+    <div className="col-sm-2" />
+    <div className="col-sm-1">
+      <input
+        type="radio"
+        name="repeat.monthly.mode"
+        className="form-control"
+        value="on the"
+        checked={mode === 'on the'}
+        onChange={handleChange}
+      />
+    </div>
+    <div className="col-sm-1">
+      on the
+    </div>
 
-    <select
-      name="repeat.monthly.onThe.which"
-      className="form-control"
-      value={onThe.which}
-      onChange={handleChange}
-    >
-      <option value="First">First</option>
-      <option value="Second">Second</option>
-      <option value="Third">Third</option>
-      <option value="Fourth">Fourth</option>
-      <option value="Last">Last</option>
-    </select>
+    <div className="col-sm-2 col-xs-3">
+      <select
+        name="repeat.monthly.onThe.which"
+        className="form-control"
+        value={onThe.which}
+        onChange={handleChange}
+      >
+        <option value="First">First</option>
+        <option value="Second">Second</option>
+        <option value="Third">Third</option>
+        <option value="Fourth">Fourth</option>
+        <option value="Last">Last</option>
+      </select>
+    </div>
 
-    <select
-      name="repeat.monthly.onThe.day"
-      className="form-control"
-      value={onThe.day}
-      onChange={handleChange}
-    >
-      {days.map(day => <option key={day} value={day}>{day}</option>)}
-    </select>
+    <div className="col-sm-2 col-xs-3">
+      <select
+        name="repeat.monthly.onThe.day"
+        className="form-control"
+        value={onThe.day}
+        onChange={handleChange}
+      >
+        {days.map(day => <option key={day} value={day}>{day}</option>)}
+      </select>
+    </div>
 
   </div>
 );

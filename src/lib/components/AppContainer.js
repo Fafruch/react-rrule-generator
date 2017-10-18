@@ -77,17 +77,21 @@ class AppContainer extends Component {
 
   render() {
     return (
-      <div className="container m-5">
+      <div className="container pr-0 pl-0 pt-3 border border-light rounded">
         
         <Repeat
           repeat={this.state.data.repeat}
           handleChange={this.handleChange}
         />
-        
+
+        <hr />
+
         <End
           end={this.state.data.end}
           handleChange={this.handleChange}
         />
+
+        <hr />
         
         <RRule
           rrule={computeRRule(this.state.data)}
