@@ -7,6 +7,7 @@ import End from './End/index';
 import RRule from './RRule/index';
 import computeRRule from '../utils/computeRRule';
 import { DATE_TIME_FORMAT } from '../constants/index';
+import '../styles/index.css';
 
 class AppContainer extends Component {
   state = {

@@ -1,7 +1,5 @@
 import React from 'react';
-
-import './styles/index.css';
-import AppContainer from './components/AppContainer';
+import AppContainer from '../lib';
 
 const App = () => <AppContainer />;
 
