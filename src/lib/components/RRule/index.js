@@ -15,11 +15,12 @@ const RRule = ({ rrule, isCopied, handleCopy }) => (
 
       </div>
       <div className="col-sm-8">
-        <div style={{ overflowX: 'scroll' }}>
-          <code >
+        <div className="code">
+          <code>
             {rrule}
           </code>
         </div>
+        <div className="code-fader" />
       </div>
 
       <div className="col-sm-1">
