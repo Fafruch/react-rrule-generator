@@ -31,6 +31,7 @@ const RepeatYearlyOnThe = ({
         name="repeat.yearly.onThe.which"
         className="form-control"
         value={onThe.which}
+        disabled={mode !== 'on the'}
         onChange={handleChange}
       >
         <option value="First">First</option>
@@ -46,6 +47,7 @@ const RepeatYearlyOnThe = ({
         name="repeat.yearly.onThe.day"
         className="form-control"
         value={onThe.day}
+        disabled={mode !== 'on the'}
         onChange={handleChange}
       >
         {days.map(day => <option key={day} value={day}>{day}</option>)}
@@ -61,6 +63,7 @@ const RepeatYearlyOnThe = ({
         name="repeat.yearly.onThe.month"
         className="form-control"
         value={onThe.month}
+        disabled={mode !== 'on the'}
         onChange={handleChange}
       >
         {months.map(month => <option key={month} value={month}>{month}</option>)}

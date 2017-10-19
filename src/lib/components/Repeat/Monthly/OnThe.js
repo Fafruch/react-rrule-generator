@@ -30,6 +30,7 @@ const RepeatMonthlyOnThe = ({
         name="repeat.monthly.onThe.which"
         className="form-control"
         value={onThe.which}
+        disabled={mode !== 'on the'}
         onChange={handleChange}
       >
         <option value="First">First</option>
@@ -45,6 +46,7 @@ const RepeatMonthlyOnThe = ({
         name="repeat.monthly.onThe.day"
         className="form-control"
         value={onThe.day}
+        disabled={mode !== 'on the'}
         onChange={handleChange}
       >
         {days.map(day => <option key={day} value={day}>{day}</option>)}

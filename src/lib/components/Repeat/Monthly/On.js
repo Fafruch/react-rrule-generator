@@ -28,6 +28,7 @@ const RepeatMonthlyOn = ({
         name="repeat.monthly.on.day"
         className="form-control"
         value={on.day}
+        disabled={mode !== 'on'}
         onChange={numericalFieldHandler(handleChange)}
       >
         {[...new Array(31)].map((day, i) => <option key={i} value={i + 1}>{i + 1}</option>)}

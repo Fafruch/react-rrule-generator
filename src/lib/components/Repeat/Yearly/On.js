@@ -31,6 +31,7 @@ const RepeatYearlyOn = ({
         name="repeat.yearly.on.month"
         className="form-control"
         value={on.month}
+        disabled={mode !== 'on'}
         onChange={handleChange}
       >
         {months.map(month => <option key={month} value={month}>{month}</option>)}
@@ -42,6 +43,7 @@ const RepeatYearlyOn = ({
         name="repeat.yearly.on.day"
         className="form-control"
         value={on.day}
+        disabled={mode !== 'on'}
         onChange={numericalFieldHandler(handleChange)}
       >
         {[...new Array(31)].map((day, i) => <option key={i} value={i + 1}>{i + 1}</option>)}
