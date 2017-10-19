@@ -9,7 +9,7 @@ const EndOnDate = ({
   onDate,
   handleChange,
 }) => (
-  <div className="col-sm-3">
+  <div className="col-6 col-sm-3">
     <DateTime
       inputProps={{ name: 'end.onDate' }}
       value={onDate}

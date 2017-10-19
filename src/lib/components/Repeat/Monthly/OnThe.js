@@ -25,7 +25,7 @@ const RepeatMonthlyOnThe = ({
       on the
     </div>
 
-    <div className="col-sm-2 col-xs-3">
+    <div className="col-sm-2">
       <select
         name="repeat.monthly.onThe.which"
         className="form-control"
@@ -41,7 +41,7 @@ const RepeatMonthlyOnThe = ({
       </select>
     </div>
 
-    <div className="col-sm-2 col-xs-3">
+    <div className="col-sm-3">
       <select
         name="repeat.monthly.onThe.day"
         className="form-control"
