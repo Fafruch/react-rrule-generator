@@ -9,7 +9,7 @@ import computeRRule from '../utils/computeRRule';
 import { DATE_TIME_FORMAT } from '../constants/index';
 import '../styles/index.css';
 
-class AppContainer extends Component {
+class ReactRRuleGenerator extends Component {
   state = {
     data: {
       repeat: {
@@ -104,4 +104,4 @@ class AppContainer extends Component {
   }
 }
 
-export default AppContainer;
+export default ReactRRuleGenerator;
