@@ -23,13 +23,13 @@ const RRule = ({ rrule, isCopied, handleCopy }) => (
         <div className="code-fader" />
       </div>
 
-      <div className="col-sm-1">
+      <div className="col-sm-2">
         <CopyToClipboard
           text={rrule}
           onCopy={handleCopy}
         >
           <button
-            className={isCopied ? 'btn btn-secondary' : 'btn btn-primary'}
+            className={`btn ${isCopied ? 'btn-secondary' : 'btn-primary'} float-right`}
             onClick={handleCopy}
           >
             {isCopied ? 'Copied' : 'Copy'}
