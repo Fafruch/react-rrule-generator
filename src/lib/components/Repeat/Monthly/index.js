@@ -21,6 +21,7 @@ const RepeatMonthly = ({
       <div className="col-sm-3">
         <input
           name="repeat.monthly.interval"
+          aria-label="Repeat monthly interval"
           className="form-control"
           value={interval}
           onChange={numericalFieldHandler(handleChange)}

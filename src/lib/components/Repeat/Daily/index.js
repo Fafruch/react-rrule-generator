@@ -15,6 +15,7 @@ const RepeatDaily = ({
     <div className="col-sm-2">
       <input
         name="repeat.daily.interval"
+        aria-label="Repeat daily interval"
         className="form-control"
         value={interval}
         onChange={numericalFieldHandler(handleChange)}

@@ -18,6 +18,7 @@ const RepeatWeekly = ({
       <div className="col-sm-3">
         <input
           name="repeat.weekly.interval"
+          aria-label="Repeat weekly interval"
           className="form-control"
           value={interval}
           onChange={numericalFieldHandler(handleChange)}
@@ -31,9 +32,14 @@ const RepeatWeekly = ({
     <div className="form-group row">
       <div className="btn-group offset-sm-2" data-toggle="buttons">
         {toPairs(days).map(([dayName, isDayActive]) => (
-          <label key={dayName} className={`btn btn-primary ${isDayActive && 'active'}`}>
+          <label
+            htmlFor={`Repeat weekly on ${dayName}`}
+            key={dayName}
+            className={`btn btn-primary ${isDayActive && 'active'}`}
+          >
             <input
               type="checkbox"
+              id={`Repeat weekly on ${dayName}`}
               name={`repeat.weekly.days[${dayName}]`}
               className="form-control"
               checked={isDayActive}

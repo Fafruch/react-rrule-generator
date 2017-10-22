@@ -11,6 +11,7 @@ const EndAfter = ({
       <div className="col-3 col-sm-6 pl-0">
         <input
           name="end.after"
+          aria-label="End after"
           className="form-control"
           value={after}
           onChange={numericalFieldHandler(handleChange)}

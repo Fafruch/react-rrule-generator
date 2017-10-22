@@ -14,6 +14,7 @@ const RepeatYearlyOn = ({
       <input
         type="radio"
         name="repeat.yearly.mode"
+        aria-label="Repeat yearly on"
         className="form-control"
         value="on"
         checked={mode === 'on'}
@@ -28,6 +29,7 @@ const RepeatYearlyOn = ({
     <div className="col-sm-2">
       <select
         name="repeat.yearly.on.month"
+        aria-label="Repeat yearly on month"
         className="form-control"
         value={on.month}
         disabled={mode !== 'on'}
@@ -40,6 +42,7 @@ const RepeatYearlyOn = ({
     <div className="col-sm-2">
       <select
         name="repeat.yearly.on.day"
+        aria-label="Repeat yearly on a day"
         className="form-control"
         value={on.day}
         disabled={mode !== 'on'}

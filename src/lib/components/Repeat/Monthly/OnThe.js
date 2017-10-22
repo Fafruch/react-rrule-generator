@@ -14,6 +14,7 @@ const RepeatMonthlyOnThe = ({
       <input
         type="radio"
         name="repeat.monthly.mode"
+        aria-label="Repeat monthly on the"
         className="form-control"
         value="on the"
         checked={mode === 'on the'}
@@ -27,6 +28,7 @@ const RepeatMonthlyOnThe = ({
     <div className="col-sm-2">
       <select
         name="repeat.monthly.onThe.which"
+        aria-label="Repeat monthly on the which"
         className="form-control"
         value={onThe.which}
         disabled={mode !== 'on the'}
@@ -43,6 +45,7 @@ const RepeatMonthlyOnThe = ({
     <div className="col-sm-3">
       <select
         name="repeat.monthly.onThe.day"
+        aria-label="Repeat monthly on the day"
         className="form-control"
         value={onThe.day}
         disabled={mode !== 'on the'}

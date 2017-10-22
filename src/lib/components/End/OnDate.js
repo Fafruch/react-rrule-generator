@@ -11,6 +11,7 @@ const EndOnDate = ({
 }) => (
   <div className="col-6 col-sm-3">
     <DateTime
+      aria-label="Datetime picker for end on date"
       inputProps={{ name: 'end.onDate' }}
       value={onDate}
       dateFormat={DATE_TIME_FORMAT}

@@ -14,7 +14,10 @@ const End = ({
   <div className="px-3">
     <div className="form-group row">
       <div className="col-sm-2 text-sm-right">
-        <label className="col-form-label">
+        <label
+          htmlFor="End"
+          className="col-form-label"
+        >
           <strong>
             End
           </strong>
@@ -23,6 +26,7 @@ const End = ({
       <div className="col-sm-3">
         <select
           name="end.mode"
+          id="End"
           className="form-control"
           value={mode}
           onChange={event => handleChange(event)}

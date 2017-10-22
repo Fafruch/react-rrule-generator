@@ -7,11 +7,11 @@ const RRule = ({ rrule, isCopied, handleCopy }) => (
     <div className="form-group row d-flex align-items-sm-center">
 
       <div className="col-sm-2 text-sm-right">
-        <label className="col-form-label">
+        <span className="col-form-label">
           <strong>
             RRule
           </strong>
-        </label>
+        </span>
 
       </div>
       <div className="col-sm-8">
@@ -29,6 +29,7 @@ const RRule = ({ rrule, isCopied, handleCopy }) => (
           onCopy={handleCopy}
         >
           <button
+            aria-label="Copy generated RRule"
             className={`btn ${isCopied ? 'btn-secondary' : 'btn-primary'} float-right`}
             onClick={handleCopy}
           >

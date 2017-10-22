@@ -20,7 +20,10 @@ const Repeat = ({
   <div className="px-3">
     <div className="form-group row">
       <div className="col-sm-2 text-sm-right">
-        <label className="col-form-label">
+        <label
+          htmlFor="Repeat frequency"
+          className="col-form-label"
+        >
           <strong>
             Repeat
           </strong>
@@ -29,6 +32,7 @@ const Repeat = ({
       <div className="col-sm-6">
         <select
           name="repeat.frequency"
+          id="Repeat frequency"
           className="form-control"
           value={frequency}
           onChange={handleChange}

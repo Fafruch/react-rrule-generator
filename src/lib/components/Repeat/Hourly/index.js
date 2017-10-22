@@ -15,6 +15,7 @@ const RepeatHourly = ({
     <div className="col-sm-2">
       <input
         name="repeat.hourly.interval"
+        aria-label="Repeat hourly interval"
         className="form-control"
         value={interval}
         onChange={numericalFieldHandler(handleChange)}
