@@ -10,7 +10,7 @@ const RepeatWeekly = ({
   },
   handleChange,
 }) => (
-  <div className="pl-3 pr-3">
+  <div className="px-3">
     <div className="form-group row d-flex align-items-sm-center">
       <div className="col-sm-1 offset-sm-2">
         every

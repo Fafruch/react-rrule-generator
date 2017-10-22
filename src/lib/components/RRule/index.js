@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
 const RRule = ({ rrule, isCopied, handleCopy }) => (
-  <div className="pl-3 pr-3">
+  <div className="px-3">
     <div className="form-group row d-flex align-items-sm-center">
 
       <div className="col-sm-2 text-sm-right">
