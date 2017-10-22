@@ -11,7 +11,7 @@ const End = ({
   },
   handleChange,
 }) => (
-  <div className="container">
+  <div className="pl-3 pr-3">
     <div className="form-group row">
       <div className="col-sm-2 text-sm-right">
         <label className="col-form-label">

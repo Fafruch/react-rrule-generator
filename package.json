@@ -29,7 +29,7 @@
     "babel-preset-react-app": "^3.0.2",
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "6.23.0",
-    "bootstrap": "^4.0.0-beta",
+    "bootstrap": "^4.0.0-beta.2",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
     "chalk": "1.1.3",
     "css-loader": "0.28.4",

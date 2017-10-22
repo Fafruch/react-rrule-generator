@@ -77,7 +77,7 @@ class ReactRRuleGenerator extends Component {
 
   render() {
     return (
-      <div className="container pr-0 pl-0 pt-3 border border-light rounded">
+      <div className="container px-0 pt-3 border border-light rounded">
         
         <Repeat
           repeat={this.state.data.repeat}

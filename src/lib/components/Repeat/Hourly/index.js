@@ -9,8 +9,7 @@ const RepeatHourly = ({
   handleChange,
 }) => (
   <div className="form-group row d-flex align-items-sm-center">
-    <div className="col-sm-2" />
-    <div className="col-sm-1">
+    <div className="col-sm-1 offset-sm-2">
       every
     </div>
     <div className="col-sm-2">

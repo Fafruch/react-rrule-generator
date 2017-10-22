@@ -10,10 +10,9 @@ const RepeatWeekly = ({
   },
   handleChange,
 }) => (
-  <div className="container">
+  <div className="pl-3 pr-3">
     <div className="form-group row d-flex align-items-sm-center">
-      <div className="col-sm-2" />
-      <div className="col-sm-1">
+      <div className="col-sm-1 offset-sm-2">
         every
       </div>
       <div className="col-sm-3">
@@ -30,8 +29,7 @@ const RepeatWeekly = ({
     </div>
 
     <div className="form-group row">
-      <div className="col-sm-2" />
-      <div className="btn-group" data-toggle="buttons">
+      <div className="btn-group offset-sm-2" data-toggle="buttons">
         {toPairs(days).map(([dayName, isDayActive]) => (
           <label key={dayName} className={`btn btn-primary ${isDayActive && 'active'}`}>
             <input
