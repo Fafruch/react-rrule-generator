@@ -10,42 +10,56 @@ const RepeatWeekly = ({
   },
   handleChange,
 }) => (
-  <div>
-    every
-    <input
-      name="repeat.weekly.interval"
-      className="form-control"
-      value={interval}
-      onChange={numericalFieldHandler(handleChange)}
-    />
-    week(s)
+  <div className="px-3">
+    <div className="form-group row d-flex align-items-sm-center">
+      <div className="col-sm-1 offset-sm-2">
+        every
+      </div>
+      <div className="col-sm-3">
+        <input
+          name="repeat.weekly.interval"
+          aria-label="Repeat weekly interval"
+          className="form-control"
+          value={interval}
+          onChange={numericalFieldHandler(handleChange)}
+        />
+      </div>
+      <div className="col-sm-1">
+        week(s)
+      </div>
+    </div>
 
-    <br />
+    <div className="form-group row">
+      <div className="btn-group offset-sm-2" data-toggle="buttons">
+        {toPairs(days).map(([dayName, isDayActive]) => (
+          <label
+            htmlFor={`Repeat weekly on ${dayName}`}
+            key={dayName}
+            className={`btn btn-primary ${isDayActive && 'active'}`}
+          >
+            <input
+              type="checkbox"
+              id={`Repeat weekly on ${dayName}`}
+              name={`repeat.weekly.days[${dayName}]`}
+              className="form-control"
+              checked={isDayActive}
+              onChange={(event) => {
+                const editedEvent = {
+                  ...event,
+                  target: {
+                    ...event.target,
+                    value: !isDayActive,
+                    name: event.target.name,
+                  },
+                };
 
-    <div className="btn-group" data-toggle="buttons">
-      {toPairs(days).map(([dayName, isDayActive]) => (
-        <label key={dayName} className={`btn btn-primary ${isDayActive && 'active'}`}>
-          <input
-            type="checkbox"
-            name={`repeat.weekly.days[${dayName}]`}
-            className="form-control"
-            checked={isDayActive}
-            onChange={(event) => {
-              const editedEvent = {
-                ...event,
-                target: {
-                  ...event.target,
-                  value: !isDayActive,
-                  name: event.target.name,
-                },
-              };
-
-              handleChange(editedEvent);
-            }}
-          />
-          {dayName}
-        </label>))
-      }
+                handleChange(editedEvent);
+              }}
+            />
+            {dayName}
+          </label>))
+        }
+      </div>
     </div>
   </div>
 );

@@ -17,20 +17,34 @@ const Repeat = ({
   },
   handleChange,
 }) => (
-  <div>
-    <h2>Repeat</h2>
-    <select
-      name="repeat.frequency"
-      className="form-control"
-      value={frequency}
-      onChange={handleChange}
-    >
-      <option value="Yearly">Yearly</option>
-      <option value="Monthly">Monthly</option>
-      <option value="Weekly">Weekly</option>
-      <option value="Daily">Daily</option>
-      <option value="Hourly">Hourly</option>
-    </select>
+  <div className="px-3">
+    <div className="form-group row">
+      <div className="col-sm-2 text-sm-right">
+        <label
+          htmlFor="Repeat frequency"
+          className="col-form-label"
+        >
+          <strong>
+            Repeat
+          </strong>
+        </label>
+      </div>
+      <div className="col-sm-6">
+        <select
+          name="repeat.frequency"
+          id="Repeat frequency"
+          className="form-control"
+          value={frequency}
+          onChange={handleChange}
+        >
+          <option value="Yearly">Yearly</option>
+          <option value="Monthly">Monthly</option>
+          <option value="Weekly">Weekly</option>
+          <option value="Daily">Daily</option>
+          <option value="Hourly">Hourly</option>
+        </select>
+      </div>
+    </div>
 
     {frequency === 'Yearly' && <RepeatYearly yearly={yearly} handleChange={handleChange} />}
     {frequency === 'Monthly' && <RepeatMonthly monthly={monthly} handleChange={handleChange} />}

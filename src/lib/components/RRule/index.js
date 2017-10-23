@@ -3,21 +3,42 @@ import PropTypes from 'prop-types';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
 const RRule = ({ rrule, isCopied, handleCopy }) => (
-  <div>
-    <div className="m-5">
-      Your RRule is: <code>{rrule}</code>
+  <div className="px-3">
+    <div className="form-group row d-flex align-items-sm-center">
+
+      <div className="col-sm-2 text-sm-right">
+        <span className="col-form-label">
+          <strong>
+            RRule
+          </strong>
+        </span>
+
+      </div>
+      <div className="col-sm-8">
+        <div className="code">
+          <code>
+            {rrule}
+          </code>
+        </div>
+        <div className="code-fader" />
+      </div>
+
+      <div className="col-sm-2">
+        <CopyToClipboard
+          text={rrule}
+          onCopy={handleCopy}
+        >
+          <button
+            aria-label="Copy generated RRule"
+            className={`btn ${isCopied ? 'btn-secondary' : 'btn-primary'} float-right`}
+            onClick={handleCopy}
+          >
+            {isCopied ? 'Copied' : 'Copy'}
+          </button>
+        </CopyToClipboard>
+      </div>
+
     </div>
-    <CopyToClipboard
-      text={rrule}
-      onCopy={handleCopy}
-    >
-      <button
-        className={isCopied ? 'btn btn-secondary' : 'btn btn-primary'}
-        onClick={handleCopy}
-      >
-        {isCopied ? 'Copied' : 'Copy'}
-      </button>
-    </CopyToClipboard>
   </div>
 );
 

@@ -1,0 +1,10 @@
+.app-header {
+  padding: 3rem;
+  background: black;
+  color: white;
+  text-align: center;
+}
+
+.app {
+  margin-top: 3rem;
+}

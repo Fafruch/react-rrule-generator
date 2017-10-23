@@ -1,4 +1,4 @@
-import Example from './components/AppContainer';
+import ReactRRuleGenerator from './components/ReactRRuleGenerator';
 
-export default Example;
+export default ReactRRuleGenerator;
 

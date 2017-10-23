@@ -9,20 +9,23 @@ const EndOnDate = ({
   onDate,
   handleChange,
 }) => (
-  <DateTime
-    inputProps={{ name: 'end.onDate' }}
-    value={onDate}
-    dateFormat={DATE_TIME_FORMAT}
-    timeFormat={false}
-    viewMode="days"
-    closeOnSelect
-    closeOnTab
-    required
-    onChange={(inputDate) => {
-      const editedEvent = { target: { value: moment(inputDate).format(DATE_TIME_FORMAT), name: 'end.onDate' } };
-      handleChange(editedEvent);
-    }}
-  />
+  <div className="col-6 col-sm-3">
+    <DateTime
+      aria-label="Datetime picker for end on date"
+      inputProps={{ name: 'end.onDate' }}
+      value={onDate}
+      dateFormat={DATE_TIME_FORMAT}
+      timeFormat={false}
+      viewMode="days"
+      closeOnSelect
+      closeOnTab
+      required
+      onChange={(inputDate) => {
+        const editedEvent = { target: { value: moment(inputDate).format(DATE_TIME_FORMAT), name: 'end.onDate' } };
+        handleChange(editedEvent);
+      }}
+    />
+  </div>
 );
 
 EndOnDate.propTypes = {

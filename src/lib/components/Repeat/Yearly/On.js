@@ -9,34 +9,48 @@ const RepeatYearlyOn = ({
   on,
   handleChange,
 }) => (
-  <div>
-    <input
-      type="radio"
-      name="repeat.yearly.mode"
-      className="form-control"
-      value="on"
-      checked={mode === 'on'}
-      onChange={handleChange}
-    />
-    on
+  <div className="form-group row d-flex align-items-sm-center">
+    <div className="col-sm-1 offset-sm-2">
+      <input
+        type="radio"
+        name="repeat.yearly.mode"
+        aria-label="Repeat yearly on"
+        className="form-control"
+        value="on"
+        checked={mode === 'on'}
+        onChange={handleChange}
+      />
+    </div>
 
-    <select
-      name="repeat.yearly.on.month"
-      className="form-control"
-      value={on.month}
-      onChange={handleChange}
-    >
-      {months.map(month => <option key={month} value={month}>{month}</option>)}
-    </select>
+    <div className="col-sm-1">
+      on
+    </div>
 
-    <select
-      name="repeat.yearly.on.day"
-      className="form-control"
-      value={on.day}
-      onChange={numericalFieldHandler(handleChange)}
-    >
-      {[...new Array(31)].map((day, i) => <option key={i} value={i + 1}>{i + 1}</option>)}
-    </select>
+    <div className="col-sm-2">
+      <select
+        name="repeat.yearly.on.month"
+        aria-label="Repeat yearly on month"
+        className="form-control"
+        value={on.month}
+        disabled={mode !== 'on'}
+        onChange={handleChange}
+      >
+        {months.map(month => <option key={month} value={month}>{month}</option>)}
+      </select>
+    </div>
+
+    <div className="col-sm-2">
+      <select
+        name="repeat.yearly.on.day"
+        aria-label="Repeat yearly on a day"
+        className="form-control"
+        value={on.day}
+        disabled={mode !== 'on'}
+        onChange={numericalFieldHandler(handleChange)}
+      >
+        {[...new Array(31)].map((day, i) => <option key={i} value={i + 1}>{i + 1}</option>)}
+      </select>
+    </div>
   </div>
 );
 RepeatYearlyOn.propTypes = {

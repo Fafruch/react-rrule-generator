@@ -9,7 +9,7 @@ import computeRRule from '../utils/computeRRule';
 import { DATE_TIME_FORMAT } from '../constants/index';
 import '../styles/index.css';
 
-class AppContainer extends Component {
+class ReactRRuleGenerator extends Component {
   state = {
     data: {
       repeat: {
@@ -77,17 +77,21 @@ class AppContainer extends Component {
 
   render() {
     return (
-      <div className="container m-5">
+      <div className="container px-0 pt-3 border border-light rounded">
         
         <Repeat
           repeat={this.state.data.repeat}
           handleChange={this.handleChange}
         />
-        
+
+        <hr />
+
         <End
           end={this.state.data.end}
           handleChange={this.handleChange}
         />
+
+        <hr />
         
         <RRule
           rrule={computeRRule(this.state.data)}
@@ -100,4 +104,4 @@ class AppContainer extends Component {
   }
 }
 
-export default AppContainer;
+export default ReactRRuleGenerator;
