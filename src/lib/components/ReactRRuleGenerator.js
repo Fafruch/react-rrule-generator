@@ -67,11 +67,14 @@ class ReactRRuleGenerator extends Component {
   };
 
   handleChange = ({ target }) => {
+    const { onRRuleChange } = this.props;
     this.setState((currentState) => {
       const newData = cloneDeep(currentState.data);
       set(newData, target.name, target.value);
       return { data: newData, isCopied: false };
     });
+
+    onRRuleChange(computeRRule(this.state.data));
   }
 
   handleCopy = () => this.setState({ isCopied: true });
@@ -115,9 +118,11 @@ class ReactRRuleGenerator extends Component {
 }
 ReactRRuleGenerator.propTypes = {
   hideEnd: PropTypes.bool,
+  onRRuleChange: PropTypes.func,
 };
 ReactRRuleGenerator.defaultProps = {
   hideEnd: false,
+  onRRuleChange() {},
 };
 
 export default ReactRRuleGenerator;
