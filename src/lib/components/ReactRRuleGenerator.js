@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { cloneDeep, set } from 'lodash';
 import moment from 'moment';
 
@@ -76,32 +77,47 @@ class ReactRRuleGenerator extends Component {
   handleCopy = () => this.setState({ isCopied: true });
 
   render() {
+    const { handleChange, handleCopy } = this;
+    const { data, isCopied } = this.state;
+    const { repeat, end } = data;
+    const { hideEnd } = this.props;
+
     return (
       <div className="container px-0 pt-3 border border-light rounded">
-        
-        <Repeat
-          repeat={this.state.data.repeat}
-          handleChange={this.handleChange}
-        />
 
-        <hr />
+        <div>
+          <Repeat
+            repeat={repeat}
+            handleChange={handleChange}
+          />
+          <hr />
+        </div>
 
-        <End
-          end={this.state.data.end}
-          handleChange={this.handleChange}
-        />
-
-        <hr />
+        {!hideEnd && (
+          <div>
+            <End
+              end={end}
+              handleChange={handleChange}
+            />
+            <hr />
+          </div>
+        )}
         
         <RRule
-          rrule={computeRRule(this.state.data)}
-          isCopied={this.state.isCopied}
-          handleCopy={this.handleCopy}
+          rrule={computeRRule(data)}
+          isCopied={isCopied}
+          handleCopy={handleCopy}
         />
         
       </div>
     );
   }
 }
+ReactRRuleGenerator.propTypes = {
+  hideEnd: PropTypes.bool,
+};
+ReactRRuleGenerator.defaultProps = {
+  hideEnd: false,
+};
 
 export default ReactRRuleGenerator;
