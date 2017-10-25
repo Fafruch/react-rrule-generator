@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CopyToClipboard from 'react-copy-to-clipboard';
+import TextareaAutosize from 'react-autosize-textarea';
 
 const RRule = ({ rrule, isCopied, handleCopy }) => (
   <div className="px-3">
@@ -15,12 +16,11 @@ const RRule = ({ rrule, isCopied, handleCopy }) => (
 
       </div>
       <div className="col-sm-8">
-        <div className="code">
-          <code>
-            {rrule}
-          </code>
-        </div>
-        <div className="code-fader" />
+        <TextareaAutosize
+          className="form-control"
+          value={rrule}
+          readOnly
+        />
       </div>
 
       <div className="col-sm-2">
