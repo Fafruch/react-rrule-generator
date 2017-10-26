@@ -85,7 +85,13 @@ class ReactRRuleGenerator extends Component {
     });
   }
 
-  handleCopy = () => this.setState({ isCopied: true });
+  handleCopy = () => {
+    const { onRRuleCopy } = this.props;
+
+    this.setState({ isCopied: true });
+
+    onRRuleCopy(this.state.rrule);
+  }
 
   render() {
     const { handleChange, handleCopy } = this;
@@ -127,10 +133,12 @@ class ReactRRuleGenerator extends Component {
 ReactRRuleGenerator.propTypes = {
   hideEnd: PropTypes.bool,
   onRRuleChange: PropTypes.func,
+  onRRuleCopy: PropTypes.func,
 };
 ReactRRuleGenerator.defaultProps = {
   hideEnd: false,
   onRRuleChange() {},
+  onRRuleCopy() {},
 };
 
 export default ReactRRuleGenerator;
