@@ -9,7 +9,7 @@ const RepeatYearlyOn = ({
   on,
   handleChange,
 }) => (
-  <div className="form-group row d-flex align-items-sm-center">
+  <div className={`form-group row d-flex align-items-sm-center ${mode !== 'on' && 'opacity-50'}`}>
     <div className="col-sm-1 offset-sm-2">
       <input
         type="radio"
