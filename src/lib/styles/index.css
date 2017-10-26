@@ -10,3 +10,7 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
+
+.opacity-50 {
+  opacity: 0.5;
+}
