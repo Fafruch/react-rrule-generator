@@ -57,6 +57,7 @@ const Repeat = ({
 
 Repeat.propTypes = {
   repeat: PropTypes.shape({
+    frequency: PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly']).isRequired,
     yearly: PropTypes.object.isRequired,
     monthly: PropTypes.object.isRequired,
     weekly: PropTypes.object.isRequired,

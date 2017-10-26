@@ -1,40 +1,11 @@
 import RRule from 'rrule';
 import { assign } from 'lodash';
 
-import computeYearly from './computeYearly';
-import computeMonthly from './computeMonthly';
-import computeWeekly from './computeWeekly';
-import computeDaily from './computeDaily';
-import computeHourly from './computeHourly';
+import computeRepeat from './computeRepeat';
 import computeEnd from './computeEnd';
 
 const computeRRule = ({ repeat, end }) => {
-  let repeatObject = {};
-  switch (repeat.frequency) {
-    case 'Yearly': {
-      repeatObject = computeYearly(repeat.yearly);
-      break;
-    }
-    case 'Monthly': {
-      repeatObject = computeMonthly(repeat.monthly);
-      break;
-    }
-    case 'Weekly': {
-      repeatObject = computeWeekly(repeat.weekly);
-      break;
-    }
-    case 'Daily': {
-      repeatObject = computeDaily(repeat.daily);
-      break;
-    }
-    case 'Hourly': {
-      repeatObject = computeHourly(repeat.hourly);
-      break;
-    }
-    default:
-      break;
-  }
-
+  const repeatObject = computeRepeat(repeat);
   const endObject = computeEnd(end);
 
   const rruleObject = assign({}, repeatObject, endObject);
