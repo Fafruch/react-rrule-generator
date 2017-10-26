@@ -67,6 +67,10 @@ class ReactRRuleGenerator extends Component {
     rrule: '',
   };
 
+  componentWillMount() {
+    this.setState({ ...this.state, rrule: computeRRule(this.state.data) });
+  }
+
   handleChange = ({ target }) => {
     const { onRRuleChange } = this.props;
 
