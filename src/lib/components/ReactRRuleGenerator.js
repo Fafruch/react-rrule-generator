@@ -64,24 +64,28 @@ class ReactRRuleGenerator extends Component {
       },
     },
     isCopied: false,
+    rrule: '',
   };
 
   handleChange = ({ target }) => {
     const { onRRuleChange } = this.props;
+
     this.setState((currentState) => {
       const newData = cloneDeep(currentState.data);
       set(newData, target.name, target.value);
-      return { data: newData, isCopied: false };
-    });
+      const rrule = computeRRule(newData);
 
-    onRRuleChange(computeRRule(this.state.data));
+      onRRuleChange(rrule);
+
+      return { data: newData, isCopied: false, rrule };
+    });
   }
 
   handleCopy = () => this.setState({ isCopied: true });
 
   render() {
     const { handleChange, handleCopy } = this;
-    const { data, isCopied } = this.state;
+    const { data, isCopied, rrule } = this.state;
     const { repeat, end } = data;
     const { hideEnd } = this.props;
 
@@ -107,7 +111,7 @@ class ReactRRuleGenerator extends Component {
         )}
         
         <RRule
-          rrule={computeRRule(data)}
+          rrule={rrule}
           isCopied={isCopied}
           handleCopy={handleCopy}
         />
