@@ -78,7 +78,13 @@ class ReactRRuleGenerator extends Component {
   }
 }
 ReactRRuleGenerator.propTypes = {
-  config: PropTypes.object,
+  config: PropTypes.shape({
+    frequency: PropTypes.arrayOf(PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly'])),
+    yearly: PropTypes.oneOf(['on', 'on the']),
+    monthly: PropTypes.oneOf(['on', 'on the']),
+    hideEnd: PropTypes.bool,
+    end: PropTypes.arrayOf(PropTypes.oneOf(['Never', 'After', 'On date'])),
+  }),
   onRRuleChange: PropTypes.func,
   onRRuleCopy: PropTypes.func,
 };
