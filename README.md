@@ -25,10 +25,10 @@ https://fafruch.github.io/react-rrule-generator
 2. 
 ```js
 import RRuleGenerator from 'react-rrule-generator';
-```
-and use in render
-```js
-<RRuleGenerator />
+
+const render = () => (
+  <RRuleGenerator />
+);
 ```
 That's all!
 
