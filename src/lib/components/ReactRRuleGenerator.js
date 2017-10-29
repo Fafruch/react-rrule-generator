@@ -6,11 +6,11 @@ import Repeat from './Repeat/index';
 import End from './End/index';
 import RRule from './RRule/index';
 import computeRRule from '../utils/computeRRule/computeRRule';
-import configureState from '../utils/configureState';
+import configureInitialState from '../utils/configureInitialState';
 import '../styles/index.css';
 
 class ReactRRuleGenerator extends Component {
-  state = configureState(this.props.config);
+  state = configureInitialState(this.props.config);
 
   componentWillMount() {
     this.setState({ ...this.state, rrule: computeRRule(this.state.data) });
