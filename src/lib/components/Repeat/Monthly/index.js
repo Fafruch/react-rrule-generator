@@ -12,31 +12,52 @@ const RepeatMonthly = ({
     onThe,
   },
   handleChange,
-}) => (
-  <div>
-    <div className="form-group row d-flex align-items-sm-center">
-      <div className="col-sm-1 offset-sm-2">
-        every
+  config,
+}) => {
+  const isTheOnlyOneMode = option => config.monthly === option;
+  const isOptionAvailable = option => !config.monthly || isTheOnlyOneMode(option);
+
+  return (
+    <div>
+      <div className="form-group row d-flex align-items-sm-center">
+        <div className="col-sm-1 offset-sm-2">
+          every
+        </div>
+        <div className="col-sm-3">
+          <input
+            name="repeat.monthly.interval"
+            aria-label="Repeat monthly interval"
+            className="form-control"
+            value={interval}
+            onChange={numericalFieldHandler(handleChange)}
+          />
+        </div>
+        <div className="col-sm-1">
+          month(s)
+        </div>
       </div>
-      <div className="col-sm-3">
-        <input
-          name="repeat.monthly.interval"
-          aria-label="Repeat monthly interval"
-          className="form-control"
-          value={interval}
-          onChange={numericalFieldHandler(handleChange)}
+
+      {isOptionAvailable('on') && (
+        <RepeatMonthlyOn
+          mode={mode}
+          on={on}
+          isNotTheOnlyOneMode={!isTheOnlyOneMode('on')}
+          handleChange={handleChange}
         />
-      </div>
-      <div className="col-sm-1">
-        month(s)
-      </div>
+      )}
+      {isOptionAvailable('on the') && (
+        <RepeatMonthlyOnThe
+          mode={mode}
+          onThe={onThe}
+          isNotTheOnlyOneMode={!isTheOnlyOneMode('on the')}
+          handleChange={handleChange}
+        />
+      )}
+
     </div>
+  );
+};
 
-    <RepeatMonthlyOn mode={mode} on={on} handleChange={handleChange} />
-    <RepeatMonthlyOnThe mode={mode} onThe={onThe} handleChange={handleChange} />
-
-  </div>
-);
 RepeatMonthly.propTypes = {
   monthly: PropTypes.shape({
     mode: PropTypes.oneOf(['on', 'on the']).isRequired,
@@ -45,6 +66,9 @@ RepeatMonthly.propTypes = {
     onThe: PropTypes.object.isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
+  config: PropTypes.shape({
+    monthly: PropTypes.oneOf(['on', 'on the']),
+  }).isRequired,
 };
 
 export default RepeatMonthly;

@@ -16,44 +16,50 @@ const Repeat = ({
     hourly,
   },
   handleChange,
-}) => (
-  <div className="px-3">
-    <div className="form-group row">
-      <div className="col-sm-2 text-sm-right">
-        <label
-          htmlFor="Repeat frequency"
-          className="col-form-label"
-        >
-          <strong>
-            Repeat
-          </strong>
-        </label>
+  config,
+}) => {
+  const isOptionAvailable = option => !config.frequency || config.frequency.indexOf(option) !== -1;
+  const isOptionSelected = option => frequency === option;
+
+  return (
+    <div className="px-3">
+      <div className="form-group row">
+        <div className="col-sm-2 text-sm-right">
+          <label
+            htmlFor="Repeat frequency"
+            className="col-form-label"
+          >
+            <strong>
+              Repeat
+            </strong>
+          </label>
+        </div>
+        <div className="col-sm-6">
+          <select
+            name="repeat.frequency"
+            id="Repeat frequency"
+            className="form-control"
+            value={frequency}
+            onChange={handleChange}
+          >
+            {isOptionAvailable('Yearly') && <option value="Yearly">Yearly</option>}
+            {isOptionAvailable('Monthly') && <option value="Monthly">Monthly</option>}
+            {isOptionAvailable('Weekly') && <option value="Weekly">Weekly</option>}
+            {isOptionAvailable('Daily') && <option value="Daily">Daily</option>}
+            {isOptionAvailable('Hourly') && <option value="Hourly">Hourly</option>}
+          </select>
+        </div>
       </div>
-      <div className="col-sm-6">
-        <select
-          name="repeat.frequency"
-          id="Repeat frequency"
-          className="form-control"
-          value={frequency}
-          onChange={handleChange}
-        >
-          <option value="Yearly">Yearly</option>
-          <option value="Monthly">Monthly</option>
-          <option value="Weekly">Weekly</option>
-          <option value="Daily">Daily</option>
-          <option value="Hourly">Hourly</option>
-        </select>
-      </div>
+
+      {isOptionSelected('Yearly') && <RepeatYearly yearly={yearly} handleChange={handleChange} config={config} />}
+      {isOptionSelected('Monthly') && <RepeatMonthly monthly={monthly} handleChange={handleChange} config={config} />}
+      {isOptionSelected('Weekly') && <RepeatWeekly weekly={weekly} handleChange={handleChange} />}
+      {isOptionSelected('Daily') && <RepeatDaily daily={daily} handleChange={handleChange} />}
+      {isOptionSelected('Hourly') && <RepeatHourly hourly={hourly} handleChange={handleChange} />}
+
     </div>
-
-    {frequency === 'Yearly' && <RepeatYearly yearly={yearly} handleChange={handleChange} />}
-    {frequency === 'Monthly' && <RepeatMonthly monthly={monthly} handleChange={handleChange} />}
-    {frequency === 'Weekly' && <RepeatWeekly weekly={weekly} handleChange={handleChange} />}
-    {frequency === 'Daily' && <RepeatDaily daily={daily} handleChange={handleChange} />}
-    {frequency === 'Hourly' && <RepeatHourly hourly={hourly} handleChange={handleChange} />}
-
-  </div>
-);
+  );
+};
 
 Repeat.propTypes = {
   repeat: PropTypes.shape({
@@ -65,6 +71,11 @@ Repeat.propTypes = {
     hourly: PropTypes.object.isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
+  config: PropTypes.shape({
+    frequency: PropTypes.arrayOf(PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly'])),
+    yearly: PropTypes.oneOf(['on', 'on the']),
+    monthly: PropTypes.oneOf(['on', 'on the']),
+  }).isRequired,
 };
 
 export default Repeat;

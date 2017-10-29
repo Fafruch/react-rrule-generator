@@ -10,12 +10,31 @@ const RepeatYearly = ({
     onThe,
   },
   handleChange,
-}) => (
-  <div>
-    <RepeatYearlyOn mode={mode} on={on} handleChange={handleChange} />
-    <RepeatYearlyOnThe mode={mode} onThe={onThe} handleChange={handleChange} />
-  </div>
-);
+  config,
+}) => {
+  const isTheOnlyOneMode = option => config.yearly === option;
+  const isOptionAvailable = option => !config.yearly || isTheOnlyOneMode(option);
+  return (
+    <div>
+      {isOptionAvailable('on') && (
+        <RepeatYearlyOn
+          mode={mode}
+          on={on}
+          isNotTheOnlyOneMode={!isTheOnlyOneMode('on')}
+          handleChange={handleChange}
+        />
+      )}
+      {isOptionAvailable('on the') && (
+        <RepeatYearlyOnThe
+          mode={mode}
+          onThe={onThe}
+          isNotTheOnlyOneMode={!isTheOnlyOneMode('on the')}
+          handleChange={handleChange}
+        />
+      )}
+    </div>
+  );
+};
 RepeatYearly.propTypes = {
   yearly: PropTypes.shape({
     mode: PropTypes.oneOf(['on', 'on the']).isRequired,
@@ -23,6 +42,9 @@ RepeatYearly.propTypes = {
     onThe: PropTypes.object.isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
+  config: PropTypes.shape({
+    yearly: PropTypes.oneOf(['on', 'on the']),
+  }).isRequired,
 };
 
 export default RepeatYearly;

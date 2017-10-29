@@ -8,6 +8,7 @@ const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
 const RepeatYearlyOnThe = ({
   mode,
   onThe,
+  isNotTheOnlyOneMode,
   handleChange,
 }) => {
   const isActive = mode === 'on the';
@@ -15,15 +16,17 @@ const RepeatYearlyOnThe = ({
   return (
     <div className="form-group row d-flex align-items-sm-center">
       <div className="col-sm-1 offset-sm-2">
-        <input
-          type="radio"
-          aria-label="Repeat yearly on the"
-          name="repeat.yearly.mode"
-          className="form-control"
-          checked={isActive}
-          value="on the"
-          onChange={handleChange}
-        />
+        {isNotTheOnlyOneMode && (
+          <input
+            type="radio"
+            aria-label="Repeat yearly on the"
+            name="repeat.yearly.mode"
+            className="form-control"
+            checked={isActive}
+            value="on the"
+            onChange={handleChange}
+          />
+        )}
       </div>
       <div className="col-sm-1">
         on the
@@ -86,6 +89,7 @@ RepeatYearlyOnThe.propTypes = {
     month: PropTypes.oneOf(months).isRequired,
     day: PropTypes.oneOf(days).isRequired,
   }).isRequired,
+  isNotTheOnlyOneMode: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 

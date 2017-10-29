@@ -9,6 +9,7 @@ const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 const RepeatYearlyOn = ({
   mode,
   on,
+  isNotTheOnlyOneMode,
   handleChange,
 }) => {
   const daysInMonth = moment(on.month, 'MMM').daysInMonth();
@@ -17,15 +18,18 @@ const RepeatYearlyOn = ({
   return (
     <div className="form-group row d-flex align-items-sm-center">
       <div className="col-sm-1 offset-sm-2">
-        <input
-          type="radio"
-          name="repeat.yearly.mode"
-          aria-label="Repeat yearly on"
-          className="form-control"
-          value="on"
-          checked={isActive}
-          onChange={handleChange}
-        />
+
+        {isNotTheOnlyOneMode && (
+          <input
+            type="radio"
+            name="repeat.yearly.mode"
+            aria-label="Repeat yearly on"
+            className="form-control"
+            value="on"
+            checked={isActive}
+            onChange={handleChange}
+          />
+        )}
       </div>
 
       <div className="col-sm-1">
@@ -68,6 +72,7 @@ RepeatYearlyOn.propTypes = {
     month: PropTypes.oneOf(months).isRequired,
     day: PropTypes.number.isRequired,
   }).isRequired,
+  isNotTheOnlyOneMode: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 
