@@ -31,3 +31,6 @@ and use in render
 <RRuleGenerator />
 ```
 That's all!
+
+## License 
+MIT
