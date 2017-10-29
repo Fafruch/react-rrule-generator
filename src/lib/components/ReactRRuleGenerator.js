@@ -1,71 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { cloneDeep, set } from 'lodash';
-import moment from 'moment';
 
 import Repeat from './Repeat/index';
 import End from './End/index';
 import RRule from './RRule/index';
-import computeRRule from '../utils/computeRRule';
-import { DATE_TIME_FORMAT } from '../constants/index';
+import computeRRule from '../utils/computeRRule/computeRRule';
+import configureState from '../utils/configureState';
 import '../styles/index.css';
 
 class ReactRRuleGenerator extends Component {
-  state = {
-    data: {
-      repeat: {
-        frequency: 'Yearly',
-        yearly: {
-          mode: 'on',
-          on: {
-            month: 'Jan',
-            day: 1,
-          },
-          onThe: {
-            month: 'Jan',
-            day: 'Monday',
-            which: 'First',
-          },
-        },
-        monthly: {
-          mode: 'on',
-          interval: 1,
-          on: {
-            day: 1,
-          },
-          onThe: {
-            day: 'Monday',
-            which: 'First',
-          },
-        },
-        weekly: {
-          interval: 1,
-          days: {
-            mon: false,
-            tue: false,
-            wed: false,
-            thu: false,
-            fri: false,
-            sat: false,
-            sun: false,
-          },
-        },
-        daily: {
-          interval: 1,
-        },
-        hourly: {
-          interval: 1,
-        },
-      },
-      end: {
-        mode: 'Never',
-        after: 1,
-        onDate: moment().format(DATE_TIME_FORMAT),
-      },
-    },
-    isCopied: false,
-    rrule: '',
-  };
+  state = configureState(this.props.config);
 
   componentWillMount() {
     this.setState({ ...this.state, rrule: computeRRule(this.state.data) });
@@ -97,7 +42,7 @@ class ReactRRuleGenerator extends Component {
     const { handleChange, handleCopy } = this;
     const { data, isCopied, rrule } = this.state;
     const { repeat, end } = data;
-    const { hideEnd } = this.props;
+    const { config } = this.props;
 
     return (
       <div className="container px-0 pt-3 border border-light rounded">
@@ -106,15 +51,17 @@ class ReactRRuleGenerator extends Component {
           <Repeat
             repeat={repeat}
             handleChange={handleChange}
+            config={config}
           />
           <hr />
         </div>
 
-        {!hideEnd && (
+        {!config.hideEnd && (
           <div>
             <End
               end={end}
               handleChange={handleChange}
+              config={config}
             />
             <hr />
           </div>
@@ -131,12 +78,12 @@ class ReactRRuleGenerator extends Component {
   }
 }
 ReactRRuleGenerator.propTypes = {
-  hideEnd: PropTypes.bool,
+  config: PropTypes.object,
   onRRuleChange: PropTypes.func,
   onRRuleCopy: PropTypes.func,
 };
 ReactRRuleGenerator.defaultProps = {
-  hideEnd: false,
+  config: {},
   onRRuleChange() {},
   onRRuleCopy() {},
 };
