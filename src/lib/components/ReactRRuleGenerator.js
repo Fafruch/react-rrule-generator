@@ -84,6 +84,7 @@ ReactRRuleGenerator.propTypes = {
     monthly: PropTypes.oneOf(['on', 'on the']),
     hideEnd: PropTypes.bool,
     end: PropTypes.arrayOf(PropTypes.oneOf(['Never', 'After', 'On date'])),
+    calendarFirstDayOfAWeek: PropTypes.oneOf(['Mon', 'Sun']),
   }),
   onRRuleChange: PropTypes.func,
   onRRuleCopy: PropTypes.func,

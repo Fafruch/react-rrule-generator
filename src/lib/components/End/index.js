@@ -43,7 +43,7 @@ const End = ({
         </div>
 
         {isOptionSelected('After') && <EndAfter after={after} handleChange={handleChange} />}
-        {isOptionSelected('On date') && <EndOnDate onDate={onDate} handleChange={handleChange} />}
+        {isOptionSelected('On date') && <EndOnDate onDate={onDate} handleChange={handleChange} config={config} />}
 
       </div>
     </div>
@@ -59,6 +59,7 @@ End.propTypes = {
   handleChange: PropTypes.func.isRequired,
   config: PropTypes.shape({
     end: PropTypes.arrayOf(PropTypes.oneOf(['Never', 'After', 'On date'])),
+    calendarFirstDayOfAWeek: PropTypes.oneOf(['Mon', 'Sun']),
   }).isRequired,
 };
 
