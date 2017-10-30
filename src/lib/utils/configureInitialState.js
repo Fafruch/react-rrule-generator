@@ -2,33 +2,10 @@ import moment from 'moment';
 import { DATE_TIME_FORMAT } from '../constants/index';
 
 const configureState = (config = {}) => {
-  const configureFrequency = () => {
-    if (config.repeat) {
-      return config.repeat[0];
-    }
-    return 'Yearly';
-  };
-
-  const configureYearly = () => {
-    if (config.yearly) {
-      return config.yearly;
-    }
-    return 'on';
-  };
-
-  const configureMonthly = () => {
-    if (config.monthly) {
-      return config.monthly;
-    }
-    return 'on';
-  };
-
-  const configureEnd = () => {
-    if (config.end) {
-      return config.end[0];
-    }
-    return 'Never';
-  };
+  const configureFrequency = () => (config.repeat ? config.repeat[0] : 'Yearly');
+  const configureYearly = () => (config.yearly || 'on');
+  const configureMonthly = () => (config.monthly || 'on');
+  const configureEnd = () => (config.end ? config.end[0] : 'Never');
 
   return {
     data: {
