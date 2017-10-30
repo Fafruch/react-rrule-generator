@@ -1,14 +1,6 @@
 import moment from 'moment';
 import { DATE_TIME_FORMAT } from '../constants/index';
 
-// Let's define config structure
-const exampleConfig = {
-  repeat: [/* 'Yearly', */'Monthly', 'Weekly', 'Daily', 'Hourly'],
-  yearly: 'on',
-  monthly: 'on the',
-  end: ['On date'],
-};
-
 const configureState = (config = {}) => {
   const configureFrequency = () => {
     if (config.repeat) {

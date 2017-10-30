@@ -58,11 +58,7 @@ const computeYearlyOnThe = (onThe) => {
       break;
   }
 
-  months.forEach((month, monthIndex) => {
-    if (month === onThe.month) {
-      repeat.bymonth = monthIndex + 1;
-    }
-  });
+  repeat.bymonth = months.indexOf(onThe.month) + 1;
 
   return repeat;
 };
