@@ -34,7 +34,7 @@ const End = ({
             id="End"
             className="form-control"
             value={mode}
-            onChange={event => handleChange(event)}
+            onChange={handleChange}
           >
             {isOptionAvailable('Never') && <option value="Never">Never</option>}
             {isOptionAvailable('After') && <option value="After">After</option>}

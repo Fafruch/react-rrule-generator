@@ -12,10 +12,6 @@ import '../styles/index.css';
 class ReactRRuleGenerator extends Component {
   state = configureInitialState(this.props.config);
 
-  componentWillMount() {
-    this.setState({ ...this.state, rrule: computeRRule(this.state.data) });
-  }
-
   handleChange = ({ target }) => {
     const { onRRuleChange } = this.props;
 
@@ -40,8 +36,7 @@ class ReactRRuleGenerator extends Component {
 
   render() {
     const { handleChange, handleCopy } = this;
-    const { data, isCopied, rrule } = this.state;
-    const { repeat, end } = data;
+    const { data: { repeat, end }, isCopied, rrule } = this.state;
     const { config } = this.props;
 
     return (
