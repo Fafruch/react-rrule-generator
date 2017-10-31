@@ -1,14 +1,14 @@
-.app-header {
-  padding: 1rem;
-  background: black;
-  color: white;
-  text-align: center;
-}
+.app-navbar {
+  display: flex;
+  justify-content: space-between;
 
-.app-header-github {
-  text-align: left;
-  font-weight: 100;
+  padding: 1rem;
+
+  background: #000;
+
   vertical-align: middle;
+  font-size: 0.9rem;
+  font-weight: 400;
 }
 @media screen and (max-width: 960px) {
   .app-header-github {
@@ -16,20 +16,34 @@
   }
 }
 
-.app-header-github a {
+.app-navbar a {
   opacity: 1;
   transition: 0.1s;
   color: white;
 }
-.app-header-github a:hover {
+.app-navbar a:hover {
   opacity: 0.5;
   transition: 0.1s;
   text-decoration: none;
 }
 
-.app-header-github-logo {
+.app-navbar-ghlogo {
   height: 20px;
   width: 20px;
+}
+
+.app-header {
+  padding: 1rem;
+  background: #222;
+  color: white;
+  text-align: center;
+}
+
+.app-desc {
+  padding: 1rem;
+  background: #444;
+  color: white;
+  text-align: center;
 }
 
 .app {
