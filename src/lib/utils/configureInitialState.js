@@ -23,6 +23,9 @@ const configureState = (config = {}) => {
           day: 'Monday',
           which: 'First',
         },
+        options: {
+          modes: config.yearly,
+        },
       },
       monthly: {
         mode: configureMonthly(),
@@ -33,6 +36,9 @@ const configureState = (config = {}) => {
         onThe: {
           day: 'Monday',
           which: 'First',
+        },
+        options: {
+          modes: config.monthly,
         },
       },
       weekly: {
@@ -46,6 +52,9 @@ const configureState = (config = {}) => {
           sat: false,
           sun: false,
         },
+        options: {
+          weekStartsOnSunday: config.weekStartsOnSunday,
+        },
       },
       daily: {
         interval: 1,
@@ -53,11 +62,26 @@ const configureState = (config = {}) => {
       hourly: {
         interval: 1,
       },
+      options: {
+        frequency: config.repeat,
+      },
     },
     end: {
       mode: configureEnd(),
       after: 1,
-      onDate: moment().format(DATE_TIME_FORMAT),
+      onDate: {
+        date: moment().format(DATE_TIME_FORMAT),
+        options: {
+          weekStartsOnSunday: config.weekStartsOnSunday,
+        },
+      },
+      options: {
+        modes: config.end,
+      },
+    },
+    options: {
+      hideEnd: config.hideEnd,
+      weekStartsOnSunday: config.weekStartsOnSunday,
     },
   };
 

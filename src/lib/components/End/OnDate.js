@@ -9,18 +9,20 @@ import 'moment/locale/en-ca';
 import { DATE_TIME_FORMAT } from '../../constants/index';
 
 const EndOnDate = ({
-  onDate,
-  config,
+  onDate: {
+    date,
+    options,
+  },
   handleChange,
 }) => {
-  const locale = config.calendarFirstDayOfAWeek === 'Sun' ? 'en-ca' : 'en-gb';
+  const locale = options.weekStartsOnSunday ? 'en-ca' : 'en-gb';
 
   return (
     <div className="col-6 col-sm-3">
       <DateTime
         aria-label="Datetime picker for end on date"
-        inputProps={{ name: 'end.onDate' }}
-        value={onDate}
+        inputProps={{ name: 'end.onDate.date' }}
+        value={date}
         dateFormat={DATE_TIME_FORMAT}
         timeFormat={false}
         viewMode="days"
@@ -28,7 +30,13 @@ const EndOnDate = ({
         closeOnTab
         required
         onChange={(inputDate) => {
-          const editedEvent = { target: { value: moment(inputDate).format(DATE_TIME_FORMAT), name: 'end.onDate' } };
+          const editedEvent = {
+            target: {
+              value: moment(inputDate).format(DATE_TIME_FORMAT),
+              name: 'end.onDate.date',
+            },
+          };
+
           handleChange(editedEvent);
         }}
         locale={locale}
@@ -38,9 +46,11 @@ const EndOnDate = ({
 };
 
 EndOnDate.propTypes = {
-  onDate: PropTypes.string.isRequired,
-  config: PropTypes.shape({
-    calendarFirstDayOfAWeek: PropTypes.oneOf(['Mon', 'Sun']),
+  onDate: PropTypes.shape({
+    date: PropTypes.string.isRequired,
+    options: PropTypes.shape({
+      weekStartsOnSunday: PropTypes.bool,
+    }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
 };

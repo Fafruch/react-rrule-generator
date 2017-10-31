@@ -36,8 +36,8 @@ class ReactRRuleGenerator extends Component {
 
   render() {
     const { handleChange, handleCopy } = this;
-    const { data: { repeat, end }, isCopied, rrule } = this.state;
-    const { config } = this.props;
+    const { data, isCopied, rrule } = this.state;
+    const { repeat, end, options } = data;
 
     return (
       <div className="container px-0 pt-3 border border-light rounded">
@@ -46,17 +46,15 @@ class ReactRRuleGenerator extends Component {
           <Repeat
             repeat={repeat}
             handleChange={handleChange}
-            config={config}
           />
           <hr />
         </div>
 
-        {!config.hideEnd && (
+        {!options.hideEnd && (
           <div>
             <End
               end={end}
               handleChange={handleChange}
-              config={config}
             />
             <hr />
           </div>
@@ -79,7 +77,7 @@ ReactRRuleGenerator.propTypes = {
     monthly: PropTypes.oneOf(['on', 'on the']),
     hideEnd: PropTypes.bool,
     end: PropTypes.arrayOf(PropTypes.oneOf(['Never', 'After', 'On date'])),
-    calendarFirstDayOfAWeek: PropTypes.oneOf(['Mon', 'Sun']),
+    weekStartsOnSunday: PropTypes.bool,
   }),
   onRRuleChange: PropTypes.func,
   onRRuleCopy: PropTypes.func,

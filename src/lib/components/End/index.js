@@ -8,11 +8,11 @@ const End = ({
     mode,
     after,
     onDate,
+    options,
   },
   handleChange,
-  config,
 }) => {
-  const isOptionAvailable = option => !config.end || config.end.indexOf(option) !== -1;
+  const isOptionAvailable = option => !options.modes || options.modes.indexOf(option) !== -1;
   const isOptionSelected = option => mode === option;
 
   return (
@@ -43,7 +43,7 @@ const End = ({
         </div>
 
         {isOptionSelected('After') && <EndAfter after={after} handleChange={handleChange} />}
-        {isOptionSelected('On date') && <EndOnDate onDate={onDate} handleChange={handleChange} config={config} />}
+        {isOptionSelected('On date') && <EndOnDate onDate={onDate} handleChange={handleChange} />}
 
       </div>
     </div>
@@ -54,13 +54,13 @@ End.propTypes = {
   end: PropTypes.shape({
     mode: PropTypes.string.isRequired,
     after: PropTypes.number.isRequired,
-    onDate: PropTypes.string.isRequired,
+    onDate: PropTypes.object.isRequired,
+    options: PropTypes.shape({
+      modes: PropTypes.arrayOf(PropTypes.oneOf(['Never', 'After', 'On date'])),
+      weekStartsOnSunday: PropTypes.bool,
+    }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
-  config: PropTypes.shape({
-    end: PropTypes.arrayOf(PropTypes.oneOf(['Never', 'After', 'On date'])),
-    calendarFirstDayOfAWeek: PropTypes.oneOf(['Mon', 'Sun']),
-  }).isRequired,
 };
 
 export default End;

@@ -10,12 +10,12 @@ const RepeatMonthly = ({
     interval,
     on,
     onThe,
+    options,
   },
   handleChange,
-  config,
 }) => {
-  const isTheOnlyOneMode = option => config.monthly === option;
-  const isOptionAvailable = option => !config.monthly || isTheOnlyOneMode(option);
+  const isTheOnlyOneMode = option => options.modes === option;
+  const isOptionAvailable = option => !options.modes || isTheOnlyOneMode(option);
 
   return (
     <div>
@@ -64,11 +64,11 @@ RepeatMonthly.propTypes = {
     interval: PropTypes.number.isRequired,
     on: PropTypes.object.isRequired,
     onThe: PropTypes.object.isRequired,
+    options: PropTypes.shape({
+      modes: PropTypes.oneOf(['on', 'on the']),
+    }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
-  config: PropTypes.shape({
-    monthly: PropTypes.oneOf(['on', 'on the']),
-  }).isRequired,
 };
 
 export default RepeatMonthly;

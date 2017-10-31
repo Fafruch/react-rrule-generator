@@ -14,11 +14,11 @@ const Repeat = ({
     weekly,
     daily,
     hourly,
+    options,
   },
   handleChange,
-  config,
 }) => {
-  const isOptionAvailable = option => !config.repeat || config.repeat.indexOf(option) !== -1;
+  const isOptionAvailable = option => !options.frequency || options.frequency.indexOf(option) !== -1;
   const isOptionSelected = option => frequency === option;
 
   return (
@@ -51,8 +51,8 @@ const Repeat = ({
         </div>
       </div>
 
-      {isOptionSelected('Yearly') && <RepeatYearly yearly={yearly} handleChange={handleChange} config={config} />}
-      {isOptionSelected('Monthly') && <RepeatMonthly monthly={monthly} handleChange={handleChange} config={config} />}
+      {isOptionSelected('Yearly') && <RepeatYearly yearly={yearly} handleChange={handleChange} />}
+      {isOptionSelected('Monthly') && <RepeatMonthly monthly={monthly} handleChange={handleChange} />}
       {isOptionSelected('Weekly') && <RepeatWeekly weekly={weekly} handleChange={handleChange} />}
       {isOptionSelected('Daily') && <RepeatDaily daily={daily} handleChange={handleChange} />}
       {isOptionSelected('Hourly') && <RepeatHourly hourly={hourly} handleChange={handleChange} />}
@@ -69,13 +69,13 @@ Repeat.propTypes = {
     weekly: PropTypes.object.isRequired,
     daily: PropTypes.object.isRequired,
     hourly: PropTypes.object.isRequired,
+    options: PropTypes.shape({
+      frequency: PropTypes.arrayOf(PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly'])),
+      yearly: PropTypes.oneOf(['on', 'on the']),
+      monthly: PropTypes.oneOf(['on', 'on the']),
+    }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
-  config: PropTypes.shape({
-    frequency: PropTypes.arrayOf(PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly'])),
-    yearly: PropTypes.oneOf(['on', 'on the']),
-    monthly: PropTypes.oneOf(['on', 'on the']),
-  }).isRequired,
 };
 
 export default Repeat;
