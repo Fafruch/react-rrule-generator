@@ -13,29 +13,24 @@ class ReactRRuleGenerator extends Component {
   state = configureInitialState(this.props.config);
 
   handleChange = ({ target }) => {
-    const { onRRuleChange } = this.props;
-
     this.setState((currentState) => {
       const newData = cloneDeep(currentState.data);
       set(newData, target.name, target.value);
       const rrule = computeRRule(newData);
 
-      onRRuleChange(rrule);
+      this.props.onChange(rrule);
 
       return { data: newData, isCopied: false, rrule };
     });
   }
 
   handleCopy = () => {
-    const { onRRuleCopy } = this.props;
-
     this.setState({ isCopied: true });
 
-    onRRuleCopy(this.state.rrule);
+    this.props.onCopy(this.state.rrule);
   }
 
   render() {
-    const { handleChange, handleCopy } = this;
     const { data: { repeat, end, options }, isCopied, rrule } = this.state;
 
     return (
@@ -44,7 +39,7 @@ class ReactRRuleGenerator extends Component {
         <div>
           <Repeat
             repeat={repeat}
-            handleChange={handleChange}
+            handleChange={this.handleChange}
           />
           <hr />
         </div>
@@ -53,7 +48,7 @@ class ReactRRuleGenerator extends Component {
           <div>
             <End
               end={end}
-              handleChange={handleChange}
+              handleChange={this.handleChange}
             />
             <hr />
           </div>
@@ -62,7 +57,7 @@ class ReactRRuleGenerator extends Component {
         <RRule
           rrule={rrule}
           isCopied={isCopied}
-          handleCopy={handleCopy}
+          handleCopy={this.handleCopy}
         />
         
       </div>
@@ -78,13 +73,13 @@ ReactRRuleGenerator.propTypes = {
     end: PropTypes.arrayOf(PropTypes.oneOf(['Never', 'After', 'On date'])),
     weekStartsOnSunday: PropTypes.bool,
   }),
-  onRRuleChange: PropTypes.func,
-  onRRuleCopy: PropTypes.func,
+  onChange: PropTypes.func,
+  onCopy: PropTypes.func,
 };
 ReactRRuleGenerator.defaultProps = {
   config: {},
-  onRRuleChange() {},
-  onRRuleCopy() {},
+  onChange() {},
+  onCopy() {},
 };
 
 export default ReactRRuleGenerator;
