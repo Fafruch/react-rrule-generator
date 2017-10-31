@@ -36,8 +36,7 @@ class ReactRRuleGenerator extends Component {
 
   render() {
     const { handleChange, handleCopy } = this;
-    const { data, isCopied, rrule } = this.state;
-    const { repeat, end, options } = data;
+    const { data: { repeat, end, options }, isCopied, rrule } = this.state;
 
     return (
       <div className="container px-0 pt-3 border border-light rounded">
