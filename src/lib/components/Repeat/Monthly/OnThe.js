@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday',
-  'Day', 'Weekday', 'Weekend day'];
+import { DAYS } from '../../../constants/index';
 
 const RepeatMonthlyOnThe = ({
   mode,
@@ -57,7 +56,7 @@ const RepeatMonthlyOnThe = ({
           disabled={!isActive}
           onChange={handleChange}
         >
-          {days.map(day => <option key={day} value={day}>{day}</option>)}
+          {DAYS.map(day => <option key={day} value={day}>{day}</option>)}
         </select>
       </div>
 
@@ -68,7 +67,7 @@ RepeatMonthlyOnThe.propTypes = {
   mode: PropTypes.oneOf(['on', 'on the']).isRequired,
   onThe: PropTypes.shape({
     which: PropTypes.oneOf(['First', 'Second', 'Third', 'Fourth', 'Last']).isRequired,
-    day: PropTypes.oneOf(days).isRequired,
+    day: PropTypes.oneOf(DAYS).isRequired,
   }).isRequired,
   isNotTheOnlyOneMode: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,

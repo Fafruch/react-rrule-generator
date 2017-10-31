@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday',
-  'Day', 'Weekday', 'Weekend day'];
+import { MONTHS, DAYS } from '../../../constants/index';
 
 const RepeatYearlyOnThe = ({
   mode,
@@ -58,7 +56,7 @@ const RepeatYearlyOnThe = ({
           disabled={!isActive}
           onChange={handleChange}
         >
-          {days.map(day => <option key={day} value={day}>{day}</option>)}
+          {DAYS.map(day => <option key={day} value={day}>{day}</option>)}
         </select>
       </div>
 
@@ -75,7 +73,7 @@ const RepeatYearlyOnThe = ({
           disabled={!isActive}
           onChange={handleChange}
         >
-          {months.map(month => <option key={month} value={month}>{month}</option>)}
+          {MONTHS.map(month => <option key={month} value={month}>{month}</option>)}
         </select>
       </div>
 
@@ -86,8 +84,8 @@ RepeatYearlyOnThe.propTypes = {
   mode: PropTypes.oneOf(['on', 'on the']).isRequired,
   onThe: PropTypes.shape({
     which: PropTypes.oneOf(['First', 'Second', 'Third', 'Fourth', 'Last']).isRequired,
-    month: PropTypes.oneOf(months).isRequired,
-    day: PropTypes.oneOf(days).isRequired,
+    month: PropTypes.oneOf(MONTHS).isRequired,
+    day: PropTypes.oneOf(DAYS).isRequired,
   }).isRequired,
   isNotTheOnlyOneMode: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,

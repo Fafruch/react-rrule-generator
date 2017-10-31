@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import numericalFieldHandler from '../../../utils/numericalFieldHandler';
-
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+import { MONTHS } from '../../../constants/index';
 
 const RepeatYearlyOn = ({
   mode,
@@ -45,7 +44,7 @@ const RepeatYearlyOn = ({
           disabled={!isActive}
           onChange={handleChange}
         >
-          {months.map(month => <option key={month} value={month}>{month}</option>)}
+          {MONTHS.map(month => <option key={month} value={month}>{month}</option>)}
         </select>
       </div>
 
@@ -69,7 +68,7 @@ const RepeatYearlyOn = ({
 RepeatYearlyOn.propTypes = {
   mode: PropTypes.oneOf(['on', 'on the']).isRequired,
   on: PropTypes.shape({
-    month: PropTypes.oneOf(months).isRequired,
+    month: PropTypes.oneOf(MONTHS).isRequired,
     day: PropTypes.number.isRequired,
   }).isRequired,
   isNotTheOnlyOneMode: PropTypes.bool.isRequired,

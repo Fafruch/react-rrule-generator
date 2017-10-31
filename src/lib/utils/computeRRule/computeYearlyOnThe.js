@@ -1,4 +1,4 @@
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+import { MONTHS } from '../../constants/index';
 
 const computeYearlyOnThe = (onThe) => {
   const repeat = {};
@@ -58,7 +58,7 @@ const computeYearlyOnThe = (onThe) => {
       break;
   }
 
-  repeat.bymonth = months.indexOf(onThe.month) + 1;
+  repeat.bymonth = MONTHS.indexOf(onThe.month) + 1;
 
   return repeat;
 };

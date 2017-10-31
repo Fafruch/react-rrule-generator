@@ -1,7 +1,7 @@
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+import { MONTHS } from '../../constants/index';
 
 const computeYearlyOn = on => ({
-  bymonth: months.indexOf(on.month) + 1,
+  bymonth: MONTHS.indexOf(on.month) + 1,
   bymonthday: on.day,
 });
 
