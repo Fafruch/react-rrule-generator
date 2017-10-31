@@ -5,7 +5,7 @@ import numericalFieldHandler from '../../../utils/numericalFieldHandler';
 const RepeatMonthlyOn = ({
   mode,
   on,
-  isNotTheOnlyOneMode,
+  hasMoreModes,
   handleChange,
 }) => {
   const isActive = mode === 'on';
@@ -13,7 +13,7 @@ const RepeatMonthlyOn = ({
   return (
     <div className="form-group row d-flex align-items-sm-center">
       <div className="col-sm-1 offset-sm-2">
-        {isNotTheOnlyOneMode && (
+        {hasMoreModes && (
           <input
             type="radio"
             name="repeat.monthly.mode"
@@ -49,7 +49,7 @@ RepeatMonthlyOn.propTypes = {
   on: PropTypes.shape({
     day: PropTypes.number.isRequired,
   }).isRequired,
-  isNotTheOnlyOneMode: PropTypes.bool.isRequired,
+  hasMoreModes: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 

@@ -18,7 +18,7 @@ const Repeat = ({
   handleChange,
   config,
 }) => {
-  const isOptionAvailable = option => !config.frequency || config.frequency.indexOf(option) !== -1;
+  const isOptionAvailable = option => !config.repeat || config.repeat.indexOf(option) !== -1;
   const isOptionSelected = option => frequency === option;
 
   return (

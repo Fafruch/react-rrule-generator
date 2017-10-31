@@ -6,7 +6,7 @@ import { DAYS } from '../../../constants/index';
 const RepeatMonthlyOnThe = ({
   mode,
   onThe,
-  isNotTheOnlyOneMode,
+  hasMoreModes,
   handleChange,
 }) => {
   const isActive = mode === 'on the';
@@ -14,7 +14,7 @@ const RepeatMonthlyOnThe = ({
   return (
     <div className="form-group row d-flex align-items-sm-center">
       <div className="col-sm-1 offset-sm-2">
-        {isNotTheOnlyOneMode && (
+        {hasMoreModes && (
           <input
             type="radio"
             name="repeat.monthly.mode"
@@ -69,7 +69,7 @@ RepeatMonthlyOnThe.propTypes = {
     which: PropTypes.oneOf(['First', 'Second', 'Third', 'Fourth', 'Last']).isRequired,
     day: PropTypes.oneOf(DAYS).isRequired,
   }).isRequired,
-  isNotTheOnlyOneMode: PropTypes.bool.isRequired,
+  hasMoreModes: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 

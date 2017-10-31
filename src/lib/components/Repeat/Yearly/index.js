@@ -20,7 +20,7 @@ const RepeatYearly = ({
         <RepeatYearlyOn
           mode={mode}
           on={on}
-          isNotTheOnlyOneMode={!isTheOnlyOneMode('on')}
+          hasMoreModes={!isTheOnlyOneMode('on')}
           handleChange={handleChange}
         />
       )}
@@ -28,7 +28,7 @@ const RepeatYearly = ({
         <RepeatYearlyOnThe
           mode={mode}
           onThe={onThe}
-          isNotTheOnlyOneMode={!isTheOnlyOneMode('on the')}
+          hasMoreModes={!isTheOnlyOneMode('on the')}
           handleChange={handleChange}
         />
       )}

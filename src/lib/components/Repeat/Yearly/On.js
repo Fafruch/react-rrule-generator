@@ -8,7 +8,7 @@ import { MONTHS } from '../../../constants/index';
 const RepeatYearlyOn = ({
   mode,
   on,
-  isNotTheOnlyOneMode,
+  hasMoreModes,
   handleChange,
 }) => {
   const daysInMonth = moment(on.month, 'MMM').daysInMonth();
@@ -18,7 +18,7 @@ const RepeatYearlyOn = ({
     <div className="form-group row d-flex align-items-sm-center">
       <div className="col-sm-1 offset-sm-2">
 
-        {isNotTheOnlyOneMode && (
+        {hasMoreModes && (
           <input
             type="radio"
             name="repeat.yearly.mode"
@@ -71,7 +71,7 @@ RepeatYearlyOn.propTypes = {
     month: PropTypes.oneOf(MONTHS).isRequired,
     day: PropTypes.number.isRequired,
   }).isRequired,
-  isNotTheOnlyOneMode: PropTypes.bool.isRequired,
+  hasMoreModes: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 

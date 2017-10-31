@@ -41,7 +41,7 @@ const RepeatMonthly = ({
         <RepeatMonthlyOn
           mode={mode}
           on={on}
-          isNotTheOnlyOneMode={!isTheOnlyOneMode('on')}
+          hasMoreModes={!isTheOnlyOneMode('on')}
           handleChange={handleChange}
         />
       )}
@@ -49,7 +49,7 @@ const RepeatMonthly = ({
         <RepeatMonthlyOnThe
           mode={mode}
           onThe={onThe}
-          isNotTheOnlyOneMode={!isTheOnlyOneMode('on the')}
+          hasMoreModes={!isTheOnlyOneMode('on the')}
           handleChange={handleChange}
         />
       )}
