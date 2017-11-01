@@ -14,3 +14,25 @@ body {
 .opacity-50 {
   opacity: 0.5;
 }
+
+.rrule {
+  background-color: #ffecef;
+  font-size: 80%;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+}
+
+.rrule-not-copied {
+  color: #2b81d9;
+}
+
+.rrule-not-copied:focus {
+  color: #2b81d9;
+}
+
+.rrule-copied {
+  color: #666;
+}
+
+.rrule-copied:focus {
+  color: #666;
+}

@@ -17,7 +17,7 @@ const RRule = ({ rrule, isCopied, handleCopy }) => (
       </div>
       <div className="col-sm-8">
         <TextareaAutosize
-          className="form-control"
+          className={`form-control rrule ${isCopied ? 'rrule-copied' : 'rrule-not-copied'}`}
           value={rrule}
           readOnly
         />
