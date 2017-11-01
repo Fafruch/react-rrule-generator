@@ -1,64 +1,77 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import numericalFieldHandler from '../../../utils/numericalFieldHandler';
+import moment from 'moment';
 
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+import numericalFieldHandler from '../../../utils/numericalFieldHandler';
+import { MONTHS } from '../../../constants/index';
 
 const RepeatYearlyOn = ({
   mode,
   on,
+  hasMoreModes,
   handleChange,
-}) => (
-  <div className="form-group row d-flex align-items-sm-center">
-    <div className="col-sm-1 offset-sm-2">
-      <input
-        type="radio"
-        name="repeat.yearly.mode"
-        aria-label="Repeat yearly on"
-        className="form-control"
-        value="on"
-        checked={mode === 'on'}
-        onChange={handleChange}
-      />
-    </div>
+}) => {
+  const daysInMonth = moment(on.month, 'MMM').daysInMonth();
+  const isActive = mode === 'on';
 
-    <div className="col-sm-1">
-      on
-    </div>
+  return (
+    <div className="form-group row d-flex align-items-sm-center">
+      <div className="col-sm-1 offset-sm-2">
 
-    <div className="col-sm-2">
-      <select
-        name="repeat.yearly.on.month"
-        aria-label="Repeat yearly on month"
-        className="form-control"
-        value={on.month}
-        disabled={mode !== 'on'}
-        onChange={handleChange}
-      >
-        {months.map(month => <option key={month} value={month}>{month}</option>)}
-      </select>
-    </div>
+        {hasMoreModes && (
+          <input
+            type="radio"
+            name="repeat.yearly.mode"
+            aria-label="Repeat yearly on"
+            className="form-control"
+            value="on"
+            checked={isActive}
+            onChange={handleChange}
+          />
+        )}
+      </div>
 
-    <div className="col-sm-2">
-      <select
-        name="repeat.yearly.on.day"
-        aria-label="Repeat yearly on a day"
-        className="form-control"
-        value={on.day}
-        disabled={mode !== 'on'}
-        onChange={numericalFieldHandler(handleChange)}
-      >
-        {[...new Array(31)].map((day, i) => <option key={i} value={i + 1}>{i + 1}</option>)}
-      </select>
+      <div className="col-sm-1">
+        on
+      </div>
+
+      <div className="col-sm-2">
+        <select
+          name="repeat.yearly.on.month"
+          aria-label="Repeat yearly on month"
+          className="form-control"
+          value={on.month}
+          disabled={!isActive}
+          onChange={handleChange}
+        >
+          {MONTHS.map(month => <option key={month} value={month}>{month}</option>)}
+        </select>
+      </div>
+
+      <div className="col-sm-2">
+        <select
+          name="repeat.yearly.on.day"
+          aria-label="Repeat yearly on a day"
+          className="form-control"
+          value={on.day}
+          disabled={!isActive}
+          onChange={numericalFieldHandler(handleChange)}
+        >
+          {[...new Array(daysInMonth)].map((day, i) => (
+            <option key={i} value={i + 1}>{i + 1}</option>
+          ))}
+        </select>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 RepeatYearlyOn.propTypes = {
   mode: PropTypes.oneOf(['on', 'on the']).isRequired,
   on: PropTypes.shape({
-    month: PropTypes.oneOf(months).isRequired,
+    month: PropTypes.oneOf(MONTHS).isRequired,
     day: PropTypes.number.isRequired,
   }).isRequired,
+  hasMoreModes: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 

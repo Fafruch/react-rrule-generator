@@ -1,101 +1,62 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { cloneDeep, set } from 'lodash';
-import moment from 'moment';
 
 import Repeat from './Repeat/index';
 import End from './End/index';
 import RRule from './RRule/index';
-import computeRRule from '../utils/computeRRule';
-import { DATE_TIME_FORMAT } from '../constants/index';
+import computeRRule from '../utils/computeRRule/computeRRule';
+import configureInitialState from '../utils/configureInitialState';
 import '../styles/index.css';
 
 class ReactRRuleGenerator extends Component {
-  state = {
-    data: {
-      repeat: {
-        frequency: 'Yearly',
-        yearly: {
-          mode: 'on',
-          on: {
-            month: 'Jan',
-            day: 1,
-          },
-          onThe: {
-            month: 'Jan',
-            day: 'Monday',
-            which: 'First',
-          },
-        },
-        monthly: {
-          mode: 'on',
-          interval: 1,
-          on: {
-            day: 1,
-          },
-          onThe: {
-            day: 'Monday',
-            which: 'First',
-          },
-        },
-        weekly: {
-          interval: 1,
-          days: {
-            mon: false,
-            tue: false,
-            wed: false,
-            thu: false,
-            fri: false,
-            sat: false,
-            sun: false,
-          },
-        },
-        daily: {
-          interval: 1,
-        },
-        hourly: {
-          interval: 1,
-        },
-      },
-      end: {
-        mode: 'Never',
-        after: 1,
-        onDate: moment().format(DATE_TIME_FORMAT),
-      },
-    },
-    isCopied: false,
-  };
+  state = configureInitialState(this.props.config);
 
   handleChange = ({ target }) => {
     this.setState((currentState) => {
       const newData = cloneDeep(currentState.data);
       set(newData, target.name, target.value);
-      return { data: newData, isCopied: false };
+      const rrule = computeRRule(newData);
+
+      this.props.onChange(rrule);
+
+      return { data: newData, isCopied: false, rrule };
     });
   }
 
-  handleCopy = () => this.setState({ isCopied: true });
+  handleCopy = () => {
+    this.setState({ isCopied: true });
+
+    this.props.onCopy(this.state.rrule);
+  }
 
   render() {
+    const { data: { repeat, end, options }, isCopied, rrule } = this.state;
+
     return (
       <div className="container px-0 pt-3 border border-light rounded">
-        
-        <Repeat
-          repeat={this.state.data.repeat}
-          handleChange={this.handleChange}
-        />
 
-        <hr />
+        <div>
+          <Repeat
+            repeat={repeat}
+            handleChange={this.handleChange}
+          />
+          <hr />
+        </div>
 
-        <End
-          end={this.state.data.end}
-          handleChange={this.handleChange}
-        />
-
-        <hr />
+        {!options.hideEnd && (
+          <div>
+            <End
+              end={end}
+              handleChange={this.handleChange}
+            />
+            <hr />
+          </div>
+        )}
         
         <RRule
-          rrule={computeRRule(this.state.data)}
-          isCopied={this.state.isCopied}
+          rrule={rrule}
+          isCopied={isCopied}
           handleCopy={this.handleCopy}
         />
         
@@ -103,5 +64,22 @@ class ReactRRuleGenerator extends Component {
     );
   }
 }
+ReactRRuleGenerator.propTypes = {
+  config: PropTypes.shape({
+    frequency: PropTypes.arrayOf(PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly'])),
+    yearly: PropTypes.oneOf(['on', 'on the']),
+    monthly: PropTypes.oneOf(['on', 'on the']),
+    hideEnd: PropTypes.bool,
+    end: PropTypes.arrayOf(PropTypes.oneOf(['Never', 'After', 'On date'])),
+    weekStartsOnSunday: PropTypes.bool,
+  }),
+  onChange: PropTypes.func,
+  onCopy: PropTypes.func,
+};
+ReactRRuleGenerator.defaultProps = {
+  config: {},
+  onChange() {},
+  onCopy() {},
+};
 
 export default ReactRRuleGenerator;

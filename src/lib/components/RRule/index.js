@@ -31,7 +31,6 @@ const RRule = ({ rrule, isCopied, handleCopy }) => (
           <button
             aria-label="Copy generated RRule"
             className={`btn ${isCopied ? 'btn-secondary' : 'btn-primary'} float-right`}
-            onClick={handleCopy}
           >
             {isCopied ? 'Copied' : 'Copy'}
           </button>
