@@ -22,11 +22,11 @@ body {
 }
 
 .rrule-not-copied {
-  color: #2b81d9;
+  color: #2a7dd9;
 }
 
 .rrule-not-copied:focus {
-  color: #2b81d9;
+  color: #2a7dd9;
 }
 
 .rrule-copied {
