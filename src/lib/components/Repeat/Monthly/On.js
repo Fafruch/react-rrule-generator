@@ -11,7 +11,7 @@ const RepeatMonthlyOn = ({
   const isActive = mode === 'on';
 
   return (
-    <div className="form-group row d-flex align-items-sm-center">
+    <div className={`form-group row d-flex align-items-sm-center ${!isActive && 'opacity-50'}`}>
       <div className="col-sm-1 offset-sm-2">
         {hasMoreModes && (
           <input

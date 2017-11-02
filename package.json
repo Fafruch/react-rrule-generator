@@ -65,6 +65,7 @@
     "promise": "8.0.1",
     "prop-types": "^15.6.0",
     "react": "^15.6.1",
+    "react-autosize-textarea": "^0.4.9",
     "react-copy-to-clipboard": "^5.0.1",
     "react-datetime": "^2.10.3",
     "react-dev-utils": "^3.1.0",

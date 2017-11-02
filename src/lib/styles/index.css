@@ -11,16 +11,28 @@ body {
   display: none;
 }
 
-.code {
-  position: relative;
-  overflow-x: scroll;
+.opacity-50 {
+  opacity: 0.5;
 }
 
-.code-fader {
-  top: 0;
-  right: 0;
-  width: 20%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
-  position: absolute;
+.rrule {
+  background-color: #ffecef;
+  font-size: 80%;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+}
+
+.rrule-not-copied {
+  color: #222;
+}
+
+.rrule-not-copied:focus {
+  color: #222;
+}
+
+.rrule-copied {
+  color: #888;
+}
+
+.rrule-copied:focus {
+  color: #888;
 }
