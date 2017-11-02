@@ -32,6 +32,7 @@ class ReactRRuleGenerator extends Component {
 
   render() {
     const { data: { repeat, end, options }, isCopied, rrule } = this.state;
+    const { calendarComponent } = this.props;
 
     return (
       <div className="container px-0 pt-3 border border-light rounded">
@@ -49,6 +50,7 @@ class ReactRRuleGenerator extends Component {
             <End
               end={end}
               handleChange={this.handleChange}
+              calendarComponent={calendarComponent}
             />
             <hr />
           </div>
@@ -75,11 +77,13 @@ ReactRRuleGenerator.propTypes = {
   }),
   onChange: PropTypes.func,
   onCopy: PropTypes.func,
+  calendarComponent: PropTypes.func,
 };
 ReactRRuleGenerator.defaultProps = {
   config: {},
   onChange() {},
   onCopy() {},
+  calendarComponent() {},
 };
 
 export default ReactRRuleGenerator;
