@@ -32,12 +32,7 @@ const App = () => (
     </div>
 
     <div className="app">
-      <ReactRRuleGenerator
-        config={{
-          yearly: 'on the',
-          end: ['On date'],
-        }}
-      />
+      <ReactRRuleGenerator />
     </div>
   </div>
 );
