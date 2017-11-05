@@ -10,7 +10,7 @@ import configureInitialState from '../utils/configureInitialState';
 import '../styles/index.css';
 
 class ReactRRuleGenerator extends Component {
-  state = configureInitialState(this.props.config);
+  state = configureInitialState(this.props.config, this.props.calendarComponent);
 
   handleChange = ({ target }) => {
     this.setState((currentState) => {
@@ -32,7 +32,6 @@ class ReactRRuleGenerator extends Component {
 
   render() {
     const { data: { repeat, end, options }, isCopied, rrule } = this.state;
-    const { calendarComponent } = this.props;
 
     return (
       <div className="container px-0 pt-3 border border-light rounded">
@@ -50,7 +49,6 @@ class ReactRRuleGenerator extends Component {
             <End
               end={end}
               handleChange={this.handleChange}
-              calendarComponent={calendarComponent}
             />
             <hr />
           </div>
@@ -83,7 +81,6 @@ ReactRRuleGenerator.defaultProps = {
   config: {},
   onChange() {},
   onCopy() {},
-  calendarComponent() {},
 };
 
 export default ReactRRuleGenerator;

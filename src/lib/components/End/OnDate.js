@@ -13,11 +13,10 @@ const EndOnDate = ({
     date,
     options,
   },
-  calendarComponent: CustomCalendar,
   handleChange,
 }) => {
-  // Check if CustomCalendar has been provided and is different from default blank function
-  const isThereCustomComponent = CustomCalendar.toString() !== 'function calendarComponent() {}';
+  const CustomCalendar = options.calendarComponent;
+  const isCustomCalendarProvided = typeof CustomCalendar !== 'undefined';
 
   const locale = options.weekStartsOnSunday ? 'en-ca' : 'en-gb';
   const calendarAttributes = {
@@ -30,7 +29,7 @@ const EndOnDate = ({
   return (
     <div className="col-6 col-sm-3">
       {
-        isThereCustomComponent
+        isCustomCalendarProvided
           ? <CustomCalendar
             {...calendarAttributes}
             onChange={(event) => {
@@ -73,9 +72,9 @@ EndOnDate.propTypes = {
     date: PropTypes.string.isRequired,
     options: PropTypes.shape({
       weekStartsOnSunday: PropTypes.bool,
+      calendarComponent: PropTypes.func,
     }).isRequired,
   }).isRequired,
-  calendarComponent: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 

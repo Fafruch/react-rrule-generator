@@ -10,7 +10,6 @@ const End = ({
     onDate,
     options,
   },
-  calendarComponent,
   handleChange,
 }) => {
   const isOptionAvailable = option => !options.modes || options.modes.indexOf(option) !== -1;
@@ -44,9 +43,7 @@ const End = ({
         </div>
 
         {isOptionSelected('After') && <EndAfter after={after} handleChange={handleChange} />}
-        {isOptionSelected('On date') && (
-          <EndOnDate onDate={onDate} handleChange={handleChange} calendarComponent={calendarComponent} />
-        )}
+        {isOptionSelected('On date') && <EndOnDate onDate={onDate} handleChange={handleChange} />}
 
       </div>
     </div>
@@ -63,7 +60,6 @@ End.propTypes = {
       weekStartsOnSunday: PropTypes.bool,
     }).isRequired,
   }).isRequired,
-  calendarComponent: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 
