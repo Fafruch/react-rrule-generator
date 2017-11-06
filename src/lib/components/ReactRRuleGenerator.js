@@ -75,12 +75,13 @@ ReactRRuleGenerator.propTypes = {
   }),
   onChange: PropTypes.func,
   onCopy: PropTypes.func,
-  calendarComponent: PropTypes.func,
+  calendarComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 };
 ReactRRuleGenerator.defaultProps = {
   config: {},
   onChange() {},
   onCopy() {},
+  calendarComponent: undefined,
 };
 
 export default ReactRRuleGenerator;

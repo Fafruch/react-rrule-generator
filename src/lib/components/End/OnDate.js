@@ -16,7 +16,6 @@ const EndOnDate = ({
   handleChange,
 }) => {
   const CustomCalendar = options.calendarComponent;
-  const isCustomCalendarProvided = typeof CustomCalendar !== 'undefined';
 
   const locale = options.weekStartsOnSunday ? 'en-ca' : 'en-gb';
   const calendarAttributes = {
@@ -29,7 +28,7 @@ const EndOnDate = ({
   return (
     <div className="col-6 col-sm-3">
       {
-        isCustomCalendarProvided
+        CustomCalendar
           ? <CustomCalendar
             {...calendarAttributes}
             onChange={(event) => {
@@ -72,7 +71,7 @@ EndOnDate.propTypes = {
     date: PropTypes.string.isRequired,
     options: PropTypes.shape({
       weekStartsOnSunday: PropTypes.bool,
-      calendarComponent: PropTypes.func,
+      calendarComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
     }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,

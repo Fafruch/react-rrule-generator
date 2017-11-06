@@ -12,7 +12,6 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "no-trailing-spaces": ["error", { "skipBlankLines": true }],
     "max-len": [2, 120, 2],
-    "import/no-extraneous-dependencies": 0,
-    "react/require-default-props": 0
+    "import/no-extraneous-dependencies": 0
   }
 }
