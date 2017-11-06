@@ -21,16 +21,64 @@ https://fafruch.github.io/react-rrule-generator
 
 ## Installation
 
-1. `npm install --save react-rrule-generator`
-2. 
+`npm install --save react-rrule-generator`
+
+## Usage 
 ```js
 import RRuleGenerator from 'react-rrule-generator';
 
-const render = () => (
+import MyCustomCalendar from './MyCustomCalendar';
+
+// render it as it is
+
+const simpleRender = () => (
   <RRuleGenerator />
 );
+
+// or with your own configuration
+
+const customizedRender = () => (
+  <RRuleGenerator
+    config={{
+      repeat: ['Monthly', 'Weekly'],
+      yearly: 'on the',
+      monthly: 'on',
+      end: ['Never', 'On date'],
+      weekStartsOnSunday: true,
+    }}
+    onChange={(rrule) => {
+      console.log(`RRule changed, now it's ${rrule}`);
+    }}
+    onCopy={(rrule) => {
+      console.log(`RRule copied: ${rrule}`);
+    }}
+    customCalendar={MyCustomCalendar}
+  />
+);
 ```
-That's all!
+
+## API
+
+### Props
+
+| Name         | Type    | Description |
+| ------------ | ------- | ----------- |
+| **config** | `object` | Accepts object of what options will be rendered. This object's structure is described in [#Config](https://github.com/Fafruch/react-rrule-generator#config/) |
+| **onChange** | `function` | Callback trigger when the rrule changes. The callback receives newly generated RRule `string`.
+| **onCopy** | `function` | Callback trigger when the user clicks on 'Copy' button. The callback receives current RRule `string`. |
+| **customCalendar** | `React Component` or `stateless function` | This accepts custom calendar / datepicker for choosing a date in End -> On date view. It receives following props by default: `'aria-label'` with value `'Datetime picker for end on date'`, `value` - date value consumed by app logic, `dateFormat` - DATE_TIME_FORMAT which is by default `'YYYY-MM-DD'`, `locale` - `'en/ca'` or `'en/gb'` depending on if `weekStartsOnSunday` in config is set to `true` or `false`
+
+### config
+`config` is a regular Javascript object which accepts following:
+
+| Name         | Type    | Description |
+| ------------ | ------- | ----------- |
+| **frequency** | `array` of `string` | You can optionally choose if you want to show repeating options `'Yearly'`, `'Monthly'`, `'Weekly'`, `'Daily'`, `'Hourly'`. You can pass for example `['Monthly', 'Weekly']` if you want to show only options for repeating monthly and weekly. |
+| **yearly** | `string` | If `'on'` provided, only choosing a particular day of a month is available, if `'on the'` is provided, you have ability to choose for example 'fourth Wednesday of February' |
+| **monthly** | `string` | If `'on'` provided, only choosing a particular day of a month is available, if `'on the'` is provided, you have ability to choose for example 'fourth Wednesday' |
+| **hideEnd** | `boolean` | If `true` provided, you have no ending RRule view |
+| **hideEnd** | `array` of `string` | You can optionally choose if you want to show ending options `'Never'`, `'After'`, `'On date'`. You can pass for example `['Never', 'On date']` if you want to show only options for ending never or on a particular date without showint 'After' option. |
+| **weekStartsOnSunday** | `boolean` | If set to `true`, weeks starts on Sunday (both for views and RRule string). |
 
 ## License 
 MIT
