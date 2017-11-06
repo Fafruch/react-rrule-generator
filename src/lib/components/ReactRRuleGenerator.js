@@ -10,7 +10,7 @@ import configureInitialState from '../utils/configureInitialState';
 import '../styles/index.css';
 
 class ReactRRuleGenerator extends Component {
-  state = configureInitialState(this.props.config);
+  state = configureInitialState(this.props.config, this.props.calendarComponent);
 
   handleChange = ({ target }) => {
     this.setState((currentState) => {
@@ -75,11 +75,13 @@ ReactRRuleGenerator.propTypes = {
   }),
   onChange: PropTypes.func,
   onCopy: PropTypes.func,
+  calendarComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 };
 ReactRRuleGenerator.defaultProps = {
   config: {},
   onChange() {},
   onCopy() {},
+  calendarComponent: undefined,
 };
 
 export default ReactRRuleGenerator;

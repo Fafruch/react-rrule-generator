@@ -15,32 +15,53 @@ const EndOnDate = ({
   },
   handleChange,
 }) => {
+  const CustomCalendar = options.calendarComponent;
+
   const locale = options.weekStartsOnSunday ? 'en-ca' : 'en-gb';
+  const calendarAttributes = {
+    'aria-label': 'Datetime picker for end on date',
+    value: date,
+    dateFormat: DATE_TIME_FORMAT,
+    locale,
+  };
 
   return (
     <div className="col-6 col-sm-3">
-      <DateTime
-        aria-label="Datetime picker for end on date"
-        inputProps={{ name: 'end.onDate.date' }}
-        value={date}
-        dateFormat={DATE_TIME_FORMAT}
-        timeFormat={false}
-        viewMode="days"
-        closeOnSelect
-        closeOnTab
-        required
-        onChange={(inputDate) => {
-          const editedEvent = {
-            target: {
-              value: moment(inputDate).format(DATE_TIME_FORMAT),
-              name: 'end.onDate.date',
-            },
-          };
+      {
+        CustomCalendar
+          ? <CustomCalendar
+            {...calendarAttributes}
+            onChange={(event) => {
+              const editedEvent = {
+                target: {
+                  value: event.target.value,
+                  name: 'end.onDate.date',
+                },
+              };
 
-          handleChange(editedEvent);
-        }}
-        locale={locale}
-      />
+              handleChange(editedEvent);
+            }}
+          />
+          : <DateTime
+            {...calendarAttributes}
+            inputProps={{ name: 'end.onDate.date' }}
+            timeFormat={false}
+            viewMode="days"
+            closeOnSelect
+            closeOnTab
+            required
+            onChange={(inputDate) => {
+              const editedEvent = {
+                target: {
+                  value: moment(inputDate).format(DATE_TIME_FORMAT),
+                  name: 'end.onDate.date',
+                },
+              };
+
+              handleChange(editedEvent);
+            }}
+          />
+      }
     </div>
   );
 };
@@ -50,6 +71,7 @@ EndOnDate.propTypes = {
     date: PropTypes.string.isRequired,
     options: PropTypes.shape({
       weekStartsOnSunday: PropTypes.bool,
+      calendarComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
     }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
