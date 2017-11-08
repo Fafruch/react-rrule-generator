@@ -66,7 +66,7 @@ const customizedRender = () => (
 | **config** | `object` | Accepts object of what options will be rendered. This object's structure is described in [#config](#config) |
 | **onChange** | `function` | Callback trigger when the rrule changes. The callback receives newly generated RRule `string`.
 | **onCopy** | `function` | Callback trigger when the user clicks on 'Copy' button. The callback receives current RRule `string`. |
-| **customCalendar** | `React Component` or `stateless function` | This accepts custom calendar / datepicker for choosing a date in End -> On date view. It receives following props by default: `'aria-label'` with value `'Datetime picker for end on date'`, `value` - date value consumed by app logic, `dateFormat` - DATE_TIME_FORMAT which is by default `'YYYY-MM-DD'`, `locale` - `'en/ca'` or `'en/gb'` depending on if `weekStartsOnSunday` in config is set to `true` or `false`
+| **customCalendar** | `React Component` or `stateless function` | This accepts custom calendar / datepicker for choosing a date in EndOnDate view. It receives following props by default: <ul><li>`'aria-label'` with value `'Datetime picker for end on date'`,</li><li>`value` - date value consumed by app logic, </li><li>`dateFormat` - by default `'YYYY-MM-DD'`, </li><li>`locale` - `'en/ca'` or `'en/gb'` depending on if `weekStartsOnSunday` in config is set to `true` or `false` </li>
 <br />
 
 ### config
