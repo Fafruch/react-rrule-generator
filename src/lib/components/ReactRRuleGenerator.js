@@ -4,13 +4,16 @@ import { cloneDeep, set } from 'lodash';
 
 import Repeat from './Repeat/index';
 import End from './End/index';
-import RRule from './RRule/index';
 import computeRRule from '../utils/computeRRule/computeRRule';
 import configureInitialState from '../utils/configureInitialState';
 import '../styles/index.css';
 
 class ReactRRuleGenerator extends Component {
   state = configureInitialState(this.props.config, this.props.calendarComponent);
+
+  componentDidMount() {
+    this.props.onMount(this.state.rrule);
+  }
 
   handleChange = ({ target }) => {
     this.setState((currentState) => {
@@ -20,46 +23,32 @@ class ReactRRuleGenerator extends Component {
 
       this.props.onChange(rrule);
 
-      return { data: newData, isCopied: false, rrule };
+      return { data: newData, rrule };
     });
   }
 
-  handleCopy = () => {
-    this.setState({ isCopied: true });
-
-    this.props.onCopy(this.state.rrule);
-  }
-
   render() {
-    const { data: { repeat, end, options }, isCopied, rrule } = this.state;
+    const { data: { repeat, end, options } } = this.state;
 
     return (
-      <div className="container px-0 pt-3 border border-light rounded">
+      <div className="px-0 pt-3 border border-light rounded">
 
         <div>
           <Repeat
             repeat={repeat}
             handleChange={this.handleChange}
           />
-          <hr />
         </div>
 
+        <hr />
+
         {!options.hideEnd && (
-          <div>
-            <End
-              end={end}
-              handleChange={this.handleChange}
-            />
-            <hr />
-          </div>
+          <End
+            end={end}
+            handleChange={this.handleChange}
+          />
         )}
-        
-        <RRule
-          rrule={rrule}
-          isCopied={isCopied}
-          handleCopy={this.handleCopy}
-        />
-        
+
       </div>
     );
   }
@@ -74,13 +63,13 @@ ReactRRuleGenerator.propTypes = {
     weekStartsOnSunday: PropTypes.bool,
   }),
   onChange: PropTypes.func,
-  onCopy: PropTypes.func,
+  onMount: PropTypes.func,
   calendarComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 };
 ReactRRuleGenerator.defaultProps = {
   config: {},
   onChange() {},
-  onCopy() {},
+  onMount() {},
   calendarComponent: undefined,
 };
 

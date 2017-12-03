@@ -88,7 +88,6 @@ const configureState = (config = {}, calendarComponent) => {
 
   return {
     data,
-    isCopied: false,
     rrule: computeRRule(data),
   };
 };
