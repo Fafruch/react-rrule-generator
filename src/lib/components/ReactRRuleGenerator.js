@@ -12,7 +12,7 @@ class ReactRRuleGenerator extends Component {
   state = configureInitialState(this.props.config, this.props.calendarComponent);
 
   componentDidMount() {
-    this.props.onMount(this.state.rrule);
+    this.props.onChange(this.state.rrule);
   }
 
   handleChange = ({ target }) => {
@@ -63,13 +63,11 @@ ReactRRuleGenerator.propTypes = {
     weekStartsOnSunday: PropTypes.bool,
   }),
   onChange: PropTypes.func,
-  onMount: PropTypes.func,
   calendarComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 };
 ReactRRuleGenerator.defaultProps = {
   config: {},
   onChange() {},
-  onMount() {},
   calendarComponent: undefined,
 };
 

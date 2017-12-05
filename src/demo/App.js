@@ -55,8 +55,7 @@ class App extends Component {
           <h5><strong>{'<RRuleGenerator />'}</strong></h5>
 
           <ReactRRuleGenerator
-            onMount={defaultRRule => this.setState({ rrule: defaultRRule })}
-            onChange={newRRule => this.handleChange(newRRule)}
+            onChange={this.handleChange}
           />
         </div>
 
