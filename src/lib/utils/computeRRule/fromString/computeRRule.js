@@ -28,7 +28,12 @@ const computeRRule = (data, rrule) => {
     return data;
   }
 
-  const rruleObj = RRuleObjectFromString(rrule).origOptions;
+  let rruleObj;
+  try {
+    rruleObj = RRuleObjectFromString(rrule).origOptions;
+  } catch (e) {
+    return { ...data, error: { value: rrule, message: e } };
+  }
 
   return {
     ...data,
@@ -90,6 +95,7 @@ const computeRRule = (data, rrule) => {
       ...data.options,
       weekStartsOnSunday: computeWeekStartDay(data, rruleObj),
     },
+    error: null,
   };
 };
 

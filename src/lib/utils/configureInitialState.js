@@ -84,6 +84,7 @@ const configureState = (config = {}, calendarComponent) => {
       hideEnd: config.hideEnd,
       weekStartsOnSunday: config.weekStartsOnSunday,
     },
+    error: null,
   };
 
   return {

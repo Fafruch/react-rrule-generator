@@ -35,31 +35,50 @@ class ReactRRuleGenerator extends Component {
   };
 
   render() {
-    const { data: { repeat, end, options } } = this.state;
+    const {
+      data: {
+        repeat,
+        end,
+        options,
+        error,
+      },
+    } = this.state;
 
     return (
-      <div className="px-0 pt-3 border border-light rounded">
+      <div>
 
-        <div>
-          <Repeat
-            repeat={repeat}
-            handleChange={this.handleChange}
-          />
+        {
+          error && (
+            <div className="alert alert-danger">
+              You provided an invalid RRule value to component. {`'${error.value}'`} is not a correct RRule string.
+            </div>
+          )
+        }
+
+        <div className="px-0 pt-3 border border-light rounded">
+
+          <div>
+            <Repeat
+              repeat={repeat}
+              handleChange={this.handleChange}
+            />
+          </div>
+
+          <hr />
+
+          {!options.hideEnd && (
+            <End
+              end={end}
+              handleChange={this.handleChange}
+            />
+          )}
+
         </div>
-
-        <hr />
-
-        {!options.hideEnd && (
-          <End
-            end={end}
-            handleChange={this.handleChange}
-          />
-        )}
-
       </div>
     );
   }
 }
+
 ReactRRuleGenerator.propTypes = {
   config: PropTypes.shape({
     frequency: PropTypes.arrayOf(PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly'])),
