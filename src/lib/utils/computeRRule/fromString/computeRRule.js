@@ -24,8 +24,11 @@ import computeEndAfter from './computeEndAfter';
 import computeEndOnDate from './computeEndOnDate';
 
 const computeRRule = (data, rrule) => {
-  const rruleObject = RRuleObjectFromString(rrule);
-  const rruleObj = rruleObject.origOptions;
+  if (!rrule) {
+    return data;
+  }
+
+  const rruleObj = RRuleObjectFromString(rrule).origOptions;
 
   return {
     ...data,

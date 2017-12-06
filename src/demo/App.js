@@ -8,7 +8,7 @@ import githubLogo from './github_logo.png';
 
 class App extends Component {
   state = {
-    rrule: 'FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE,TH,FR',
+    rrule: '',
     isCopied: false,
   };
 

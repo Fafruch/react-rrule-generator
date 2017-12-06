@@ -23,7 +23,6 @@ const RepeatYearlyOn = ({
             type="radio"
             name="repeat.yearly.mode"
             aria-label="Repeat yearly on"
-            className="form-control"
             value="on"
             checked={isActive}
             onChange={handleChange}
