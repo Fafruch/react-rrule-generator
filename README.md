@@ -8,7 +8,7 @@
 
 ## Description
 
-This is [ReactJS](http://facebook.github.io/react/index.html) project based on [Create React Library](https://github.com/UdiliaInc/create-react-library) and using [Bootstrap](https://github.com/twbs/bootstrap) styling. It's built with help of the great [rrule.js](https://github.com/jakubroztocil/rrule) library.
+This is [ReactJS](http://facebook.github.io/react/index.html) project based on [Create React Library](https://github.com/UdiliaInc/create-react-library) and using [Bootstrap](https://github.com/twbs/bootstrap) styling. It's built with the help of a great [rrule.js](https://github.com/jakubroztocil/rrule) library.
 
 It also uses:
 * [lodash](https://github.com/lodash/lodash)
