@@ -4,28 +4,35 @@ import { cloneDeep, set } from 'lodash';
 
 import Repeat from './Repeat/index';
 import End from './End/index';
-import computeRRule from '../utils/computeRRule/computeRRule';
+import computeRRuleToString from '../utils/computeRRule/toString/computeRRule';
+import computeRRuleFromString from '../utils/computeRRule/fromString/computeRRule';
 import configureInitialState from '../utils/configureInitialState';
 import '../styles/index.css';
 
 class ReactRRuleGenerator extends Component {
   state = configureInitialState(this.props.config, this.props.calendarComponent);
 
-  componentDidMount() {
-    this.props.onChange(this.state.rrule);
+  componentWillMount() {
+    const data = computeRRuleFromString(this.state.data, this.props.value);
+    this.setState({ data, rrule: this.props.value });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const data = computeRRuleFromString(this.state.data, nextProps.value);
+    this.setState({ data, rrule: nextProps.value });
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.value !== this.state.rrule;
   }
 
   handleChange = ({ target }) => {
-    this.setState((currentState) => {
-      const newData = cloneDeep(currentState.data);
-      set(newData, target.name, target.value);
-      const rrule = computeRRule(newData);
+    const newData = cloneDeep(this.state.data);
+    set(newData, target.name, target.value);
+    const rrule = computeRRuleToString(newData);
 
-      this.props.onChange(rrule);
-
-      return { data: newData, rrule };
-    });
-  }
+    this.props.onChange(rrule);
+  };
 
   render() {
     const { data: { repeat, end, options } } = this.state;
@@ -62,10 +69,12 @@ ReactRRuleGenerator.propTypes = {
     end: PropTypes.arrayOf(PropTypes.oneOf(['Never', 'After', 'On date'])),
     weekStartsOnSunday: PropTypes.bool,
   }),
+  value: PropTypes.string,
   onChange: PropTypes.func,
   calendarComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 };
 ReactRRuleGenerator.defaultProps = {
+  value: '',
   config: {},
   onChange() {},
   calendarComponent: undefined,

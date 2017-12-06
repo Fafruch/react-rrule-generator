@@ -1,4 +1,4 @@
-import { MONTHS } from '../../constants/index';
+import { MONTHS } from '../../../constants/index';
 
 const computeYearlyOnThe = (onThe) => {
   const repeat = {};

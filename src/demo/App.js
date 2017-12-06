@@ -8,17 +8,17 @@ import githubLogo from './github_logo.png';
 
 class App extends Component {
   state = {
-    rrule: '',
+    rrule: 'FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE,TH,FR',
     isCopied: false,
   };
 
   handleChange = (newRRule) => {
     this.setState({ rrule: newRRule, isCopied: false });
-  }
+  };
 
   handleCopy = () => {
     this.setState({ isCopied: true });
-  }
+  };
 
   render() {
     const { rrule, isCopied } = this.state;
@@ -56,6 +56,10 @@ class App extends Component {
 
           <ReactRRuleGenerator
             onChange={this.handleChange}
+            value={this.state.rrule}
+            config={{
+              weekStartsOnSunday: true,
+            }}
           />
         </div>
 

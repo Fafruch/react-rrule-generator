@@ -1,5 +1,5 @@
 import moment from 'moment';
-import computeRRule from './computeRRule/computeRRule';
+import computeRRuleToString from './computeRRule/toString/computeRRule';
 
 import { DATE_TIME_FORMAT } from '../constants/index';
 
@@ -88,7 +88,7 @@ const configureState = (config = {}, calendarComponent) => {
 
   return {
     data,
-    rrule: computeRRule(data),
+    rrule: computeRRuleToString(data),
   };
 };
 
