@@ -8,7 +8,7 @@
 
 ## Description
 
-This is [ReactJS](http://facebook.github.io/react/index.html) project based on [Create React Library](https://github.com/UdiliaInc/create-react-library). It's built with great [rrule.js](https://github.com/jakubroztocil/rrule) library.
+This is [ReactJS](http://facebook.github.io/react/index.html) project based on [Create React Library](https://github.com/UdiliaInc/create-react-library) and using [Bootstrap](https://github.com/twbs/bootstrap) styling. It's built with help of the great [rrule.js](https://github.com/jakubroztocil/rrule) library.
 
 It also uses:
 * [lodash](https://github.com/lodash/lodash)
@@ -70,7 +70,7 @@ const customizedRender = () => (
 <br />
 
 ### config
-`config` is a regular Javascript object which accepts following:
+`config` is an object which accepts following:
 
 | Name         | Type    | Description |
 | ------------ | ------- | ----------- |
@@ -78,7 +78,7 @@ const customizedRender = () => (
 | **yearly** | `string` | If `'on'` provided, only choosing a particular day of a month is available, if `'on the'` is provided, you have ability to choose for example 'fourth Wednesday of February' |
 | **monthly** | `string` | If `'on'` provided, only choosing a particular day of a month is available, if `'on the'` is provided, you have ability to choose for example 'fourth Wednesday' |
 | **hideEnd** | `boolean` | If `true` provided, you have no ending RRule view |
-| **hideEnd** | `array` of `string` | You can optionally choose if you want to show ending options `'Never'`, `'After'`, `'On date'`. You can pass for example `['Never', 'On date']` if you want to show only options for ending never or on a particular date without showint 'After' option. |
+| **end** | `array` of `string` | You can optionally choose if you want to show ending options `'Never'`, `'After'`, `'On date'`. You can pass for example `['Never', 'On date']` if you want to show only options for ending never or on a particular date without showint 'After' option. |
 | **weekStartsOnSunday** | `boolean` | If set to `true`, weeks starts on Sunday (both for views and RRule string). |
 
 ## License 
