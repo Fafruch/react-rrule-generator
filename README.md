@@ -14,7 +14,6 @@ It also uses:
 * [lodash](https://github.com/lodash/lodash)
 * [moment](https://github.com/moment/moment)
 * [react-datetime](https://github.com/YouCanBookMe/react-datetime)
-* [react-copy-to-clipboard](https://github.com/nkbt/react-copy-to-clipboard)
 
 ## Demo
 https://fafruch.github.io/react-rrule-generator
