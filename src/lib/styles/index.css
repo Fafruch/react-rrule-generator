@@ -36,3 +36,7 @@ body {
 .rrule-copied:focus {
   color: #888;
 }
+
+.rdt .form-control {
+  background-color: white;
+}
