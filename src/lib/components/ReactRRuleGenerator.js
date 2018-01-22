@@ -10,16 +10,22 @@ import configureInitialState from '../utils/configureInitialState';
 import '../styles/index.css';
 
 class ReactRRuleGenerator extends Component {
+  // compute default view based on user's config
   state = configureInitialState(this.props.config, this.props.calendarComponent);
 
   componentWillMount() {
-    const data = computeRRuleFromString(this.state.data, this.props.value);
-    this.setState({ data, rrule: this.props.value });
+    if (this.props.value) {
+      // if value is provided to RRuleGenerator, it's used to compute state of component's forms
+      const data = computeRRuleFromString(this.state.data, this.props.value);
+      this.setState({ data, rrule: this.props.value });
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    const data = computeRRuleFromString(this.state.data, nextProps.value);
-    this.setState({ data, rrule: nextProps.value });
+    if (nextProps.value) {
+      const data = computeRRuleFromString(this.state.data, nextProps.value);
+      this.setState({ data, rrule: nextProps.value });
+    }
   }
 
   shouldComponentUpdate(nextProps) {
@@ -31,6 +37,7 @@ class ReactRRuleGenerator extends Component {
     set(newData, target.name, target.value);
     const rrule = computeRRuleToString(newData);
 
+    this.setState({ data: newData, rrule });
     this.props.onChange(rrule);
   };
 

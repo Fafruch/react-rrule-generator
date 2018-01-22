@@ -47,7 +47,7 @@ class App extends Component {
         </div>
 
         <div className="app-desc">
-          Recurence rules generator form built with React
+          Recurrence rules generator form built with React
         </div>
 
 
