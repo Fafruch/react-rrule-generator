@@ -23,6 +23,16 @@ https://fafruch.github.io/react-rrule-generator
 `npm install --save react-rrule-generator`
 
 ## Usage 
+
+In your CSS index file don't forget to import styles:
+```css
+@import '~bootstrap/dist/css/bootstrap.css';       // this lib uses boostrap (v. 4.0.0-beta.2)
+@import '~react-rrule-generator/build/styles.css'; // react-rrule-generator's custom CSS
+```
+
+Then you're good to go.   
+Just use it:
+
 ```js
 import RRuleGenerator from 'react-rrule-generator';
 
