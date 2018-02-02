@@ -8,7 +8,7 @@ import githubLogo from './github_logo.png';
 
 class App extends Component {
   state = {
-    rrule: '',
+    rrule: 'FREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1',
     isCopied: false,
   };
 
@@ -57,14 +57,13 @@ class App extends Component {
           <ReactRRuleGenerator
             onChange={this.handleChange}
             value={this.state.rrule}
-            config={{
-              weekStartsOnSunday: true,
-            }}
           />
         </div>
 
-        <div className="container mt-5">
-          <h5><strong>Your handling</strong></h5>
+        <hr className="mt-5 mb-5" />
+
+        <div className="container">
+          <h5><strong>Example handling</strong></h5>
 
           <div className="px-3 pt-3 border border-light rounded">
             <div className="form-group row d-flex align-items-sm-center">
