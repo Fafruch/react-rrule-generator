@@ -8,13 +8,12 @@
 
 ## Description
 
-This is [ReactJS](http://facebook.github.io/react/index.html) project based on [Create React Library](https://github.com/UdiliaInc/create-react-library). It's built with great [rrule.js](https://github.com/jakubroztocil/rrule) library.
+This is [ReactJS](http://facebook.github.io/react/index.html) project based on [Create React Library](https://github.com/UdiliaInc/create-react-library) and using [Bootstrap](https://github.com/twbs/bootstrap) styling. It's built with the help of a great [rrule.js](https://github.com/jakubroztocil/rrule) library.
 
 It also uses:
 * [lodash](https://github.com/lodash/lodash)
 * [moment](https://github.com/moment/moment)
 * [react-datetime](https://github.com/YouCanBookMe/react-datetime)
-* [react-copy-to-clipboard](https://github.com/nkbt/react-copy-to-clipboard)
 
 ## Demo
 https://fafruch.github.io/react-rrule-generator
@@ -24,6 +23,16 @@ https://fafruch.github.io/react-rrule-generator
 `npm install --save react-rrule-generator`
 
 ## Usage 
+
+In your CSS index file don't forget to import styles:
+```css
+@import '~bootstrap/dist/css/bootstrap.css';       // this lib uses boostrap (v. 4.0.0-beta.2)
+@import '~react-rrule-generator/build/styles.css'; // react-rrule-generator's custom CSS
+```
+
+Then you're good to go.   
+Just use it:
+
 ```js
 import RRuleGenerator from 'react-rrule-generator';
 
@@ -70,7 +79,7 @@ const customizedRender = () => (
 <br />
 
 ### config
-`config` is a regular Javascript object which accepts following:
+`config` is an object which accepts following:
 
 | Name         | Type    | Description |
 | ------------ | ------- | ----------- |
@@ -78,7 +87,7 @@ const customizedRender = () => (
 | **yearly** | `string` | If `'on'` provided, only choosing a particular day of a month is available, if `'on the'` is provided, you have ability to choose for example 'fourth Wednesday of February' |
 | **monthly** | `string` | If `'on'` provided, only choosing a particular day of a month is available, if `'on the'` is provided, you have ability to choose for example 'fourth Wednesday' |
 | **hideEnd** | `boolean` | If `true` provided, you have no ending RRule view |
-| **hideEnd** | `array` of `string` | You can optionally choose if you want to show ending options `'Never'`, `'After'`, `'On date'`. You can pass for example `['Never', 'On date']` if you want to show only options for ending never or on a particular date without showint 'After' option. |
+| **end** | `array` of `string` | You can optionally choose if you want to show ending options `'Never'`, `'After'`, `'On date'`. You can pass for example `['Never', 'On date']` if you want to show only options for ending never or on a particular date without showint 'After' option. |
 | **weekStartsOnSunday** | `boolean` | If set to `true`, weeks starts on Sunday (both for views and RRule string). |
 
 ## License 
