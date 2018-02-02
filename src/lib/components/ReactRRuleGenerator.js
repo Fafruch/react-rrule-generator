@@ -14,6 +14,12 @@ class ReactRRuleGenerator extends Component {
   state = configureInitialState(this.props.config, this.props.calendarComponent);
 
   componentWillMount() {
+    if (this.props.onChange === ReactRRuleGenerator.defaultProps.onChange) {
+      // no onChange() was provided
+      throw new Error('No onChange() function has been passed to RRuleGenerator. \n' +
+        'Please provide one, it\'s needed to handle generated value.');
+    }
+
     if (this.props.value) {
       // if value is provided to RRuleGenerator, it's used to compute state of component's forms
       const data = computeRRuleFromString(this.state.data, this.props.value);
@@ -55,7 +61,7 @@ class ReactRRuleGenerator extends Component {
       <div>
 
         {
-          error && (
+          !options.hideError && error && (
             <div className="alert alert-danger">
               You provided an invalid RRule value to component. {`'${error.value}'`} is not a correct RRule string.
             </div>
@@ -73,12 +79,14 @@ class ReactRRuleGenerator extends Component {
 
           <hr />
 
-          {!options.hideEnd && (
-            <End
-              end={end}
-              handleChange={this.handleChange}
-            />
-          )}
+          {
+            !options.hideEnd && (
+              <End
+                end={end}
+                handleChange={this.handleChange}
+              />
+            )
+          }
 
         </div>
       </div>
@@ -91,8 +99,9 @@ ReactRRuleGenerator.propTypes = {
     frequency: PropTypes.arrayOf(PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly'])),
     yearly: PropTypes.oneOf(['on', 'on the']),
     monthly: PropTypes.oneOf(['on', 'on the']),
-    hideEnd: PropTypes.bool,
     end: PropTypes.arrayOf(PropTypes.oneOf(['Never', 'After', 'On date'])),
+    hideEnd: PropTypes.bool,
+    hideError: PropTypes.bool,
     weekStartsOnSunday: PropTypes.bool,
   }),
   value: PropTypes.string,
@@ -103,7 +112,7 @@ ReactRRuleGenerator.defaultProps = {
   value: '',
   config: {},
   onChange() {},
-  calendarComponent: undefined,
+  calendarComponent: null,
 };
 
 export default ReactRRuleGenerator;
