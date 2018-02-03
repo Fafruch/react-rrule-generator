@@ -62,7 +62,7 @@ class App extends Component {
 
         <hr className="mt-5 mb-5" />
 
-        <div className="container">
+        <div className="container mb-4">
           <h5><strong>Example handling</strong></h5>
 
           <div className="px-3 pt-3 border border-light rounded">
