@@ -1,5 +1,5 @@
 const computeEndMode = (data, rruleObj) => {
-  if (rruleObj.count) {
+  if (rruleObj.count || rruleObj.count === 0) {
     return 'After';
   }
 
