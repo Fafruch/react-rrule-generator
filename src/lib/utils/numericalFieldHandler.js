@@ -6,7 +6,7 @@ const numericalFieldHandler = callback => (event) => {
   // Check if is a number and is less than 1000
   if (isNaN(inputNumber) || inputNumber >= 1000) return;
 
-  const editedEvent = { target: { value: +event.target.value, name: event.target.name } };
+  const editedEvent = { target: { value: inputNumber, name: event.target.name } };
   callback(editedEvent);
 };
 

@@ -19,7 +19,6 @@ const RepeatMonthlyOnThe = ({
             type="radio"
             name="repeat.monthly.mode"
             aria-label="Repeat monthly on the"
-            className="form-control"
             value="on the"
             checked={isActive}
             onChange={handleChange}

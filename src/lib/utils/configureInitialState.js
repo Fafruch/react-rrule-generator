@@ -1,5 +1,5 @@
 import moment from 'moment';
-import computeRRule from './computeRRule/computeRRule';
+import computeRRuleToString from './computeRRule/toString/computeRRule';
 
 import { DATE_TIME_FORMAT } from '../constants/index';
 
@@ -82,14 +82,15 @@ const configureState = (config = {}, calendarComponent) => {
     },
     options: {
       hideEnd: config.hideEnd,
+      hideError: config.hideError,
       weekStartsOnSunday: config.weekStartsOnSunday,
     },
+    error: null,
   };
 
   return {
     data,
-    isCopied: false,
-    rrule: computeRRule(data),
+    rrule: computeRRuleToString(data),
   };
 };
 

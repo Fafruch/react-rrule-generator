@@ -23,6 +23,7 @@ const EndOnDate = ({
     value: date,
     dateFormat: DATE_TIME_FORMAT,
     locale,
+    readOnly: true,
   };
 
   return (
@@ -44,7 +45,7 @@ const EndOnDate = ({
           />
           : <DateTime
             {...calendarAttributes}
-            inputProps={{ name: 'end.onDate.date' }}
+            inputProps={{ name: 'end.onDate.date', readOnly: true }}
             timeFormat={false}
             viewMode="days"
             closeOnSelect
