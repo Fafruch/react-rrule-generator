@@ -1,5 +1,5 @@
 # React RRule Generator
-> Recurence rules generator form built with React
+> Recurrence rules generator form built with React
 
 [![LICENSE](https://img.shields.io/npm/l/express.svg)](LICENSE)
 [![npm](https://img.shields.io/npm/dm/localeval.svg)](https://npm-stat.com/charts.html?package=react-rrule-generator)
