@@ -38,7 +38,7 @@ class App extends Component {
             src="https://ghbtns.com/github-btn.html?user=fafruch&repo=react-rrule-generator&type=star&count=true&size=medium"
             frameBorder="0"
             scrolling="0"
-            width="72px"
+            width="78px"
             height="20px"
           />
         </div>
