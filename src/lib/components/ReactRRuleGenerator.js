@@ -68,7 +68,7 @@ class ReactRRuleGenerator extends Component {
           )
         }
 
-        <div className="px-0 pt-3 border border-light rounded">
+        <div className="px-0 pt-3 border rounded">
 
           <div>
             <Repeat
