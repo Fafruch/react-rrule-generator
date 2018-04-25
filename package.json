@@ -1,6 +1,6 @@
 {
   "name": "react-rrule-generator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Filip Duczyminski <fduczyminski@gmail.com>",
   "repository": {
     "type": "git",
@@ -74,7 +74,6 @@
     "react-dev-utils": "^3.1.0",
     "react-dom": "^15.6.1",
     "react-error-overlay": "^1.0.10",
-    "react-rrule-generator": "1.0.0",
     "rrule": "^2.2.0",
     "sass-loader": "^6.0.6",
     "style-loader": "0.18.2",
