@@ -52,3 +52,29 @@
 .app {
   margin-top: 3rem;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.rrule {
+  background-color: #ffecef;
+  font-size: 80%;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+}
+
+.rrule-not-copied {
+  color: #222;
+}
+
+.rrule-not-copied:focus {
+  color: #222;
+}
+
+.rrule-copied {
+  color: #888;
+}
+
+.rrule-copied:focus {
+  color: #888;
+}

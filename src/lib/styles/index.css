@@ -1,41 +1,9 @@
 @import 'react-datetime.css';
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
-
-::-webkit-scrollbar {
-  display: none;
+.rdt .form-control {
+  background-color: white;
 }
 
 .opacity-50 {
   opacity: 0.5;
-}
-
-.rrule {
-  background-color: #ffecef;
-  font-size: 80%;
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-}
-
-.rrule-not-copied {
-  color: #222;
-}
-
-.rrule-not-copied:focus {
-  color: #222;
-}
-
-.rrule-copied {
-  color: #888;
-}
-
-.rrule-copied:focus {
-  color: #888;
-}
-
-.rdt .form-control {
-  background-color: white;
 }
