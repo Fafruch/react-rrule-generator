@@ -1,6 +1,6 @@
 {
   "name": "react-rrule-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Filip Duczyminski <fduczyminski@gmail.com>",
   "repository": {
     "type": "git",
@@ -27,6 +27,9 @@
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
     "babel-loader": "7.1.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-app": "^3.0.2",
@@ -71,6 +74,7 @@
     "react-dev-utils": "^3.1.0",
     "react-dom": "^15.6.1",
     "react-error-overlay": "^1.0.10",
+    "react-rrule-generator": "1.0.0",
     "rrule": "^2.2.0",
     "sass-loader": "^6.0.6",
     "style-loader": "0.18.2",
