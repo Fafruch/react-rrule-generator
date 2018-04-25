@@ -14,10 +14,7 @@ module.exports = {
   bail: true,
   // Generate source maps
   devtool: shouldUseSourceMap ? 'source-map' : false,
-  entry: [
-    paths.appLibIndexJs,
-    paths.appLibCssPath,
-  ],
+  entry: paths.appLibIndexJs,
   output: {
     path: paths.appBuild,
     filename: 'index.js',
@@ -36,6 +33,7 @@ module.exports = {
         oneOf: [
           {
             test: /\.css$/,
+            include: paths.appLibCss,
             loader: ExtractTextPlugin.extract({
               fallback: 'style-loader',
               use: 'css-loader',
