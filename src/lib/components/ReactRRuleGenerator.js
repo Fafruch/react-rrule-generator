@@ -126,10 +126,7 @@ ReactRRuleGenerator.propTypes = {
 };
 ReactRRuleGenerator.defaultProps = {
   value: '',
-  config: {
-    // maintain backwards compatibility for UI by hiding new component by default
-    hideStart: true,
-  },
+  config: {},
   onChange() {},
   calendarComponent: null,
 };
