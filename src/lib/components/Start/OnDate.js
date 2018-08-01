@@ -9,13 +9,12 @@ import 'moment/locale/en-ca';
 import { DATE_TIME_FORMAT } from '../../constants/index';
 
 const StartOnDate = ({
-                       onDate: {
-                         date,
-                         options,
-                       },
-                       handleChange,
-                     }) => {
-
+  onDate: {
+    date,
+    options,
+  },
+  handleChange,
+}) => {
   const CustomCalendar = options.calendarComponent;
   const locale = options.weekStartsOnSunday ? 'en-ca' : 'en-gb';
   const calendarAttributes = {
@@ -31,8 +30,8 @@ const StartOnDate = ({
       {
         CustomCalendar
           ? <CustomCalendar
-            { ...calendarAttributes }
-            onChange={ (event) => {
+            {...calendarAttributes}
+            onChange={(event) => {
               const editedEvent = {
                 target: {
                   value: event.target.value,
@@ -41,17 +40,17 @@ const StartOnDate = ({
               };
 
               handleChange(editedEvent);
-            } }
+            }}
           />
           : <DateTime
-            { ...calendarAttributes }
-            inputProps={ { name: 'start.onDate.date', readOnly: true } }
-            timeFormat={ false }
+            {...calendarAttributes}
+            inputProps={{ name: 'start.onDate.date', readOnly: true }}
+            timeFormat={false}
             viewMode="days"
             closeOnSelect
             closeOnTab
             required
-            onChange={ (inputDate) => {
+            onChange={(inputDate) => {
               const editedEvent = {
                 target: {
                   value: moment(inputDate).format(DATE_TIME_FORMAT),
@@ -60,7 +59,7 @@ const StartOnDate = ({
               };
 
               handleChange(editedEvent);
-            } }
+            }}
           />
       }
     </div>

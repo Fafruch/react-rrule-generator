@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { cloneDeep, set } from 'lodash';
 
+import Start from './Start/index';
 import Repeat from './Repeat/index';
 import End from './End/index';
-import Start from './Start/index';
 import computeRRuleToString from '../utils/computeRRule/toString/computeRRule';
 import computeRRuleFromString from '../utils/computeRRule/fromString/computeRRule';
 import configureInitialState from '../utils/configureInitialState';
@@ -65,7 +65,7 @@ class ReactRRuleGenerator extends Component {
         {
           !options.hideError && error && (
             <div className="alert alert-danger">
-              You provided an invalid RRule value to component. { `'${error.value}'` } is not a correct RRule string.
+              You provided an invalid RRule value to component. {`'${error.value}'`} is not a correct RRule string.
             </div>
           )
         }
@@ -76,28 +76,28 @@ class ReactRRuleGenerator extends Component {
             !options.hideStart && (
               <div>
                 <Start
-                  start={ start }
-                  handleChange={ this.handleChange }
+                  start={start}
+                  handleChange={this.handleChange}
                 />
-                <hr/>
+                <hr />
               </div>
             )
           }
 
           <div>
             <Repeat
-              repeat={ repeat }
-              handleChange={ this.handleChange }
+              repeat={repeat}
+              handleChange={this.handleChange}
             />
           </div>
 
           {
             !options.hideEnd && (
               <div>
-                <hr/>
+                <hr />
                 <End
-                  end={ end }
-                  handleChange={ this.handleChange }
+                  end={end}
+                  handleChange={this.handleChange}
                 />
               </div>
             )
@@ -128,7 +128,7 @@ ReactRRuleGenerator.defaultProps = {
   value: '',
   config: {
     // maintain backwards compatibility for UI by hiding new component by default
-    hideStart: true
+    hideStart: true,
   },
   onChange() {},
   calendarComponent: null,

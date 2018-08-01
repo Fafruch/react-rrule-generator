@@ -2,6 +2,7 @@ import { rrulestr as RRuleObjectFromString } from 'rrule';
 import moment from 'moment';
 
 import { DATE_TIME_FORMAT } from '../../../constants/index';
+import computeStartOnDate from './computeStartOnDate';
 import computeFrequency from './computeFrequency';
 import computeYearlyMode from './computeYearlyMode';
 import computeYearlyOnMonth from './computeYearlyOnMonth';
@@ -21,7 +22,6 @@ import computeDailyInterval from './computeDailyInterval';
 import computeHourlyInterval from './computeHourlyInterval';
 import computeEndMode from './computeEndMode';
 import computeEndAfter from './computeEndAfter';
-import computeStartOnDate from './computeStartOnDate';
 import computeEndOnDate from './computeEndOnDate';
 
 const computeRRule = (data, rrule) => {
