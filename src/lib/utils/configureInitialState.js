@@ -4,12 +4,21 @@ import computeRRuleToString from './computeRRule/toString/computeRRule';
 import { DATE_TIME_FORMAT } from '../constants/index';
 
 const configureState = (config = {}, calendarComponent) => {
-  const configureFrequency = () => (config.repeat ? config.repeat[0] : 'Yearly');
-  const configureYearly = () => (config.yearly || 'on');
-  const configureMonthly = () => (config.monthly || 'on');
-  const configureEnd = () => (config.end ? config.end[0] : 'Never');
+  const configureFrequency = () => ( config.repeat ? config.repeat[0] : 'Yearly' );
+  const configureYearly = () => ( config.yearly || 'on' );
+  const configureMonthly = () => ( config.monthly || 'on' );
+  const configureEnd = () => ( config.end ? config.end[0] : 'Never' );
 
   const data = {
+    start: {
+      onDate: {
+        date: moment().format(DATE_TIME_FORMAT),
+        options: {
+          weekStartsOnSunday: config.weekStartsOnSunday,
+          calendarComponent,
+        },
+      },
+    },
     repeat: {
       frequency: configureFrequency(),
       yearly: {
@@ -81,6 +90,7 @@ const configureState = (config = {}, calendarComponent) => {
       },
     },
     options: {
+      hideStart: config.hideStart,
       hideEnd: config.hideEnd,
       hideError: config.hideError,
       weekStartsOnSunday: config.weekStartsOnSunday,
