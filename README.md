@@ -102,10 +102,10 @@ class ControlledRender extends Component {
 | **yearly** | `string` | If `'on'` provided, only choosing a particular day of a month is available, if `'on the'` is provided, you have ability to choose for example 'fourth Wednesday of February' |
 | **monthly** | `string` | If `'on'` provided, only choosing a particular day of a month is available, if `'on the'` is provided, you have ability to choose for example 'fourth Wednesday' |
 | **end** | `array` of `string` | You can optionally choose if you want to show ending options `'Never'`, `'After'`, `'On date'`. You can pass for example `['Never', 'On date']` if you want to show only options for ending never or on a particular date without showint 'After' option. |
-| **hideStart** | `boolean` | If `true` start date form is not rendered |
-| **hideEnd** | `boolean` | If `true` ending form is not rendered |
-| **hideError** | `boolean` | If `true` error alert is not rendered |
-| **weekStartsOnSunday** | `boolean` | If set to `true`, weeks starts on Sunday (both for views and RRule string). |
+| **hideStart** | `boolean` | If `true` start date form is not rendered. Default: `true` |
+| **hideEnd** | `boolean` | If `true` ending form is not rendered. Default: `false` |
+| **hideError** | `boolean` | If `true` error alert is not rendered. Default: `false` |
+| **weekStartsOnSunday** | `boolean` | If set to `true`, weeks starts on Sunday (both for views and RRule string). Default: `false` |
 
 ## License 
 MIT
