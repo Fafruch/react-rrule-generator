@@ -21,6 +21,7 @@ import computeDailyInterval from './computeDailyInterval';
 import computeHourlyInterval from './computeHourlyInterval';
 import computeEndMode from './computeEndMode';
 import computeEndAfter from './computeEndAfter';
+import computeStartOnDate from './computeStartOnDate';
 import computeEndOnDate from './computeEndOnDate';
 
 const computeRRule = (data, rrule) => {
@@ -34,6 +35,16 @@ const computeRRule = (data, rrule) => {
 
     newDataObj = {
       ...data,
+      start: {
+        ...data.start,
+        onDate: {
+          date: moment(computeStartOnDate(data, rruleObj)).format(DATE_TIME_FORMAT),
+          options: {
+            ...data.start.onDate.options,
+            weekStartsOnSunday: computeWeekStartDay(data, rruleObj),
+          },
+        },
+      },
       repeat: {
         ...data.repeat,
         frequency: computeFrequency(data, rruleObj),
