@@ -8,8 +8,18 @@ const configureState = (config = {}, calendarComponent) => {
   const configureYearly = () => (config.yearly || 'on');
   const configureMonthly = () => (config.monthly || 'on');
   const configureEnd = () => (config.end ? config.end[0] : 'Never');
+  const configureHideStart = () => (typeof config.hideStart === 'undefined' ? true : config.hideStart);
 
   const data = {
+    start: {
+      onDate: {
+        date: moment().format(DATE_TIME_FORMAT),
+        options: {
+          weekStartsOnSunday: config.weekStartsOnSunday,
+          calendarComponent,
+        },
+      },
+    },
     repeat: {
       frequency: configureFrequency(),
       yearly: {
@@ -81,6 +91,7 @@ const configureState = (config = {}, calendarComponent) => {
       },
     },
     options: {
+      hideStart: configureHideStart(),
       hideEnd: config.hideEnd,
       hideError: config.hideError,
       weekStartsOnSunday: config.weekStartsOnSunday,

@@ -2,6 +2,7 @@ import { rrulestr as RRuleObjectFromString } from 'rrule';
 import moment from 'moment';
 
 import { DATE_TIME_FORMAT } from '../../../constants/index';
+import computeStartOnDate from './computeStartOnDate';
 import computeFrequency from './computeFrequency';
 import computeYearlyMode from './computeYearlyMode';
 import computeYearlyOnMonth from './computeYearlyOnMonth';
@@ -34,6 +35,16 @@ const computeRRule = (data, rrule) => {
 
     newDataObj = {
       ...data,
+      start: {
+        ...data.start,
+        onDate: {
+          date: moment(computeStartOnDate(data, rruleObj)).format(DATE_TIME_FORMAT),
+          options: {
+            ...data.start.onDate.options,
+            weekStartsOnSunday: computeWeekStartDay(data, rruleObj),
+          },
+        },
+      },
       repeat: {
         ...data.repeat,
         frequency: computeFrequency(data, rruleObj),

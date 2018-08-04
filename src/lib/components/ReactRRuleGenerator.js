@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { cloneDeep, set } from 'lodash';
 
+import Start from './Start/index';
 import Repeat from './Repeat/index';
 import End from './End/index';
 import computeRRuleToString from '../utils/computeRRule/toString/computeRRule';
@@ -50,6 +51,7 @@ class ReactRRuleGenerator extends Component {
   render() {
     const {
       data: {
+        start,
         repeat,
         end,
         options,
@@ -70,6 +72,18 @@ class ReactRRuleGenerator extends Component {
 
         <div className="px-0 pt-3 border rounded">
 
+          {
+            !options.hideStart && (
+              <div>
+                <Start
+                  start={start}
+                  handleChange={this.handleChange}
+                />
+                <hr />
+              </div>
+            )
+          }
+
           <div>
             <Repeat
               repeat={repeat}
@@ -77,14 +91,15 @@ class ReactRRuleGenerator extends Component {
             />
           </div>
 
-          <hr />
-
           {
             !options.hideEnd && (
-              <End
-                end={end}
-                handleChange={this.handleChange}
-              />
+              <div>
+                <hr />
+                <End
+                  end={end}
+                  handleChange={this.handleChange}
+                />
+              </div>
             )
           }
 
@@ -100,6 +115,7 @@ ReactRRuleGenerator.propTypes = {
     yearly: PropTypes.oneOf(['on', 'on the']),
     monthly: PropTypes.oneOf(['on', 'on the']),
     end: PropTypes.arrayOf(PropTypes.oneOf(['Never', 'After', 'On date'])),
+    hideStart: PropTypes.bool,
     hideEnd: PropTypes.bool,
     hideError: PropTypes.bool,
     weekStartsOnSunday: PropTypes.bool,
