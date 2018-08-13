@@ -8,12 +8,7 @@ const computeEnd = ({ mode, after, onDate: { date } }) => {
   }
 
   if (mode === 'On date') {
-    end.until = moment( date ).
-      hours( 12 ).
-      minutes( 0 ).
-      seconds( 0 ).
-      milliseconds( 0 ).
-      format();
+    end.until = moment(date).format();
   }
 
   return end;
