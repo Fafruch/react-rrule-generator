@@ -5,16 +5,11 @@ const computeStart = ({ onDate: { date } }) => {
   // by seeing if it can be converted into a moment object.
   // if not, then create a new date
   if (!moment.isMoment(moment(date))) {
-    date = new Date();
+    date = new Date().setMilliseconds(0);
   }
 
   return {
-    dtstart: moment( date ).
-      hours( 12 ).
-      minutes( 0 ).
-      seconds( 0 ).
-      milliseconds( 0 ).
-      toDate()
+    dtstart: moment(date).toDate(),
   };
 };
 
