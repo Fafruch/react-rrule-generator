@@ -12,7 +12,11 @@ import '../styles/index.css';
 
 class ReactRRuleGenerator extends Component {
   // compute default view based on user's config
-  state = configureInitialState(this.props.config, this.props.calendarComponent);
+  state = configureInitialState(
+    this.props.config,
+    this.props.calendarComponent,
+    this.props.id
+  );
 
   componentWillMount() {
     if (this.props.onChange === ReactRRuleGenerator.defaultProps.onChange) {
@@ -50,6 +54,7 @@ class ReactRRuleGenerator extends Component {
 
   render() {
     const {
+      id,
       data: {
         start,
         repeat,
@@ -76,6 +81,7 @@ class ReactRRuleGenerator extends Component {
             !options.hideStart && (
               <div>
                 <Start
+                  id={`${id}-start`}
                   start={start}
                   handleChange={this.handleChange}
                 />
@@ -86,6 +92,7 @@ class ReactRRuleGenerator extends Component {
 
           <div>
             <Repeat
+              id={`${id}-repeat`}
               repeat={repeat}
               handleChange={this.handleChange}
             />
@@ -96,6 +103,7 @@ class ReactRRuleGenerator extends Component {
               <div>
                 <hr />
                 <End
+                  id={`${ id }-end`}
                   end={end}
                   handleChange={this.handleChange}
                 />
@@ -110,6 +118,7 @@ class ReactRRuleGenerator extends Component {
 }
 
 ReactRRuleGenerator.propTypes = {
+  id: PropTypes.string.isRequired,
   config: PropTypes.shape({
     frequency: PropTypes.arrayOf(PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly'])),
     yearly: PropTypes.oneOf(['on', 'on the']),
