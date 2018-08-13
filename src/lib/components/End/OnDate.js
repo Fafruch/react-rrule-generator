@@ -9,6 +9,7 @@ import 'moment/locale/en-ca';
 import { DATE_TIME_FORMAT } from '../../constants/index';
 
 const EndOnDate = ({
+  id,
   onDate: {
     date,
     options,
@@ -31,6 +32,7 @@ const EndOnDate = ({
       {
         CustomCalendar
           ? <CustomCalendar
+            key={`${id}-calendar`}
             {...calendarAttributes}
             onChange={(event) => {
               const editedEvent = {
@@ -45,7 +47,13 @@ const EndOnDate = ({
           />
           : <DateTime
             {...calendarAttributes}
-            inputProps={{ name: 'end.onDate.date', readOnly: true }}
+            inputProps={
+              {
+                id: `${id}-datetime`,
+                name: 'end.onDate.date',
+                readOnly: true
+              }
+            }
             timeFormat={false}
             viewMode="days"
             closeOnSelect
@@ -68,6 +76,7 @@ const EndOnDate = ({
 };
 
 EndOnDate.propTypes = {
+  id: PropTypes.string.isRequired,
   onDate: PropTypes.shape({
     date: PropTypes.string.isRequired,
     options: PropTypes.shape({
