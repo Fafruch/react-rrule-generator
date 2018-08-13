@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { MONTHS, DAYS } from '../../../constants/index';
 
 const RepeatYearlyOnThe = ({
+  id,
   mode,
   onThe,
   hasMoreModes,
@@ -16,6 +17,7 @@ const RepeatYearlyOnThe = ({
       <div className="col-sm-1 offset-sm-2">
         {hasMoreModes && (
           <input
+            id={id}
             type="radio"
             aria-label="Repeat yearly on the"
             name="repeat.yearly.mode"
@@ -31,6 +33,7 @@ const RepeatYearlyOnThe = ({
 
       <div className="col-sm-2">
         <select
+          id={`${ id }-which`}
           name="repeat.yearly.onThe.which"
           aria-label="Repeat yearly on the which"
           className="form-control"
@@ -48,6 +51,7 @@ const RepeatYearlyOnThe = ({
 
       <div className="col-sm-3">
         <select
+          id={`${ id }-day`}
           name="repeat.yearly.onThe.day"
           aria-label="Repeat yearly on the day"
           className="form-control"
@@ -65,6 +69,7 @@ const RepeatYearlyOnThe = ({
 
       <div className="col-sm-2">
         <select
+          id={`${ id }-month`}
           name="repeat.yearly.onThe.month"
           aria-label="Repeat yearly on the month"
           className="form-control"
@@ -80,6 +85,7 @@ const RepeatYearlyOnThe = ({
   );
 };
 RepeatYearlyOnThe.propTypes = {
+  id: PropTypes.string.isRequired,
   mode: PropTypes.oneOf(['on', 'on the']).isRequired,
   onThe: PropTypes.shape({
     which: PropTypes.oneOf(['First', 'Second', 'Third', 'Fourth', 'Last']).isRequired,
