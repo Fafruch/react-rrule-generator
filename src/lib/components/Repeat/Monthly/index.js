@@ -5,6 +5,7 @@ import RepeatMonthlyOnThe from './OnThe';
 import numericalFieldHandler from '../../../utils/numericalFieldHandler';
 
 const RepeatMonthly = ({
+  id,
   monthly: {
     mode,
     interval,
@@ -25,6 +26,7 @@ const RepeatMonthly = ({
         </div>
         <div className="col-sm-3">
           <input
+            id={`${id}-interval`}
             name="repeat.monthly.interval"
             aria-label="Repeat monthly interval"
             className="form-control"
@@ -39,6 +41,7 @@ const RepeatMonthly = ({
 
       {isOptionAvailable('on') && (
         <RepeatMonthlyOn
+          id={`${id}-on`}
           mode={mode}
           on={on}
           hasMoreModes={!isTheOnlyOneMode('on')}
@@ -47,6 +50,7 @@ const RepeatMonthly = ({
       )}
       {isOptionAvailable('on the') && (
         <RepeatMonthlyOnThe
+          id={`${id}-onThe`}
           mode={mode}
           onThe={onThe}
           hasMoreModes={!isTheOnlyOneMode('on the')}
@@ -59,6 +63,7 @@ const RepeatMonthly = ({
 };
 
 RepeatMonthly.propTypes = {
+  id: PropTypes.string.isRequired,
   monthly: PropTypes.shape({
     mode: PropTypes.oneOf(['on', 'on the']).isRequired,
     interval: PropTypes.number.isRequired,

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import numericalFieldHandler from '../../../utils/numericalFieldHandler';
 
 const RepeatMonthlyOn = ({
+  id,
   mode,
   on,
   hasMoreModes,
@@ -15,6 +16,7 @@ const RepeatMonthlyOn = ({
       <div className="col-sm-1 offset-sm-2">
         {hasMoreModes && (
           <input
+            id={id}
             type="radio"
             name="repeat.monthly.mode"
             aria-label="Repeat monthly on"
@@ -30,6 +32,7 @@ const RepeatMonthlyOn = ({
 
       <div className="col-sm-2">
         <select
+          id={`${id}-day`}
           name="repeat.monthly.on.day"
           aria-label="Repeat monthly on a day"
           className="form-control"
@@ -44,6 +47,7 @@ const RepeatMonthlyOn = ({
   );
 };
 RepeatMonthlyOn.propTypes = {
+  id: PropTypes.string.isRequired,
   mode: PropTypes.oneOf(['on', 'on the']).isRequired,
   on: PropTypes.shape({
     day: PropTypes.number.isRequired,
