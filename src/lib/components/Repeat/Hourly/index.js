@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import numericalFieldHandler from '../../../utils/numericalFieldHandler';
 
 const RepeatHourly = ({
+  id,
   hourly: {
     interval,
   },
@@ -14,6 +15,7 @@ const RepeatHourly = ({
     </div>
     <div className="col-sm-2">
       <input
+        id={`${id}-interval`}
         name="repeat.hourly.interval"
         aria-label="Repeat hourly interval"
         className="form-control"
@@ -27,6 +29,7 @@ const RepeatHourly = ({
   </div>
 );
 RepeatHourly.propTypes = {
+  id: PropTypes.string.isRequired,
   hourly: PropTypes.shape({
     interval: PropTypes.number.isRequired,
   }).isRequired,
