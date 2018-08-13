@@ -4,6 +4,7 @@ import { toPairs } from 'lodash';
 import numericalFieldHandler from '../../../utils/numericalFieldHandler';
 
 const RepeatWeekly = ({
+  id,
   weekly: {
     interval,
     days,
@@ -24,6 +25,7 @@ const RepeatWeekly = ({
         </div>
         <div className="col-sm-3">
           <input
+            id={`${id}-interval`}
             name="repeat.weekly.interval"
             aria-label="Repeat weekly interval"
             className="form-control"
@@ -40,13 +42,13 @@ const RepeatWeekly = ({
         <div className="btn-group offset-sm-2" data-toggle="buttons">
           {daysArray.map(([dayName, isDayActive]) => (
             <label
-              htmlFor={`Repeat weekly on ${dayName}`}
+              htmlFor={`${id}-${dayName}`}
               key={dayName}
               className={`btn btn-primary ${isDayActive && 'active'}`}
             >
               <input
                 type="checkbox"
-                id={`Repeat weekly on ${dayName}`}
+                id={`${id}-${dayName}`}
                 name={`repeat.weekly.days[${dayName}]`}
                 className="form-control"
                 checked={isDayActive}
@@ -73,6 +75,7 @@ const RepeatWeekly = ({
 };
 
 RepeatWeekly.propTypes = {
+  id: PropTypes.string.isRequired,
   weekly: PropTypes.shape({
     interval: PropTypes.number.isRequired,
     days: PropTypes.shape({
