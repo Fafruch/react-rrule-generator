@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import numericalFieldHandler from '../../../utils/numericalFieldHandler';
 
 const RepeatDaily = ({
+  id,
   daily: {
     interval,
   },
@@ -14,6 +15,7 @@ const RepeatDaily = ({
     </div>
     <div className="col-sm-2">
       <input
+        id={`${id}-interval`}
         name="repeat.daily.interval"
         aria-label="Repeat daily interval"
         className="form-control"
@@ -28,6 +30,7 @@ const RepeatDaily = ({
   </div>
 );
 RepeatDaily.propTypes = {
+  id: PropTypes.string.isRequired,
   daily: PropTypes.shape({
     interval: PropTypes.number.isRequired,
   }).isRequired,
