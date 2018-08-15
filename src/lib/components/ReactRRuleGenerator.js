@@ -15,7 +15,7 @@ class ReactRRuleGenerator extends Component {
   state = configureInitialState(
     this.props.config,
     this.props.calendarComponent,
-    this.props.id
+    this.props.id,
   );
 
   componentWillMount() {
@@ -118,7 +118,7 @@ class ReactRRuleGenerator extends Component {
 }
 
 ReactRRuleGenerator.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   config: PropTypes.shape({
     frequency: PropTypes.arrayOf(PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly'])),
     yearly: PropTypes.oneOf(['on', 'on the']),
@@ -134,6 +134,7 @@ ReactRRuleGenerator.propTypes = {
   calendarComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 };
 ReactRRuleGenerator.defaultProps = {
+  id: 'rrule',
   value: '',
   config: {},
   onChange() {},
