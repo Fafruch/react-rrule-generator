@@ -50,7 +50,7 @@ const StartOnDate = ({
               {
                 id: `${id}-datetime`,
                 name: 'start.onDate.date',
-                readOnly: true
+                readOnly: true,
               }
             }
             timeFormat={false}

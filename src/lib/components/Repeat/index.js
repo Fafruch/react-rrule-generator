@@ -78,7 +78,7 @@ const Repeat = ({
       }
       {
         isOptionSelected('Daily') &&
-          <RepeatDaily
+        <RepeatDaily
           id={`${id}-daily`}
           daily={daily}
           handleChange={handleChange}

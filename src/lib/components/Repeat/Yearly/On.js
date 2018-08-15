@@ -38,7 +38,7 @@ const RepeatYearlyOn = ({
 
       <div className="col-sm-2">
         <select
-          id={`${ id }-month`}
+          id={`${id}-month`}
           name="repeat.yearly.on.month"
           aria-label="Repeat yearly on month"
           className="form-control"
@@ -52,7 +52,7 @@ const RepeatYearlyOn = ({
 
       <div className="col-sm-2">
         <select
-          id={`${ id }-day`}
+          id={`${id}-day`}
           name="repeat.yearly.on.day"
           aria-label="Repeat yearly on a day"
           className="form-control"

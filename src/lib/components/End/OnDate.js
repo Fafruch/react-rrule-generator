@@ -51,7 +51,7 @@ const EndOnDate = ({
               {
                 id: `${id}-datetime`,
                 name: 'end.onDate.date',
-                readOnly: true
+                readOnly: true,
               }
             }
             timeFormat={false}

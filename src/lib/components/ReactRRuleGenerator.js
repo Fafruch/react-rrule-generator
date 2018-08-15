@@ -103,7 +103,7 @@ class ReactRRuleGenerator extends Component {
               <div>
                 <hr />
                 <End
-                  id={`${ id }-end`}
+                  id={`${id}-end`}
                   end={end}
                   handleChange={this.handleChange}
                 />
