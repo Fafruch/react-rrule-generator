@@ -1,6 +1,7 @@
 import moment from 'moment';
-import computeRRuleToString from './computeRRule/toString/computeRRule';
+import { isEmpty, uniqueId } from 'lodash';
 
+import computeRRuleToString from './computeRRule/toString/computeRRule';
 import { DATE_TIME_FORMAT } from '../constants/index';
 
 const configureState = (config = {}, calendarComponent, id) => {
@@ -9,6 +10,7 @@ const configureState = (config = {}, calendarComponent, id) => {
   const configureMonthly = () => (config.monthly || 'on');
   const configureEnd = () => (config.end ? config.end[0] : 'Never');
   const configureHideStart = () => (typeof config.hideStart === 'undefined' ? true : config.hideStart);
+  const uniqueRruleId = isEmpty(id) ? uniqueId('rrule-') : id;
 
   const data = {
     start: {
@@ -100,7 +102,7 @@ const configureState = (config = {}, calendarComponent, id) => {
   };
 
   return {
-    id,
+    id: uniqueRruleId,
     data,
     rrule: computeRRuleToString(data),
   };

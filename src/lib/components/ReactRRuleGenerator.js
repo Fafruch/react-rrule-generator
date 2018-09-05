@@ -134,7 +134,7 @@ ReactRRuleGenerator.propTypes = {
   calendarComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 };
 ReactRRuleGenerator.defaultProps = {
-  id: 'rrule',
+  id: null,
   value: '',
   config: {},
   onChange() {},
