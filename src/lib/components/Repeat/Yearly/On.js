@@ -30,7 +30,7 @@ const RepeatYearlyOn = ({
         )}
       </div>
 
-      <div className="col-sm-1">
+      <div className="col-sm-2">
         on
       </div>
 
