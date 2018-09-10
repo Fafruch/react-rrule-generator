@@ -46,6 +46,7 @@ const Repeat = ({
             {isOptionAvailable('Monthly') && <option value="Monthly">Monthly</option>}
             {isOptionAvailable('Weekly') && <option value="Weekly">Weekly</option>}
             {isOptionAvailable('Daily') && <option value="Daily">Daily</option>}
+            {isOptionAvailable('Daily') && <option value="Daily">Never</option>}
             {isOptionAvailable('Hourly') && <option value="Hourly">Hourly</option>}
           </select>
         </div>
