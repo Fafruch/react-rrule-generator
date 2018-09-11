@@ -11,7 +11,7 @@ const RepeatYearlyOn = ({
   hasMoreModes,
   handleChange,
 }) => {
-  const daysInMonth = moment(on.month, 'MMM').daysInMonth();
+  const daysInMonth = moment(on.month || "Jan", 'MMM').daysInMonth();
   const isActive = mode === 'on';
 
   return (
@@ -30,7 +30,7 @@ const RepeatYearlyOn = ({
         )}
       </div>
 
-      <div className="col-sm-1">
+      <div className="col-sm-2">
         on
       </div>
 

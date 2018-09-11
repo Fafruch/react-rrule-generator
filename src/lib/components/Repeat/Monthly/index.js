@@ -20,7 +20,7 @@ const RepeatMonthly = ({
   return (
     <div>
       <div className="form-group row d-flex align-items-sm-center">
-        <div className="col-sm-1 offset-sm-2">
+        <div className="col-sm-3 offset-sm-2">
           every
         </div>
         <div className="col-sm-3">
@@ -32,7 +32,7 @@ const RepeatMonthly = ({
             onChange={numericalFieldHandler(handleChange)}
           />
         </div>
-        <div className="col-sm-1">
+        <div className="col-sm-3">
           month(s)
         </div>
       </div>

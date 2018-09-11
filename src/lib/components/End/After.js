@@ -6,9 +6,9 @@ const EndAfter = ({
   after,
   handleChange,
 }) => (
-  <div className="col-sm-4">
+  <div className="col-sm-6">
     <div className="form-group m-0 row d-flex align-items-center">
-      <div className="col-3 col-sm-6 pl-0">
+      <div className="col-3 col-sm-4 pl-0">
         <input
           name="end.after"
           aria-label="End after"
@@ -17,7 +17,7 @@ const EndAfter = ({
           onChange={numericalFieldHandler(handleChange)}
         />
       </div>
-      <div className="col-9 col-sm-6">
+      <div className="col-1 col-sm-8">
         executions.
       </div>
     </div>

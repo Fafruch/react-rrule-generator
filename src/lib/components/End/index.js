@@ -28,7 +28,7 @@ const End = ({
             </strong>
           </label>
         </div>
-        <div className="col-sm-3">
+        <div className="col-md-3">
           <select
             name="end.mode"
             id="End"

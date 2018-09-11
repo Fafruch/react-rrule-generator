@@ -75,6 +75,9 @@ const configureState = (config = {}, calendarComponent) => {
       options: {
         frequency: config.repeat,
       },
+      never: {
+        interval: 1,
+      },
     },
     end: {
       mode: configureEnd(),
