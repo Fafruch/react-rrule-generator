@@ -57,10 +57,15 @@ class ReactRRuleGenerator extends Component {
       this.setState({
         isNever: target.value,
       });
+    } else {
+      this.setState({
+        isNever: null,
+      });
     }
-    set(newData, target.name, target.value);
+    const value = target.value === 'Never' ? 'Daily' : target.value;
+    set(newData, target.name, value);
     console.log("new data", newData)
-    console.log("target name", target.name, "target value", target.value)
+    console.log("target name", target.name, "target value", target.label, "target-label", target.key)
     const rrule = computeRRuleToString(newData);
 
     console.log("rrule", rrule);
