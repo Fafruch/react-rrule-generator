@@ -4,6 +4,7 @@ import EndAfter from './After';
 import EndOnDate from './OnDate';
 
 const End = ({
+  id,
   end: {
     mode,
     after,
@@ -20,7 +21,7 @@ const End = ({
       <div className="form-group row">
         <div className="col-sm-2 text-sm-right">
           <label
-            htmlFor="End"
+            htmlFor={id}
             className="col-form-label"
           >
             <strong>
@@ -31,7 +32,7 @@ const End = ({
         <div className="col-sm-3">
           <select
             name="end.mode"
-            id="End"
+            id={id}
             className="form-control"
             value={mode}
             onChange={handleChange}
@@ -42,8 +43,22 @@ const End = ({
           </select>
         </div>
 
-        {isOptionSelected('After') && <EndAfter after={after} handleChange={handleChange} />}
-        {isOptionSelected('On date') && <EndOnDate onDate={onDate} handleChange={handleChange} />}
+        {
+          isOptionSelected('After') &&
+          <EndAfter
+            id={`${id}-after`}
+            after={after}
+            handleChange={handleChange}
+          />
+        }
+        {
+          isOptionSelected('On date') &&
+          <EndOnDate
+            id={`${id}-onDate`}
+            onDate={onDate}
+            handleChange={handleChange}
+          />
+        }
 
       </div>
     </div>
@@ -51,6 +66,7 @@ const End = ({
 };
 
 End.propTypes = {
+  id: PropTypes.string.isRequired,
   end: PropTypes.shape({
     mode: PropTypes.string.isRequired,
     after: PropTypes.number.isRequired,

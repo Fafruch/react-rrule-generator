@@ -4,6 +4,7 @@ import RepeatYearlyOn from './On';
 import RepeatYearlyOnThe from './OnThe';
 
 const RepeatYearly = ({
+  id,
   yearly: {
     mode,
     on,
@@ -18,6 +19,7 @@ const RepeatYearly = ({
     <div>
       {isOptionAvailable('on') && (
         <RepeatYearlyOn
+          id={`${id}-on`}
           mode={mode}
           on={on}
           hasMoreModes={!isTheOnlyOneMode('on')}
@@ -26,6 +28,7 @@ const RepeatYearly = ({
       )}
       {isOptionAvailable('on the') && (
         <RepeatYearlyOnThe
+          id={`${id}-onThe`}
           mode={mode}
           onThe={onThe}
           hasMoreModes={!isTheOnlyOneMode('on the')}
@@ -36,6 +39,7 @@ const RepeatYearly = ({
   );
 };
 RepeatYearly.propTypes = {
+  id: PropTypes.string.isRequired,
   yearly: PropTypes.shape({
     mode: PropTypes.oneOf(['on', 'on the']).isRequired,
     on: PropTypes.object.isRequired,

@@ -6,6 +6,7 @@ import numericalFieldHandler from '../../../utils/numericalFieldHandler';
 import { MONTHS } from '../../../constants/index';
 
 const RepeatYearlyOn = ({
+  id,
   mode,
   on,
   hasMoreModes,
@@ -20,6 +21,7 @@ const RepeatYearlyOn = ({
 
         {hasMoreModes && (
           <input
+            id={id}
             type="radio"
             name="repeat.yearly.mode"
             aria-label="Repeat yearly on"
@@ -36,6 +38,7 @@ const RepeatYearlyOn = ({
 
       <div className="col-sm-2">
         <select
+          id={`${id}-month`}
           name="repeat.yearly.on.month"
           aria-label="Repeat yearly on month"
           className="form-control"
@@ -49,6 +52,7 @@ const RepeatYearlyOn = ({
 
       <div className="col-sm-2">
         <select
+          id={`${id}-day`}
           name="repeat.yearly.on.day"
           aria-label="Repeat yearly on a day"
           className="form-control"
@@ -65,6 +69,7 @@ const RepeatYearlyOn = ({
   );
 };
 RepeatYearlyOn.propTypes = {
+  id: PropTypes.string.isRequired,
   mode: PropTypes.oneOf(['on', 'on the']).isRequired,
   on: PropTypes.shape({
     month: PropTypes.oneOf(MONTHS).isRequired,

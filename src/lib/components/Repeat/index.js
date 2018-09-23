@@ -7,6 +7,7 @@ import RepeatDaily from './Daily/index';
 import RepeatHourly from './Hourly/index';
 
 const Repeat = ({
+  id,
   repeat: {
     frequency,
     yearly,
@@ -26,7 +27,7 @@ const Repeat = ({
       <div className="form-group row">
         <div className="col-sm-2 text-sm-right">
           <label
-            htmlFor="Repeat frequency"
+            htmlFor={`${id}-frequency`}
             className="col-form-label"
           >
             <strong>
@@ -37,7 +38,7 @@ const Repeat = ({
         <div className="col-sm-6">
           <select
             name="repeat.frequency"
-            id="Repeat frequency"
+            id={`${id}-frequency`}
             className="form-control"
             value={frequency}
             onChange={handleChange}
@@ -51,17 +52,53 @@ const Repeat = ({
         </div>
       </div>
 
-      {isOptionSelected('Yearly') && <RepeatYearly yearly={yearly} handleChange={handleChange} />}
-      {isOptionSelected('Monthly') && <RepeatMonthly monthly={monthly} handleChange={handleChange} />}
-      {isOptionSelected('Weekly') && <RepeatWeekly weekly={weekly} handleChange={handleChange} />}
-      {isOptionSelected('Daily') && <RepeatDaily daily={daily} handleChange={handleChange} />}
-      {isOptionSelected('Hourly') && <RepeatHourly hourly={hourly} handleChange={handleChange} />}
+      {
+        isOptionSelected('Yearly') &&
+        <RepeatYearly
+          id={`${id}-yearly`}
+          yearly={yearly}
+          handleChange={handleChange}
+        />
+      }
+      {
+        isOptionSelected('Monthly') &&
+        <RepeatMonthly
+          id={`${id}-monthly`}
+          monthly={monthly}
+          handleChange={handleChange}
+        />
+      }
+      {
+        isOptionSelected('Weekly') &&
+        <RepeatWeekly
+          id={`${id}-weekly`}
+          weekly={weekly}
+          handleChange={handleChange}
+        />
+      }
+      {
+        isOptionSelected('Daily') &&
+        <RepeatDaily
+          id={`${id}-daily`}
+          daily={daily}
+          handleChange={handleChange}
+        />
+      }
+      {
+        isOptionSelected('Hourly') &&
+        <RepeatHourly
+          id={`${id}-hourly`}
+          hourly={hourly}
+          handleChange={handleChange}
+        />
+      }
 
     </div>
   );
 };
 
 Repeat.propTypes = {
+  id: PropTypes.string.isRequired,
   repeat: PropTypes.shape({
     frequency: PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly']).isRequired,
     yearly: PropTypes.object.isRequired,

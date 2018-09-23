@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import StartOnDate from './OnDate';
 
 const Start = ({
+  id,
   start: {
     onDate,
   },
@@ -12,7 +13,7 @@ const Start = ({
     <div className="form-group row">
       <div className="col-sm-2 text-sm-right">
         <label
-          htmlFor="Start"
+          htmlFor={id}
           className="col-form-label"
         >
           <strong>
@@ -20,12 +21,13 @@ const Start = ({
           </strong>
         </label>
       </div>
-      <StartOnDate onDate={onDate} handleChange={handleChange} />
+      <StartOnDate id={id} onDate={onDate} handleChange={handleChange} />
     </div>
   </div>
 );
 
 Start.propTypes = {
+  id: PropTypes.string.isRequired,
   start: PropTypes.shape({
     onDate: PropTypes.object.isRequired,
   }).isRequired,
