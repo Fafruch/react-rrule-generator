@@ -39,7 +39,7 @@ const RepeatWeekly = ({
       </div>
 
       <div className="form-group row">
-        <div className="btn-group offset-sm-2" data-toggle="buttons">
+        <div className="btn-group btn-group-toggle offset-sm-2">
           {daysArray.map(([dayName, isDayActive]) => (
             <label
               htmlFor={`${id}-${dayName}`}
