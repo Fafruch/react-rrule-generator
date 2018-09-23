@@ -44,7 +44,7 @@ const RepeatWeekly = ({
             <label
               htmlFor={`${id}-${dayName}`}
               key={dayName}
-              className={`btn btn-primary ${isDayActive && 'active'}`}
+              className={`btn btn-primary ${isDayActive ? 'active' : ''}`}
             >
               <input
                 type="checkbox"
