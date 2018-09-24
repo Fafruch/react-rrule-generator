@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { cloneDeep, set } from 'lodash';
 
@@ -10,7 +10,7 @@ import computeRRuleFromString from '../utils/computeRRule/fromString/computeRRul
 import configureInitialState from '../utils/configureInitialState';
 import '../styles/index.css';
 
-class ReactRRuleGenerator extends Component {
+class ReactRRuleGenerator extends PureComponent {
   // compute default view based on user's config
   state = configureInitialState(
     this.props.config,
@@ -37,10 +37,6 @@ class ReactRRuleGenerator extends Component {
       const data = computeRRuleFromString(this.state.data, nextProps.value);
       this.setState({ data, rrule: nextProps.value });
     }
-  }
-
-  shouldComponentUpdate(nextProps) {
-    return nextProps.value !== this.state.rrule;
   }
 
   handleChange = ({ target }) => {
