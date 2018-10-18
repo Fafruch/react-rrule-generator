@@ -5,20 +5,32 @@ import TextareaAutosize from 'react-autosize-textarea';
 import ReactRRuleGenerator from '../lib';
 import './index.css';
 import githubLogo from './github_logo.png';
+import GermanTranslation from './GermanTranslation';
 
 class App extends Component {
   state = {
     rrule: 'FREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1',
     isCopied: false,
+    language: 'en'
+  };
+
+  handleChangeLanguage = (event) => {
+    event.persist();
+    const newLanguage = event.target.value;
+    this.setState({ language: newLanguage });
   };
 
   handleChange = (newRRule) => {
     this.setState({ rrule: newRRule, isCopied: false });
   };
-
+  
   handleCopy = () => {
     this.setState({ isCopied: true });
   };
+
+  getTranslation = () => {
+    return (this.state.language === 'de') ? GermanTranslation : undefined;
+  }
 
   render() {
     const { rrule, isCopied } = this.state;
@@ -50,19 +62,22 @@ class App extends Component {
           Recurrence rules generator form built with React
         </div>
 
-
         <div className="app container">
           <h5><strong>{'<RRuleGenerator />'}</strong></h5>
 
           <ReactRRuleGenerator
             onChange={this.handleChange}
             value={this.state.rrule}
+            config={{
+              hideStart: false
+            }}
+            translations={this.getTranslation()}
           />
         </div>
 
         <hr className="mt-5 mb-5" />
 
-        <div className="container mb-4">
+        <div className="container">        
           <h5><strong>Example handling</strong></h5>
 
           <div className="px-3 pt-3 border rounded">
@@ -101,6 +116,30 @@ class App extends Component {
             </div>
           </div>
         </div>
+
+        <hr className="mt-5 mb-5" />
+
+        <div className="container">
+          <h5><strong>{'Language'}</strong></h5>
+          <div className="px-3 pt-3 border rounded">
+            <div className="form-group row d-flex align-items-sm-center">
+              <div className="col-sm-2 text-sm-right">
+                <span className="col-form-label">
+                  <strong>
+                    Language
+                  </strong>
+                </span>
+              </div>
+
+              <div className="col-sm-8">
+                <select className="form-control" value={this.state.language} onChange={this.handleChangeLanguage}>
+                  <option value="en">English</option>
+                  <option value="de">German</option>
+                </select>
+              </div>            
+            </div>
+          </div>
+        </div>        
       </div>
     );
   }
