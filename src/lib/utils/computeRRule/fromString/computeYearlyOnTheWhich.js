@@ -3,7 +3,9 @@ const computeYearlyOnTheWhich = (data, rruleObj) => {
     return data.repeat.yearly.onThe.which;
   }
 
-  switch (rruleObj.bysetpos[0]) {
+  const bysetpos = (typeof rruleObj.bysetpos === 'number') ? rruleObj.bysetpos : rruleObj.bysetpos[0];
+
+  switch (bysetpos) {
     case 1: {
       return 'First';
     }
