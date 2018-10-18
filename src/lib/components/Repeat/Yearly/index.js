@@ -35,6 +35,7 @@ const RepeatYearly = ({
           onThe={onThe}
           hasMoreModes={!isTheOnlyOneMode('on the')}
           handleChange={handleChange}
+          translations={translations}
         />
       )}
     </div>

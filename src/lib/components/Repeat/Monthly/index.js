@@ -24,7 +24,7 @@ const RepeatMonthly = ({
     <div>
       <div className="form-group row d-flex align-items-sm-center">
         <div className="col-sm-1 offset-sm-2">
-          {translateLabel(translations, 'repeat.every')}
+          {translateLabel(translations, 'repeat.monthly.every')}
         </div>
         <div className="col-sm-3">
           <input

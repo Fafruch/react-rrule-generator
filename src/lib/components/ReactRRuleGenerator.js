@@ -189,8 +189,7 @@ ReactRRuleGenerator.defaultProps = {
       tooltip: "Datetime picker for start on date"
     },
     repeat: {
-      label: "Repeat",
-      every: "every",
+      label: "Repeat",      
       yearly: {
         label: "Yearly",
         on: 'on',
@@ -199,20 +198,24 @@ ReactRRuleGenerator.defaultProps = {
       },
       monthly: {
         label: "Monthly",
+        every: "every",
         months: "month(s)",
         on_day: "on day",
         on_the: "on the"
       },
       weekly: {
         label: "Weekly",
+        every: "every",
         weeks: 'week(s)'
       }, 
       daily: {
-        label: "Daily",        
+        label: "Daily",
+        every: "every",        
         days: "day(s)"
       },
       hourly: {
         label: "Hourly",
+        every: "every",
         hours: "hour(s)"
       }
     },

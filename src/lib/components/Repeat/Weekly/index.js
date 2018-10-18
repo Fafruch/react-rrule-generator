@@ -23,7 +23,7 @@ const RepeatWeekly = ({
     <div className="px-3">
       <div className="form-group row d-flex align-items-sm-center">
         <div className="col-sm-1 offset-sm-2">
-          {translateLabel(translations, 'repeat.every')}
+          {translateLabel(translations, 'repeat.weekly.every')}
         </div>
         <div className="col-sm-3">
           <input

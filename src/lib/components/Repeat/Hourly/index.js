@@ -13,7 +13,7 @@ const RepeatHourly = ({
 }) => (
   <div className="form-group row d-flex align-items-sm-center">
     <div className="col-sm-1 offset-sm-2">
-      {translateLabel(translations, 'repeat.every')}
+      {translateLabel(translations, 'repeat.hourly.every')}
     </div>
     <div className="col-sm-2">
       <input
