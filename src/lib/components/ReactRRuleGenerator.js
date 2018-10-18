@@ -156,6 +156,15 @@ ReactRRuleGenerator.defaultProps = {
       nov: 'Nov',
       dec: 'Dec'
     },
+    days_short: {
+      mon: 'Mon',
+      tue: 'Tue',
+      wed: 'Wed',
+      thu: 'Thu',
+      fri: 'Fri',
+      sat: 'Sat',
+      sun: 'Sun',
+    },
     days: {
       monday: 'Monday',
       tuesday: 'Tuesday',
@@ -210,6 +219,9 @@ ReactRRuleGenerator.defaultProps = {
     end: {
       label: "End",
       tooltip: "Datetime picker for end on date",
+      never: "Never",
+      after: "After",
+      on_date: "On date",
       executions: "executions."
     }
   }  

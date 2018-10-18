@@ -67,7 +67,7 @@ const RepeatWeekly = ({
                   handleChange(editedEvent);
                 }}
               />
-              {translateLabel(translations, `days.${dayName.toLowerCase()}`)}
+              {translateLabel(translations, `days_short.${dayName.toLowerCase()}`)}
             </label>))
           }
         </div>

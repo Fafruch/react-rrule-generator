@@ -40,9 +40,9 @@ const End = ({
             value={mode}
             onChange={handleChange}
           >
-            {isOptionAvailable('Never') && <option value="Never">Never</option>}
-            {isOptionAvailable('After') && <option value="After">After</option>}
-            {isOptionAvailable('On date') && <option value="On date">On date</option>}
+            {isOptionAvailable('Never') && <option value="Never">{translateLabel(translations, 'end.never')}</option>}
+            {isOptionAvailable('After') && <option value="After">{translateLabel(translations, 'end.after')}</option>}
+            {isOptionAvailable('On date') && <option value="On date">{translateLabel(translations, 'end.on_date')}</option>}
           </select>
         </div>
 
