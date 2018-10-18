@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { toPairs } from 'lodash';
 import numericalFieldHandler from '../../../utils/numericalFieldHandler';
+import translateLabel from '../../../utils/translateLabel';
 
 const RepeatWeekly = ({
   id,
@@ -11,6 +12,7 @@ const RepeatWeekly = ({
     options,
   },
   handleChange,
+  translations
 }) => {
   let daysArray = toPairs(days);
   if (options.weekStartsOnSunday) {
@@ -21,7 +23,7 @@ const RepeatWeekly = ({
     <div className="px-3">
       <div className="form-group row d-flex align-items-sm-center">
         <div className="col-sm-1 offset-sm-2">
-          every
+          {translateLabel(translations, 'repeat.every')}
         </div>
         <div className="col-sm-3">
           <input
@@ -34,7 +36,7 @@ const RepeatWeekly = ({
           />
         </div>
         <div className="col-sm-1">
-          week(s)
+          {translateLabel(translations, 'repeat.weekly.weeks')}
         </div>
       </div>
 
@@ -65,7 +67,7 @@ const RepeatWeekly = ({
                   handleChange(editedEvent);
                 }}
               />
-              {dayName}
+              {translateLabel(translations, `days.${dayName.toLowerCase()}`)}
             </label>))
           }
         </div>
@@ -92,6 +94,7 @@ RepeatWeekly.propTypes = {
     }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
 };
 
 export default RepeatWeekly;

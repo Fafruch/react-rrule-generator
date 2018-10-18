@@ -5,6 +5,7 @@ import RepeatMonthly from './Monthly/index';
 import RepeatWeekly from './Weekly/index';
 import RepeatDaily from './Daily/index';
 import RepeatHourly from './Hourly/index';
+import translateLabel from '../../utils/translateLabel';
 
 const Repeat = ({
   id,
@@ -18,6 +19,7 @@ const Repeat = ({
     options,
   },
   handleChange,
+  translations
 }) => {
   const isOptionAvailable = option => !options.frequency || options.frequency.indexOf(option) !== -1;
   const isOptionSelected = option => frequency === option;
@@ -31,7 +33,7 @@ const Repeat = ({
             className="col-form-label"
           >
             <strong>
-              Repeat
+              {translateLabel(translations, 'repeat.label')}
             </strong>
           </label>
         </div>
@@ -43,11 +45,11 @@ const Repeat = ({
             value={frequency}
             onChange={handleChange}
           >
-            {isOptionAvailable('Yearly') && <option value="Yearly">Yearly</option>}
-            {isOptionAvailable('Monthly') && <option value="Monthly">Monthly</option>}
-            {isOptionAvailable('Weekly') && <option value="Weekly">Weekly</option>}
-            {isOptionAvailable('Daily') && <option value="Daily">Daily</option>}
-            {isOptionAvailable('Hourly') && <option value="Hourly">Hourly</option>}
+            {isOptionAvailable('Yearly') && <option value="Yearly">{translateLabel(translations, 'repeat.yearly.label')}</option>}
+            {isOptionAvailable('Monthly') && <option value="Monthly">{translateLabel(translations, 'repeat.monthly.label')}</option>}
+            {isOptionAvailable('Weekly') && <option value="Weekly">{translateLabel(translations, 'repeat.weekly.label')}</option>}
+            {isOptionAvailable('Daily') && <option value="Daily">{translateLabel(translations, 'repeat.daily.label')}</option>}
+            {isOptionAvailable('Hourly') && <option value="Hourly">{translateLabel(translations, 'repeat.hourly.label')}</option>}
           </select>
         </div>
       </div>
@@ -58,6 +60,7 @@ const Repeat = ({
           id={`${id}-yearly`}
           yearly={yearly}
           handleChange={handleChange}
+          translations={translations}
         />
       }
       {
@@ -66,6 +69,7 @@ const Repeat = ({
           id={`${id}-monthly`}
           monthly={monthly}
           handleChange={handleChange}
+          translations={translations}
         />
       }
       {
@@ -74,6 +78,7 @@ const Repeat = ({
           id={`${id}-weekly`}
           weekly={weekly}
           handleChange={handleChange}
+          translations={translations}
         />
       }
       {
@@ -82,6 +87,7 @@ const Repeat = ({
           id={`${id}-daily`}
           daily={daily}
           handleChange={handleChange}
+          translations={translations}
         />
       }
       {
@@ -90,6 +96,7 @@ const Repeat = ({
           id={`${id}-hourly`}
           hourly={hourly}
           handleChange={handleChange}
+          translations={translations}
         />
       }
 
@@ -113,6 +120,7 @@ Repeat.propTypes = {
     }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
 };
 
 export default Repeat;
