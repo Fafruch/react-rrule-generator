@@ -5,6 +5,10 @@ const computeYearlyOnTheMonth = (data, rruleObj) => {
     return data.repeat.yearly.onThe.month;
   }
 
+  if (typeof rruleObj.bymonth === 'number') {
+    return MONTHS[rruleObj.bymonth - 1]
+  }
+
   return MONTHS[rruleObj.bymonth[0] - 1];
 };
 
