@@ -116,7 +116,7 @@ class ReactRRuleGenerator extends PureComponent {
 ReactRRuleGenerator.propTypes = {
   id: PropTypes.string,
   config: PropTypes.shape({
-    frequency: PropTypes.arrayOf(PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly'])),
+    repeat: PropTypes.arrayOf(PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly'])),
     yearly: PropTypes.oneOf(['on', 'on the']),
     monthly: PropTypes.oneOf(['on', 'on the']),
     end: PropTypes.arrayOf(PropTypes.oneOf(['Never', 'After', 'On date'])),
