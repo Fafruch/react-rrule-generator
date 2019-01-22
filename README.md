@@ -58,7 +58,7 @@ const CustomizedRender = () => (
       weekStartsOnSunday: true,
       hideError: true,
     }}
-    customCalendar={MyCustomCalendar}
+    calendarComponent={MyCustomCalendar}
   />
 );
 
@@ -90,7 +90,7 @@ class ControlledRender extends Component {
 | **onChange** | `function` | <b>REQUIRED.</b> Callback trigger when the RRule changes. The callback receives newly generated RRule `string`.
 | **value** | `string` | You can pass your own RRule value to RRuleGenerator and use it like controlled input component.
 | **config** | `object` | Accepts object of what options will be rendered. This object's structure is described in [#config](#config) |
-| **customCalendar** | `React Component` or `stateless function` | This accepts custom calendar / datepicker for choosing a date in EndOnDate view. It receives following props by default: <ul><li>`'aria-label'` with value `'Datetime picker for end on date'`,</li><li>`value` - date value consumed by app logic, </li><li>`dateFormat` - by default `'YYYY-MM-DD'`, </li><li>`locale` - `'en/ca'` or `'en/gb'` depending on if `weekStartsOnSunday` in config is set to `true` or `false` </li>
+| **calendarComponent** | `React Component` or `stateless function` | This accepts custom calendar / datepicker for choosing a date in EndOnDate view. It receives following props by default: <ul><li>`'aria-label'` with value `'Datetime picker for end on date'`,</li><li>`value` - date value consumed by app logic, </li><li>`dateFormat` - by default `'YYYY-MM-DD'`, </li><li>`locale` - `'en/ca'` or `'en/gb'` depending on if `weekStartsOnSunday` in config is set to `true` or `false` </li>
 <br />
 
 ### config
