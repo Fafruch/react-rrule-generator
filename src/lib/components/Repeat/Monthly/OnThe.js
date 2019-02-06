@@ -13,7 +13,7 @@ const RepeatMonthlyOnThe = ({
 }) => {
   const isActive = mode === 'on the';
   const filteredDays = DAYS.filter((d) => {
-    if (d === 'Weekday' || d === 'Weekend day') return allowBYSETPOS;
+    if (d.match(/^week/i)) return allowBYSETPOS;
     return true;
   });
 
