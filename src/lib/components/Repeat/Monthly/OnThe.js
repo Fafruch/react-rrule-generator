@@ -9,8 +9,13 @@ const RepeatMonthlyOnThe = ({
   onThe,
   hasMoreModes,
   handleChange,
+  allowBYSETPOS,
 }) => {
   const isActive = mode === 'on the';
+  const filteredDays = DAYS.filter((d) => {
+    if (d === 'Weekday' || d === 'Weekend day') return allowBYSETPOS;
+    return true;
+  });
 
   return (
     <div className={`form-group row d-flex align-items-sm-center ${!isActive && 'opacity-50'}`}>
@@ -59,7 +64,7 @@ const RepeatMonthlyOnThe = ({
           disabled={!isActive}
           onChange={handleChange}
         >
-          {DAYS.map(day => <option key={day} value={day}>{day}</option>)}
+          {filteredDays.map(day => <option key={day} value={day}>{day}</option>)}
         </select>
       </div>
 
@@ -75,6 +80,7 @@ RepeatMonthlyOnThe.propTypes = {
   }).isRequired,
   hasMoreModes: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
+  allowBYSETPOS: PropTypes.bool.isRequired,
 };
 
 export default RepeatMonthlyOnThe;

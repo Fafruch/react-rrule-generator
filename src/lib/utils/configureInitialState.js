@@ -37,6 +37,7 @@ const configureState = (config = {}, calendarComponent, id) => {
         },
         options: {
           modes: config.yearly,
+          allowBYSETPOS: config.allowBYSETPOS,
         },
       },
       monthly: {
@@ -51,6 +52,7 @@ const configureState = (config = {}, calendarComponent, id) => {
         },
         options: {
           modes: config.monthly,
+          allowBYSETPOS: config.allowBYSETPOS,
         },
       },
       weekly: {

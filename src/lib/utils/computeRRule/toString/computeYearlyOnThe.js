@@ -1,23 +1,25 @@
+import { RRule } from 'rrule';
 import { MONTHS } from '../../../constants/index';
 
 const computeYearlyOnThe = (onThe) => {
   const repeat = {};
 
+  let bysetpos;
   switch (onThe.which) {
     case 'First':
-      repeat.bysetpos = 1;
+      bysetpos = 1;
       break;
     case 'Second':
-      repeat.bysetpos = 2;
+      bysetpos = 2;
       break;
     case 'Third':
-      repeat.bysetpos = 3;
+      bysetpos = 3;
       break;
     case 'Fourth':
-      repeat.bysetpos = 4;
+      bysetpos = 4;
       break;
     case 'Last':
-      repeat.bysetpos = -1;
+      bysetpos = -1;
       break;
     default:
       break;
@@ -25,34 +27,36 @@ const computeYearlyOnThe = (onThe) => {
 
   switch (onThe.day) {
     case 'Monday':
-      repeat.byweekday = [0];
+      repeat.byweekday = [RRule.MO.nth(bysetpos)];
       break;
     case 'Tuesday':
-      repeat.byweekday = [1];
+      repeat.byweekday = [RRule.TU.nth(bysetpos)];
       break;
     case 'Wednesday':
-      repeat.byweekday = [2];
+      repeat.byweekday = [RRule.WE.nth(bysetpos)];
       break;
     case 'Thursday':
-      repeat.byweekday = [3];
+      repeat.byweekday = [RRule.TH.nth(bysetpos)];
       break;
     case 'Friday':
-      repeat.byweekday = [4];
+      repeat.byweekday = [RRule.FR.nth(bysetpos)];
       break;
     case 'Saturday':
-      repeat.byweekday = [5];
+      repeat.byweekday = [RRule.SA.nth(bysetpos)];
       break;
     case 'Sunday':
-      repeat.byweekday = [6];
+      repeat.byweekday = [RRule.SU.nth(bysetpos)];
       break;
     case 'Day':
-      repeat.byweekday = [0, 1, 2, 3, 4, 5, 6];
+      repeat.bymonthday = bysetpos;
       break;
     case 'Weekday':
       repeat.byweekday = [0, 1, 2, 3, 4];
+      repeat.bysetpos = bysetpos;
       break;
     case 'Weekend day':
       repeat.byweekday = [5, 6];
+      repeat.bysetpos = bysetpos;
       break;
     default:
       break;

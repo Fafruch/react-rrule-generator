@@ -106,6 +106,7 @@ class ControlledRender extends Component {
 | **hideEnd** | `boolean` | If `true` ending form is not rendered. Default: `false` |
 | **hideError** | `boolean` | If `true` error alert is not rendered. Default: `false` |
 | **weekStartsOnSunday** | `boolean` | If set to `true`, weeks starts on Sunday (both for views and RRule string). Default: `false` |
+| **allowBYSETPOS** | `boolean` | If set to `false`, repeat options for `(nth) Weekday` and `(nth) Weekend day` are hidden. This prevents the use of the `BYSETPOS` field in the resulting RRULE output, which is not fully supported by other RRULE libraries. Default: `true` |
 
 ## License 
 MIT

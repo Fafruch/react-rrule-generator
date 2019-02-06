@@ -17,6 +17,7 @@ const RepeatMonthly = ({
 }) => {
   const isTheOnlyOneMode = option => options.modes === option;
   const isOptionAvailable = option => !options.modes || isTheOnlyOneMode(option);
+  const allowBYSETPOS = typeof options.allowBYSETPOS === 'undefined' ? true : options.allowBYSETPOS;
 
   return (
     <div>
@@ -55,6 +56,7 @@ const RepeatMonthly = ({
           onThe={onThe}
           hasMoreModes={!isTheOnlyOneMode('on the')}
           handleChange={handleChange}
+          allowBYSETPOS={allowBYSETPOS}
         />
       )}
 
@@ -71,6 +73,7 @@ RepeatMonthly.propTypes = {
     onThe: PropTypes.object.isRequired,
     options: PropTypes.shape({
       modes: PropTypes.oneOf(['on', 'on the']),
+      allowBYSETPOS: PropTypes.bool,
     }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
