@@ -124,6 +124,7 @@ ReactRRuleGenerator.propTypes = {
     hideEnd: PropTypes.bool,
     hideError: PropTypes.bool,
     weekStartsOnSunday: PropTypes.bool,
+    allowBYSETPOS: PropTypes.bool,
   }),
   value: PropTypes.string,
   onChange: PropTypes.func,
