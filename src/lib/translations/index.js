@@ -1,3 +1,4 @@
 import english from './english';
+import german from './german';
 
-export default { english };
+export default { english, german };

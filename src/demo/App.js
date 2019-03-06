@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import TextareaAutosize from 'react-autosize-textarea';
 
-import ReactRRuleGenerator from '../lib';
+import ReactRRuleGenerator, { translations } from '../lib';
 import './index.css';
 import githubLogo from './github_logo.png';
-import GermanTranslation from './GermanTranslation';
 
 class App extends Component {
   state = {
@@ -14,7 +13,7 @@ class App extends Component {
     language: 'en',
   };
 
-  getTranslation = () => (this.state.language === 'de') ? GermanTranslation : undefined;
+  getTranslation = () => (this.state.language === 'de') ? translations.german : undefined;
 
   handleChangeLanguage = (event) => {
     event.persist();
