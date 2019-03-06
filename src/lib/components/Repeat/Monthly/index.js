@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import RepeatMonthlyOn from './On';
 import RepeatMonthlyOnThe from './OnThe';
 import numericalFieldHandler from '../../../utils/numericalFieldHandler';
+import translateLabel from '../../../utils/translateLabel';
 
 const RepeatMonthly = ({
   id,
@@ -14,6 +15,7 @@ const RepeatMonthly = ({
     options,
   },
   handleChange,
+  translations
 }) => {
   const isTheOnlyOneMode = option => options.modes === option;
   const isOptionAvailable = option => !options.modes || isTheOnlyOneMode(option);
@@ -22,7 +24,7 @@ const RepeatMonthly = ({
     <div>
       <div className="form-group row d-flex align-items-sm-center">
         <div className="col-sm-1 offset-sm-2">
-          every
+          {translateLabel(translations, 'repeat.monthly.every')}
         </div>
         <div className="col-sm-3">
           <input
@@ -34,8 +36,8 @@ const RepeatMonthly = ({
             onChange={numericalFieldHandler(handleChange)}
           />
         </div>
-        <div className="col-sm-1">
-          month(s)
+        <div className="col-sm-1">          
+          {translateLabel(translations, 'repeat.monthly.months')}
         </div>
       </div>
 
@@ -46,6 +48,7 @@ const RepeatMonthly = ({
           on={on}
           hasMoreModes={!isTheOnlyOneMode('on')}
           handleChange={handleChange}
+          translations={translations}
         />
       )}
       {isOptionAvailable('on the') && (
@@ -55,6 +58,7 @@ const RepeatMonthly = ({
           onThe={onThe}
           hasMoreModes={!isTheOnlyOneMode('on the')}
           handleChange={handleChange}
+          translations={translations}
         />
       )}
 
@@ -74,6 +78,7 @@ RepeatMonthly.propTypes = {
     }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
 };
 
 export default RepeatMonthly;

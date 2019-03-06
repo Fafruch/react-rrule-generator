@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import numericalFieldHandler from '../../../utils/numericalFieldHandler';
+import translateLabel from '../../../utils/translateLabel';
 
 const RepeatDaily = ({
   id,
@@ -8,10 +9,11 @@ const RepeatDaily = ({
     interval,
   },
   handleChange,
+  translations
 }) => (
   <div className="form-group row d-flex align-items-sm-center">
     <div className="col-sm-1 offset-sm-2">
-      every
+      {translateLabel(translations, 'repeat.daily.every')}
     </div>
     <div className="col-sm-2">
       <input
@@ -24,7 +26,7 @@ const RepeatDaily = ({
       />
     </div>
     <div className="col-sm-1">
-      day(s)
+      {translateLabel(translations, 'repeat.daily.days')}
     </div>
 
   </div>
@@ -35,6 +37,7 @@ RepeatDaily.propTypes = {
     interval: PropTypes.number.isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
 };
 
 export default RepeatDaily;

@@ -7,6 +7,7 @@ import 'moment/locale/en-gb';
 import 'moment/locale/en-ca';
 
 import { DATE_TIME_FORMAT } from '../../constants/index';
+import translateLabel from '../../utils/translateLabel';
 
 const EndOnDate = ({
   id,
@@ -15,12 +16,13 @@ const EndOnDate = ({
     options,
   },
   handleChange,
+  translations
 }) => {
   const CustomCalendar = options.calendarComponent;
 
   const locale = options.weekStartsOnSunday ? 'en-ca' : 'en-gb';
   const calendarAttributes = {
-    'aria-label': 'Datetime picker for end on date',
+    'aria-label': translateLabel(translations, 'end.tooltip'),
     value: date,
     dateFormat: DATE_TIME_FORMAT,
     locale,
@@ -85,6 +87,7 @@ EndOnDate.propTypes = {
     }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
 };
 
 export default EndOnDate;

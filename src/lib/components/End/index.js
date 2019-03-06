@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 import EndAfter from './After';
 import EndOnDate from './OnDate';
 
+import translateLabel from '../../utils/translateLabel';
+
 const End = ({
   id,
   end: {
     mode,
     after,
     onDate,
-    options,
+    options,    
   },
   handleChange,
+  translations
 }) => {
   const isOptionAvailable = option => !options.modes || options.modes.indexOf(option) !== -1;
   const isOptionSelected = option => mode === option;
@@ -25,7 +28,7 @@ const End = ({
             className="col-form-label"
           >
             <strong>
-              End
+              {translateLabel(translations, 'end.label')}
             </strong>
           </label>
         </div>
@@ -37,9 +40,9 @@ const End = ({
             value={mode}
             onChange={handleChange}
           >
-            {isOptionAvailable('Never') && <option value="Never">Never</option>}
-            {isOptionAvailable('After') && <option value="After">After</option>}
-            {isOptionAvailable('On date') && <option value="On date">On date</option>}
+            {isOptionAvailable('Never') && <option value="Never">{translateLabel(translations, 'end.never')}</option>}
+            {isOptionAvailable('After') && <option value="After">{translateLabel(translations, 'end.after')}</option>}
+            {isOptionAvailable('On date') && <option value="On date">{translateLabel(translations, 'end.on_date')}</option>}
           </select>
         </div>
 
@@ -49,6 +52,7 @@ const End = ({
             id={`${id}-after`}
             after={after}
             handleChange={handleChange}
+            translations={translations}
           />
         }
         {
@@ -57,6 +61,7 @@ const End = ({
             id={`${id}-onDate`}
             onDate={onDate}
             handleChange={handleChange}
+            translations={translations}
           />
         }
 
@@ -77,6 +82,7 @@ End.propTypes = {
     }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
 };
 
 export default End;
