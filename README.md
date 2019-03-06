@@ -4,7 +4,7 @@
 [![LICENSE](https://img.shields.io/npm/l/express.svg)](LICENSE)
 [![npm](https://img.shields.io/npm/dm/localeval.svg)](https://npm-stat.com/charts.html?package=react-rrule-generator)
 
-![Screenshot](https://cdn.pbrd.co/images/H5ZyjgR.png)
+![Screenshot](https://i.imgur.com/FU3aGlz.png)
 
 ## Description
 
