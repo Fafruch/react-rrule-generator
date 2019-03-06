@@ -90,7 +90,7 @@ class ControlledRender extends Component {
 | **onChange** | `function` | <b>REQUIRED.</b> Callback trigger when the RRule changes. The callback receives newly generated RRule `string`.
 | **value** | `string` | You can pass your own RRule value to RRuleGenerator and use it like controlled input component.
 | **config** | `object` | Accepts object of what options will be rendered. This object's structure is described in [#config](#config) |
-| **translations** | `function` or `object` | Accepts a function or an object with translations for all labels in the component. Per default the default all labels are in English. The function has the following signature: `(key: string, replacements: object) => string`. It receives key of the label in form of `'repeat.yearly.on_the'` and an object for placeholder replacements, e.g., `{ value: error.value }`. The structure of a translation object is described in [#translations](#translations) |
+| **translations** | `function` or `object` | Accepts a function or an object with translations for all labels in the component. By default all labels are in English. You can pass your own translation object or function, which has the following signature: `(key: string, replacements: object) => string`. It receives key of the label in form of `'repeat.yearly.on_the'` and an object for placeholder replacements, e.g., `{ value: error.value }`. Example translation objects are placed in `/src/lib/translations/`. |
 | **customCalendar** | `React Component` or `stateless function` | This accepts custom calendar / datepicker for choosing a date in EndOnDate view. It receives following props by default: <ul><li>`'aria-label'` with value `'Datetime picker for end on date'`,</li><li>`value` - date value consumed by app logic, </li><li>`dateFormat` - by default `'YYYY-MM-DD'`, </li><li>`locale` - `'en/ca'` or `'en/gb'` depending on if `weekStartsOnSunday` in config is set to `true` or `false` </li>
 <br />
 
@@ -107,101 +107,6 @@ class ControlledRender extends Component {
 | **hideEnd** | `boolean` | If `true` ending form is not rendered. Default: `false` |
 | **hideError** | `boolean` | If `true` error alert is not rendered. Default: `false` |
 | **weekStartsOnSunday** | `boolean` | If set to `true`, weeks starts on Sunday (both for views and RRule string). Default: `false` |
-
-
-### translations
-`translations` is an object with the following form and default values:
-
-```JavaScript
-{
-  invalid_rrule_component: "You provided an invalid RRule value to component. '%{value}' is not a correct RRule string.",
-  months: {
-    jan: 'Jan',
-    feb: 'Feb',
-    mar: 'Mar',
-    apr: 'Apr',
-    may: 'May',
-    jun: 'Jun',
-    jul: 'Jul',
-    aug: 'Aug',
-    sep: 'Sep',
-    oct: 'Oct',
-    nov: 'Nov',
-    dec: 'Dec'
-  },
-  days_short: {
-    mon: 'Mon',
-    tue: 'Tue',
-    wed: 'Wed',
-    thu: 'Thu',
-    fri: 'Fri',
-    sat: 'Sat',
-    sun: 'Sun',
-  },
-  days: {
-    monday: 'Monday',
-    tuesday: 'Tuesday',
-    wednesday: 'Wednesday',
-    thursday: 'Thursday',
-    friday: 'Friday',
-    saturday: 'Saturday',
-    sunday: 'Sunday',
-    day: 'Day',
-    weekday: 'Weekday',
-    'weekend day': 'Weekend day'
-  },
-  numerals: {
-    first: "First",
-    second: "Second",
-    third: "Third",
-    fourth: "Fourth",
-    last: "Last"
-  },
-  start: {
-    label: "Start",
-    tooltip: "Datetime picker for start on date"
-  },
-  repeat: {
-    label: "Repeat",      
-    yearly: {
-      label: "Yearly",
-      on: 'on',
-      on_the: 'on the',
-      of: 'of'
-    },
-    monthly: {
-      label: "Monthly",
-      every: "every",
-      months: "month(s)",
-      on_day: "on day",
-      on_the: "on the"
-    },
-    weekly: {
-      label: "Weekly",
-      every: "every",
-      weeks: 'week(s)'
-    }, 
-    daily: {
-      label: "Daily",
-      every: "every",        
-      days: "day(s)"
-    },
-    hourly: {
-      label: "Hourly",
-      every: "every",
-      hours: "hour(s)"
-    }
-  },
-  end: {
-    label: "End",
-    tooltip: "Datetime picker for end on date",
-    never: "Never",
-    after: "After",
-    on_date: "On date",
-    executions: "executions."
-  }
-}
-```
 
 ## License 
 MIT

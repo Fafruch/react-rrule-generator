@@ -1,5 +1,5 @@
 export default {
-  invalid_rrule_component: "Sie haben eine ungültige RRule an die Komponente übergeben. '%{value}' ist keine gültige RRule.",
+  invalid_rrule: "Sie haben eine ungültige RRule an die Komponente übergeben. '%{value}' ist keine gültige RRule.",
   months: {
     jan: 'Jan',
     feb: 'Feb',

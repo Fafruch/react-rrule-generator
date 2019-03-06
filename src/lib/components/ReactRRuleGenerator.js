@@ -68,7 +68,7 @@ class ReactRRuleGenerator extends PureComponent {
         {
           !options.hideError && error && (
             <div className="alert alert-danger">
-              {translateLabel(this.props.translations, 'invalid_rrule_component', { value: error.value })}
+              {translateLabel(this.props.translations, 'invalid_rrule', { value: error.value })}
             </div>
           )
         }
