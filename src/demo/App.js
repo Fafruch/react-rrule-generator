@@ -8,7 +8,7 @@ import githubLogo from './github_logo.png';
 
 class App extends Component {
   state = {
-    rrule: 'FREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1',
+    rrule: 'DTSTART:20190301T230000Z\nFREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1',
     isCopied: false,
     language: 'en',
   };
