@@ -1,4 +1,5 @@
 export default {
+  locale: 'de',
   invalid_rrule: "Sie haben eine ungültige RRule an die Komponente übergeben. '%{value}' ist keine gültige RRule.",
   months: {
     jan: 'Jan',

@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import DateTime from 'react-datetime';
-
-import 'moment/locale/en-gb';
-import 'moment/locale/en-ca';
+import 'moment/min/locales';
 
 import { DATE_TIME_FORMAT } from '../../constants/index';
 import translateLabel from '../../utils/translateLabel';
@@ -56,6 +54,7 @@ const EndOnDate = ({
                 readOnly: true,
               }
             }
+            locale={translateLabel(translations, 'locale')}
             timeFormat={false}
             viewMode="days"
             closeOnSelect
