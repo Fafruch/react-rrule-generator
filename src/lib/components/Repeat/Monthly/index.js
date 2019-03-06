@@ -36,7 +36,7 @@ const RepeatMonthly = ({
             onChange={numericalFieldHandler(handleChange)}
           />
         </div>
-        <div className="col-sm-1">          
+        <div className="col-sm-1">
           {translateLabel(translations, 'repeat.monthly.months')}
         </div>
       </div>
@@ -78,7 +78,7 @@ RepeatMonthly.propTypes = {
     }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
-  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
 };
 
 export default RepeatMonthly;

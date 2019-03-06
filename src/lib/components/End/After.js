@@ -32,7 +32,7 @@ EndAfter.propTypes = {
   id: PropTypes.string.isRequired,
   after: PropTypes.number.isRequired,
   handleChange: PropTypes.func.isRequired,
-  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
 };
 
 export default EndAfter;
