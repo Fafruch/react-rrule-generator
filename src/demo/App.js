@@ -2,14 +2,23 @@ import React, { Component } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import TextareaAutosize from 'react-autosize-textarea';
 
-import ReactRRuleGenerator from '../lib';
+import ReactRRuleGenerator, { translations } from '../lib';
 import './index.css';
 import githubLogo from './github_logo.png';
 
 class App extends Component {
   state = {
-    rrule: 'FREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1',
+    rrule: 'DTSTART:20190301T230000Z\nFREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1',
     isCopied: false,
+    language: 'en',
+  };
+
+  getTranslation = () => (this.state.language === 'de') ? translations.german : undefined;
+
+  handleChangeLanguage = (event) => {
+    event.persist();
+    const newLanguage = event.target.value;
+    this.setState({ language: newLanguage });
   };
 
   handleChange = (newRRule) => {
@@ -50,19 +59,22 @@ class App extends Component {
           Recurrence rules generator form built with React
         </div>
 
-
         <div className="app container">
           <h5><strong>{'<RRuleGenerator />'}</strong></h5>
 
           <ReactRRuleGenerator
             onChange={this.handleChange}
             value={this.state.rrule}
+            config={{
+              hideStart: false,
+            }}
+            translations={this.getTranslation()}
           />
         </div>
 
         <hr className="mt-5 mb-5" />
 
-        <div className="container mb-4">
+        <div className="container">
           <h5><strong>Example handling</strong></h5>
 
           <div className="px-3 pt-3 border rounded">
@@ -98,6 +110,30 @@ class App extends Component {
                 </CopyToClipboard>
               </div>
 
+            </div>
+          </div>
+        </div>
+
+        <hr className="mt-5 mb-5" />
+
+        <div className="container mb-5">
+          <h5><strong>Config</strong></h5>
+          <div className="px-3 pt-3 border rounded">
+            <div className="form-group row d-flex align-items-sm-center">
+              <div className="col-sm-2 text-sm-right">
+                <span className="col-form-label">
+                  <strong>
+                    Language
+                  </strong>
+                </span>
+              </div>
+
+              <div className="col-sm-8">
+                <select className="form-control" value={this.state.language} onChange={this.handleChangeLanguage}>
+                  <option value="en">English</option>
+                  <option value="de">German</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>

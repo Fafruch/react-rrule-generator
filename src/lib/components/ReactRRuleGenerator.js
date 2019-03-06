@@ -8,6 +8,8 @@ import End from './End/index';
 import computeRRuleToString from '../utils/computeRRule/toString/computeRRule';
 import computeRRuleFromString from '../utils/computeRRule/fromString/computeRRule';
 import configureInitialState from '../utils/configureInitialState';
+import translateLabel from '../utils/translateLabel';
+import translations from '../translations';
 import '../styles/index.css';
 
 class ReactRRuleGenerator extends PureComponent {
@@ -66,7 +68,7 @@ class ReactRRuleGenerator extends PureComponent {
         {
           !options.hideError && error && (
             <div className="alert alert-danger">
-              You provided an invalid RRule value to component. {`'${error.value}'`} is not a correct RRule string.
+              {translateLabel(this.props.translations, 'invalid_rrule', { value: error.value })}
             </div>
           )
         }
@@ -80,6 +82,7 @@ class ReactRRuleGenerator extends PureComponent {
                   id={`${id}-start`}
                   start={start}
                   handleChange={this.handleChange}
+                  translations={this.props.translations}
                 />
                 <hr />
               </div>
@@ -91,6 +94,7 @@ class ReactRRuleGenerator extends PureComponent {
               id={`${id}-repeat`}
               repeat={repeat}
               handleChange={this.handleChange}
+              translations={this.props.translations}
             />
           </div>
 
@@ -102,6 +106,7 @@ class ReactRRuleGenerator extends PureComponent {
                   id={`${id}-end`}
                   end={end}
                   handleChange={this.handleChange}
+                  translations={this.props.translations}
                 />
               </div>
             )
@@ -128,6 +133,7 @@ ReactRRuleGenerator.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
   calendarComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 ReactRRuleGenerator.defaultProps = {
   id: null,
@@ -135,6 +141,7 @@ ReactRRuleGenerator.defaultProps = {
   config: {},
   onChange() {},
   calendarComponent: null,
+  translations: translations.english,
 };
 
 export default ReactRRuleGenerator;

@@ -90,6 +90,7 @@ class ControlledRender extends Component {
 | **onChange** | `function` | <b>REQUIRED.</b> Callback trigger when the RRule changes. The callback receives newly generated RRule `string`.
 | **value** | `string` | You can pass your own RRule value to RRuleGenerator and use it like controlled input component.
 | **config** | `object` | Accepts object of what options will be rendered. This object's structure is described in [#config](#config) |
+| **translations** | `function` or `object` | Accepts a function or an object with translations for all labels in the component. By default all labels are in English. You can pass your own translation object or function, which has the following signature: `(key: string, replacements: object) => string`. It receives key of the label in form of `'repeat.yearly.on_the'` and an object for placeholder replacements, e.g., `{ value: error.value }`. Example translation objects are placed in `/src/lib/translations/`. |
 | **customCalendar** | `React Component` or `stateless function` | This accepts custom calendar / datepicker for choosing a date in EndOnDate view. It receives following props by default: <ul><li>`'aria-label'` with value `'Datetime picker for end on date'`,</li><li>`value` - date value consumed by app logic, </li><li>`dateFormat` - by default `'YYYY-MM-DD'`, </li><li>`locale` - `'en/ca'` or `'en/gb'` depending on if `weekStartsOnSunday` in config is set to `true` or `false` </li>
 <br />
 

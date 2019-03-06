@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import DateTime from 'react-datetime';
-
-import 'moment/locale/en-gb';
-import 'moment/locale/en-ca';
+import 'moment/min/locales';
 
 import { DATE_TIME_FORMAT } from '../../constants/index';
+import translateLabel from '../../utils/translateLabel';
 
 const StartOnDate = ({
   id,
@@ -15,11 +14,12 @@ const StartOnDate = ({
     options,
   },
   handleChange,
+  translations
 }) => {
   const CustomCalendar = options.calendarComponent;
   const locale = options.weekStartsOnSunday ? 'en-ca' : 'en-gb';
   const calendarAttributes = {
-    'aria-label': 'Datetime picker for end on date',
+    'aria-label': translateLabel(translations, 'start.tooltip'),
     value: date,
     dateFormat: DATE_TIME_FORMAT,
     locale,
@@ -53,6 +53,7 @@ const StartOnDate = ({
                 readOnly: true,
               }
             }
+            locale={translateLabel(translations, 'locale')}
             timeFormat={false}
             viewMode="days"
             closeOnSelect
@@ -84,6 +85,7 @@ StartOnDate.propTypes = {
     }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
 };
 
 export default StartOnDate;
