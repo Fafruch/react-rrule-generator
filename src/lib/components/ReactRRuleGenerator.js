@@ -132,7 +132,7 @@ ReactRRuleGenerator.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
   calendarComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 ReactRRuleGenerator.defaultProps = {
   id: null,
@@ -154,7 +154,7 @@ ReactRRuleGenerator.defaultProps = {
       sep: 'Sep',
       oct: 'Oct',
       nov: 'Nov',
-      dec: 'Dec'
+      dec: 'Dec',
     },
     days_short: {
       mon: 'Mon',
@@ -175,59 +175,59 @@ ReactRRuleGenerator.defaultProps = {
       sunday: 'Sunday',
       day: 'Day',
       weekday: 'Weekday',
-      'weekend day': 'Weekend day'
+      'weekend day': 'Weekend day',
     },
     numerals: {
-      first: "First",
-      second: "Second",
-      third: "Third",
-      fourth: "Fourth",
-      last: "Last"
+      first: 'First',
+      second: 'Second',
+      third: 'Third',
+      fourth: 'Fourth',
+      last: 'Last',
     },
     start: {
-      label: "Start",
-      tooltip: "Datetime picker for start on date"
+      label: 'Start',
+      tooltip: 'Datetime picker for start on date',
     },
     repeat: {
-      label: "Repeat",      
+      label: 'Repeat',
       yearly: {
-        label: "Yearly",
+        label: 'Yearly',
         on: 'on',
         on_the: 'on the',
-        of: 'of'
+        of: 'of',
       },
       monthly: {
-        label: "Monthly",
-        every: "every",
-        months: "month(s)",
-        on_day: "on day",
-        on_the: "on the"
+        label: 'Monthly',
+        every: 'every',
+        months: 'month(s)',
+        on_day: 'on day',
+        on_the: 'on the',
       },
       weekly: {
-        label: "Weekly",
-        every: "every",
-        weeks: 'week(s)'
-      }, 
+        label: 'Weekly',
+        every: 'every',
+        weeks: 'week(s)',
+      },
       daily: {
-        label: "Daily",
-        every: "every",        
-        days: "day(s)"
+        label: 'Daily',
+        every: 'every',
+        days: 'day(s)',
       },
       hourly: {
-        label: "Hourly",
-        every: "every",
-        hours: "hour(s)"
-      }
+        label: 'Hourly',
+        every: 'every',
+        hours: 'hour(s)',
+      },
     },
     end: {
-      label: "End",
-      tooltip: "Datetime picker for end on date",
-      never: "Never",
-      after: "After",
-      on_date: "On date",
-      executions: "executions."
-    }
-  }  
+      label: 'End',
+      tooltip: 'Datetime picker for end on date',
+      never: 'Never',
+      after: 'After',
+      on_date: 'On date',
+      executions: 'executions.',
+    },
+  },
 };
 
 export default ReactRRuleGenerator;
