@@ -13,7 +13,7 @@ class App extends Component {
     language: 'en',
   };
 
-  getTranslation = () => (this.state.language === 'de') ? translations.german : undefined;
+  getTranslation = () => (this.state.language === 'de') ? translations.german : (this.state.language === 'es') ? translations.spanish : undefined;
 
   handleChangeLanguage = (event) => {
     event.persist();
@@ -132,6 +132,7 @@ class App extends Component {
                 <select className="form-control" value={this.state.language} onChange={this.handleChangeLanguage}>
                   <option value="en">English</option>
                   <option value="de">German</option>
+                  <option value="es">Spanish</option>
                 </select>
               </div>
             </div>
