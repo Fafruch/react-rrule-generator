@@ -22,7 +22,7 @@ const RepeatWeekly = ({
   return (
     <div className="px-3">
       <div className="form-group row d-flex align-items-sm-center">
-        <div className="col-sm-1 offset-sm-2">
+        <div className="col-sm-2 offset-sm-1">
           {translateLabel(translations, 'repeat.weekly.every')}
         </div>
         <div className="col-sm-3">
@@ -35,13 +35,13 @@ const RepeatWeekly = ({
             onChange={numericalFieldHandler(handleChange)}
           />
         </div>
-        <div className="col-sm-1">
+        <div className="col-sm-2">
           {translateLabel(translations, 'repeat.weekly.weeks')}
         </div>
       </div>
 
       <div className="form-group row">
-        <div className="btn-group btn-group-toggle offset-sm-2">
+        <div className="btn-group btn-group-toggle offset-sm-2 rrule-weekly-labels">
           {daysArray.map(([dayName, isDayActive]) => (
             <label
               htmlFor={`${id}-${dayName}`}
