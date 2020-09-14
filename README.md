@@ -1,4 +1,13 @@
-# React RRule Generator
+# React RRule Generator - VoiceOver fork
+
+The following is a fork of `react-rrule-generator`, by VoiceOver. Modified a bit for our use cases.
+
+Note running the project: you need Node v6+. It does not work on Node v14.
+
+The following is the content of the original README.md.
+
+## React RRule Generator
+
 > Recurrence rules generator form built with React
 
 [![LICENSE](https://img.shields.io/npm/l/express.svg)](LICENSE)
