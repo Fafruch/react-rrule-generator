@@ -9,7 +9,7 @@ const EndAfter = ({
   handleChange,
   translations
 }) => (
-  <div className="col-sm-4">
+  <div className="col-sm-5">
     <div className="form-group m-0 row d-flex align-items-center">
       <div className="col-3 col-sm-6 pl-0">
         <input

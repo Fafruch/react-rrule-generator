@@ -12,7 +12,7 @@ const RepeatDaily = ({
   translations
 }) => (
   <div className="form-group row d-flex align-items-sm-center">
-    <div className="col-sm-1 offset-sm-2">
+    <div className="col-sm-2 offset-sm-1">
       {translateLabel(translations, 'repeat.daily.every')}
     </div>
     <div className="col-sm-2">
@@ -25,7 +25,7 @@ const RepeatDaily = ({
         onChange={numericalFieldHandler(handleChange)}
       />
     </div>
-    <div className="col-sm-1">
+    <div className="col-sm-2">
       {translateLabel(translations, 'repeat.daily.days')}
     </div>
 

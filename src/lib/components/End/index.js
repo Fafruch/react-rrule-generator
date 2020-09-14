@@ -22,7 +22,7 @@ const End = ({
   return (
     <div className="px-3">
       <div className="form-group row">
-        <div className="col-sm-2 text-sm-right">
+        <div className="col-sm-1 text-sm-right">
           <label
             htmlFor={id}
             className="col-form-label"
