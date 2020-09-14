@@ -64,6 +64,11 @@ class App extends Component {
 
           <ReactRRuleGenerator
             onChange={this.handleChange}
+            value={this.state.rrule}
+            config={{
+              hideStart: false,
+            }}
+            translations={this.getTranslation()}
           />
         </div>
 
