@@ -6,7 +6,7 @@ import translateLabel from '../../../utils/translateLabel';
 const RepeatDaily = ({
   id,
   daily: {
-    interval,
+    interval = 1,
   },
   handleChange,
   translations
