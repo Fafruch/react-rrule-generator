@@ -71,7 +71,7 @@
     "react-autosize-textarea": "^0.4.9",
     "react-copy-to-clipboard": "^5.0.1",
     "react-datetime": "^2.10.3",
-    "react-dev-utils": "^3.1.0",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.5.2",
     "react-error-overlay": "^1.0.10",
     "rrule": "^2.5.6",
