@@ -7,9 +7,10 @@ const EndAfter = ({
   id,
   after,
   handleChange,
-  translations
+  translations,
+  disabled,
 }) => (
-  <div className="col-sm-4">
+  <div className="col-sm-5">
     <div className="form-group m-0 row d-flex align-items-center">
       <div className="col-3 col-sm-6 pl-0">
         <input
@@ -19,6 +20,7 @@ const EndAfter = ({
           className="form-control"
           value={after}
           onChange={numericalFieldHandler(handleChange)}
+          disabled={disabled}
         />
       </div>
       <div className="col-9 col-sm-6">

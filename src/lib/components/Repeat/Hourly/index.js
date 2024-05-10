@@ -9,10 +9,11 @@ const RepeatHourly = ({
     interval,
   },
   handleChange,
-  translations
+  translations,
+  disabled
 }) => (
   <div className="form-group row d-flex align-items-sm-center">
-    <div className="col-sm-1 offset-sm-2">
+    <div className="col-sm-2 offset-sm-1">
       {translateLabel(translations, 'repeat.hourly.every')}
     </div>
     <div className="col-sm-2">
@@ -23,9 +24,10 @@ const RepeatHourly = ({
         className="form-control"
         value={interval}
         onChange={numericalFieldHandler(handleChange)}
+        disabled={disabled}
       />
     </div>
-    <div className="col-sm-1">
+    <div className="col-sm-2">
       {translateLabel(translations, 'repeat.hourly.hours')}
     </div>
   </div>

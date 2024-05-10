@@ -18,19 +18,26 @@ class ReactRRuleGenerator extends PureComponent {
     this.props.config,
     this.props.calendarComponent,
     this.props.id,
+    this.props.disabled,
   );
 
   componentWillMount() {
     if (this.props.onChange === ReactRRuleGenerator.defaultProps.onChange) {
       // no onChange() was provided
-      throw new Error('No onChange() function has been passed to RRuleGenerator. \n' +
-        'Please provide one, it\'s needed to handle generated value.');
+      throw new Error(
+        'No onChange() function has been passed to RRuleGenerator. \n' +
+          "Please provide one, it's needed to handle generated value.",
+      );
     }
 
     if (this.props.value) {
       // if value is provided to RRuleGenerator, it's used to compute state of component's forms
       const data = computeRRuleFromString(this.state.data, this.props.value);
       this.setState({ data });
+    } else {
+      // If there's no data, call onChange with the current state.
+      const rrule = computeRRuleToString(this.state.data);
+      this.props.onChange(rrule);
     }
   }
 
@@ -53,41 +60,32 @@ class ReactRRuleGenerator extends PureComponent {
   render() {
     const {
       id,
-      data: {
-        start,
-        repeat,
-        end,
-        options,
-        error,
-      },
+      data: { start, repeat, end, options, error }
     } = this.state;
 
     return (
       <div>
-
-        {
-          !options.hideError && error && (
-            <div className="alert alert-danger">
-              {translateLabel(this.props.translations, 'invalid_rrule', { value: error.value })}
-            </div>
-          )
-        }
+        {!options.hideError && error && (
+          <div className="alert alert-danger">
+            {translateLabel(this.props.translations, 'invalid_rrule', {
+              value: error.value,
+            })}
+          </div>
+        )}
 
         <div className="px-0 pt-3 border rounded">
-
-          {
-            !options.hideStart && (
-              <div>
-                <Start
-                  id={`${id}-start`}
-                  start={start}
-                  handleChange={this.handleChange}
-                  translations={this.props.translations}
-                />
-                <hr />
-              </div>
-            )
-          }
+          {!options.hideStart && (
+            <div>
+              <Start
+                id={`${id}-start`}
+                start={start}
+                handleChange={this.handleChange}
+                translations={this.props.translations}
+                disabled={this.props.disabled}
+              />
+              <hr />
+            </div>
+          )}
 
           <div>
             <Repeat
@@ -95,23 +93,22 @@ class ReactRRuleGenerator extends PureComponent {
               repeat={repeat}
               handleChange={this.handleChange}
               translations={this.props.translations}
+              disabled={this.props.disabled}
             />
           </div>
 
-          {
-            !options.hideEnd && (
-              <div>
-                <hr />
-                <End
-                  id={`${id}-end`}
-                  end={end}
-                  handleChange={this.handleChange}
-                  translations={this.props.translations}
-                />
-              </div>
-            )
-          }
-
+          {!options.hideEnd && (
+            <div>
+              <hr />
+              <End
+                id={`${id}-end`}
+                end={end}
+                handleChange={this.handleChange}
+                translations={this.props.translations}
+                disabled={this.props.disabled}
+              />
+            </div>
+          )}
         </div>
       </div>
     );
@@ -121,7 +118,9 @@ class ReactRRuleGenerator extends PureComponent {
 ReactRRuleGenerator.propTypes = {
   id: PropTypes.string,
   config: PropTypes.shape({
-    frequency: PropTypes.arrayOf(PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly'])),
+    frequency: PropTypes.arrayOf(
+      PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly']),
+    ),
     yearly: PropTypes.oneOf(['on', 'on the']),
     monthly: PropTypes.oneOf(['on', 'on the']),
     end: PropTypes.arrayOf(PropTypes.oneOf(['Never', 'After', 'On date'])),
@@ -134,14 +133,18 @@ ReactRRuleGenerator.propTypes = {
   onChange: PropTypes.func,
   calendarComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  disabled: PropTypes.bool
 };
 ReactRRuleGenerator.defaultProps = {
   id: null,
   value: '',
-  config: {},
+  config: {
+    weekStartsOnSunday: true
+  },
   onChange() {},
   calendarComponent: null,
   translations: translations.english,
+  disabled: false,
 };
 
 export default ReactRRuleGenerator;

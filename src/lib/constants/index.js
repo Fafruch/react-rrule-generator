@@ -1,4 +1,4 @@
-export const DATE_TIME_FORMAT = 'YYYY-MM-DD';
+export const DATE_TIME_FORMAT = 'MM/DD/YYYY';
 
 export const MONTHS = [
   'Jan',
@@ -23,6 +23,5 @@ export const DAYS = [
   'Saturday',
   'Sunday',
   'Day',
-  'Weekday',
-  'Weekend day'
+  'Weekday'
 ];

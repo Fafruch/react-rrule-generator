@@ -13,14 +13,15 @@ const RepeatYearlyOn = ({
   on,
   hasMoreModes,
   handleChange,
-  translations
+  translations,
+  disabled
 }) => {
   const daysInMonth = moment(on.month, 'MMM').daysInMonth();
   const isActive = mode === 'on';
 
   return (
     <div className={`form-group row d-flex align-items-sm-center ${!isActive && 'opacity-50'}`}>
-      <div className="col-sm-1 offset-sm-2">
+      <div className="col-sm-1 offset-sm-1">
 
         {hasMoreModes && (
           <input
@@ -31,11 +32,12 @@ const RepeatYearlyOn = ({
             value="on"
             checked={isActive}
             onChange={handleChange}
+            disabled={disabled}
           />
         )}
       </div>
 
-      <div className="col-sm-1">
+      <div className="col-sm-2">
         {translateLabel(translations, 'repeat.yearly.on')}
       </div>
 
@@ -46,7 +48,7 @@ const RepeatYearlyOn = ({
           aria-label="Repeat yearly on month"
           className="form-control"
           value={on.month}
-          disabled={!isActive}
+          disabled={!isActive || disabled}
           onChange={handleChange}
         >
           {MONTHS.map(month => <option key={month} value={month}>{translateLabel(translations, `months.${month.toLowerCase()}`)}</option>)}
@@ -60,7 +62,7 @@ const RepeatYearlyOn = ({
           aria-label="Repeat yearly on a day"
           className="form-control"
           value={on.day}
-          disabled={!isActive}
+          disabled={!isActive || disabled}
           onChange={numericalFieldHandler(handleChange)}
         >
           {range(0, daysInMonth).map((i) => (

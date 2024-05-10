@@ -4,6 +4,15 @@
   background-color: white;
 }
 
+.rdt .form-control:disabled {
+  background-color: #e9ecef;
+  opacity: 1;
+}
+
 .opacity-50 {
   opacity: 0.5;
+}
+
+.rrule-weekly-labels label {
+  min-height: 30px;
 }

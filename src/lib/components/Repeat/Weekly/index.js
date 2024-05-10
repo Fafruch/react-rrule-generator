@@ -12,17 +12,19 @@ const RepeatWeekly = ({
     options,
   },
   handleChange,
-  translations
+  translations,
+  disabled,
 }) => {
   let daysArray = toPairs(days);
-  if (options.weekStartsOnSunday) {
-    daysArray = daysArray.slice(-1).concat(daysArray.slice(0, -1));
-  }
+  // if (options.weekStartsOnSunday) {
+  // hack to always display SUN-SAT regardless of WKST
+  daysArray = daysArray.slice(-1).concat(daysArray.slice(0, -1));
+  // }
 
   return (
     <div className="px-3">
       <div className="form-group row d-flex align-items-sm-center">
-        <div className="col-sm-1 offset-sm-2">
+        <div className="col-sm-2 offset-sm-1">
           {translateLabel(translations, 'repeat.weekly.every')}
         </div>
         <div className="col-sm-3">
@@ -33,15 +35,16 @@ const RepeatWeekly = ({
             className="form-control"
             value={interval}
             onChange={numericalFieldHandler(handleChange)}
+            disabled={disabled}
           />
         </div>
-        <div className="col-sm-1">
+        <div className="col-sm-2">
           {translateLabel(translations, 'repeat.weekly.weeks')}
         </div>
       </div>
 
       <div className="form-group row">
-        <div className="btn-group btn-group-toggle offset-sm-2">
+        <div className="btn-group btn-group-toggle offset-sm-2 rrule-weekly-labels">
           {daysArray.map(([dayName, isDayActive]) => (
             <label
               htmlFor={`${id}-${dayName}`}
@@ -54,6 +57,7 @@ const RepeatWeekly = ({
                 name={`repeat.weekly.days[${dayName}]`}
                 className="form-control"
                 checked={isDayActive}
+                disabled={disabled}
                 onChange={(event) => {
                   const editedEvent = {
                     ...event,

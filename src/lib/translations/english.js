@@ -84,6 +84,6 @@ export default {
     never: 'Never',
     after: 'After',
     on_date: 'On date',
-    executions: 'executions.',
+    executions: 'occurences.',
   },
 }

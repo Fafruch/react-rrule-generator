@@ -11,6 +11,7 @@ class App extends Component {
     rrule: 'DTSTART:20190301T230000Z\nFREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1',
     isCopied: false,
     language: 'en',
+    disabled: false,
   };
 
   getTranslation = () => (this.state.language === 'de') ? translations.german : undefined;
@@ -29,8 +30,13 @@ class App extends Component {
     this.setState({ isCopied: true });
   };
 
+  handleChangeDisabled = (event) => {    
+    const hasDisabled = event.target.checked;
+    this.setState({ disabled: hasDisabled });
+  };
+
   render() {
-    const { rrule, isCopied } = this.state;
+    const { rrule, isCopied, disabled } = this.state;
 
     return (
       <div>
@@ -69,6 +75,7 @@ class App extends Component {
               hideStart: false,
             }}
             translations={this.getTranslation()}
+            disabled={this.state.disabled}
           />
         </div>
 
@@ -110,6 +117,35 @@ class App extends Component {
                 </CopyToClipboard>
               </div>
 
+            </div>
+          </div>
+        </div>
+
+        <hr className="mt-5 mb-5" />
+
+        <div className="container">
+          <h5><strong>Disabled</strong></h5>
+
+          <div className="px-3 pt-3 border rounded">
+            <div className="form-group row d-flex align-items-sm-center">
+
+              <div className="col-sm-2 text-sm-right">
+                <span className="col-form-label">
+                  <strong>
+                  Disabled
+                  </strong>
+                </span>
+              </div>
+
+              <div className="col-sm-8">
+              <input
+                type="checkbox"
+                name="rrule-disabled"
+                className="form-control"
+                checked={this.state.disabled}
+                onChange={this.handleChangeDisabled}
+              />
+              </div>
             </div>
           </div>
         </div>

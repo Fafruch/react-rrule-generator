@@ -14,7 +14,8 @@ const End = ({
     options,
   },
   handleChange,
-  translations
+  translations,
+  disabled
 }) => {
   const isOptionAvailable = option => !options.modes || options.modes.indexOf(option) !== -1;
   const isOptionSelected = option => mode === option;
@@ -22,7 +23,7 @@ const End = ({
   return (
     <div className="px-3">
       <div className="form-group row">
-        <div className="col-sm-2 text-sm-right">
+        <div className="col-sm-1 text-sm-right">
           <label
             htmlFor={id}
             className="col-form-label"
@@ -39,6 +40,7 @@ const End = ({
             className="form-control"
             value={mode}
             onChange={handleChange}
+            disabled={disabled}
           >
             {isOptionAvailable('Never') && <option value="Never">{translateLabel(translations, 'end.never')}</option>}
             {isOptionAvailable('After') && <option value="After">{translateLabel(translations, 'end.after')}</option>}
@@ -53,6 +55,7 @@ const End = ({
             after={after}
             handleChange={handleChange}
             translations={translations}
+            disabled={disabled}
           />
         }
         {
@@ -62,6 +65,7 @@ const End = ({
             onDate={onDate}
             handleChange={handleChange}
             translations={translations}
+            disabled={disabled}
           />
         }
 

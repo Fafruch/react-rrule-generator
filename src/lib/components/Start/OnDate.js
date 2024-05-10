@@ -14,7 +14,8 @@ const StartOnDate = ({
     options,
   },
   handleChange,
-  translations
+  translations,
+  disabled
 }) => {
   const CustomCalendar = options.calendarComponent;
   const locale = options.weekStartsOnSunday ? 'en-ca' : 'en-gb';
@@ -25,7 +26,15 @@ const StartOnDate = ({
     locale,
     readOnly: true,
   };
-
+  let inputAttributes = {
+    id: `${id}-datetime`,
+    name: 'start.onDate.date',
+    readOnly: true,
+  };
+  if (disabled) {
+    inputAttributes = {...inputAttributes, disabled }
+  }
+  
   return (
     <div className="col-6 col-sm-3">
       {
@@ -46,13 +55,7 @@ const StartOnDate = ({
           />
           : <DateTime
             {...calendarAttributes}
-            inputProps={
-              {
-                id: `${id}-datetime`,
-                name: 'start.onDate.date',
-                readOnly: true,
-              }
-            }
+            inputProps={inputAttributes}
             locale={translateLabel(translations, 'locale')}
             timeFormat={false}
             viewMode="days"

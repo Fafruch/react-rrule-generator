@@ -12,7 +12,8 @@ const RepeatYearly = ({
     options,
   },
   handleChange,
-  translations
+  translations,
+  disabled
 }) => {
   const isTheOnlyOneMode = option => options.modes === option;
   const isOptionAvailable = option => !options.modes || isTheOnlyOneMode(option);
@@ -26,6 +27,7 @@ const RepeatYearly = ({
           hasMoreModes={!isTheOnlyOneMode('on')}
           handleChange={handleChange}
           translations={translations}
+          disabled={disabled}
         />
       )}
       {isOptionAvailable('on the') && (
@@ -36,6 +38,7 @@ const RepeatYearly = ({
           hasMoreModes={!isTheOnlyOneMode('on the')}
           handleChange={handleChange}
           translations={translations}
+          disabled={disabled}
         />
       )}
     </div>

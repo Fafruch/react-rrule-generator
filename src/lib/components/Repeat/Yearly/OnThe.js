@@ -10,13 +10,14 @@ const RepeatYearlyOnThe = ({
   onThe,
   hasMoreModes,
   handleChange,
-  translations
+  translations,
+  disabled
 }) => {
   const isActive = mode === 'on the';
 
   return (
     <div className={`form-group row d-flex align-items-sm-center ${!isActive && 'opacity-50'}`}>
-      <div className="col-sm-1 offset-sm-2">
+      <div className="col-sm-1 offset-sm-1">
         {hasMoreModes && (
           <input
             id={id}
@@ -26,10 +27,11 @@ const RepeatYearlyOnThe = ({
             checked={isActive}
             value="on the"
             onChange={handleChange}
+            disabled={disabled}
           />
         )}
       </div>
-      <div className="col-sm-1">
+      <div className="col-sm-2">
         {translateLabel(translations, 'repeat.yearly.on_the')}
       </div>
 
@@ -40,7 +42,7 @@ const RepeatYearlyOnThe = ({
           aria-label="Repeat yearly on the which"
           className="form-control"
           value={onThe.which}
-          disabled={!isActive}
+          disabled={!isActive || disabled}
           onChange={handleChange}
         >
           <option value="First">{translateLabel(translations, 'numerals.first')}</option>
@@ -58,7 +60,7 @@ const RepeatYearlyOnThe = ({
           aria-label="Repeat yearly on the day"
           className="form-control"
           value={onThe.day}
-          disabled={!isActive}
+          disabled={!isActive || disabled}
           onChange={handleChange}
         >
           {DAYS.map(day => <option key={day} value={day}>{translateLabel(translations, `days.${day.toLowerCase()}`)}</option>)}
@@ -76,7 +78,7 @@ const RepeatYearlyOnThe = ({
           aria-label="Repeat yearly on the month"
           className="form-control"
           value={onThe.month}
-          disabled={!isActive}
+          disabled={!isActive || disabled}
           onChange={handleChange}
         >
           {MONTHS.map(month => <option key={month} value={month}>{translateLabel(translations, `months.${month.toLowerCase()}`)}</option>)}
